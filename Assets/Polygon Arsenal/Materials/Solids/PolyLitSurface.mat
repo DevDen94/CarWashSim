@@ -95,7 +95,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_2275756C: 0.5
+    - Vector1_2275756C: 5
     - Vector1_6E5713BA: 0.5
     - _ASEOutlineWidth: 0
     - _BumpScale: 1

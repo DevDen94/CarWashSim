@@ -30,16 +30,9 @@ public class GamePlayController : MonoBehaviour
     [Header("CurrentLevel in this object")]
     public GameObject CurrentLevel;
     public GameObject freelookref;
-    
-    //public int CameraIndex = 0;
-    //[Header("Time Variables")]
-    //public Text TimerTxt, HoverTimer;
-    //private float TimerInt = 1200;
-    //public float HoverTime = 0;
-    //public GameObject DustParticle;
-    //public Animator City1Enterance;
-    /*[Header("Controls")]
-    public GameObject Steering, touchBtn, Tilt;*/
+    [Header("UpLifter")]
+    public GameObject CurrentLevelUplifter;
+   
 
     private void Awake()
     {
@@ -54,12 +47,22 @@ public class GamePlayController : MonoBehaviour
         playerObj = Instantiate(Cars[PlayerPrefs.GetInt("Cars")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
        
     }
+
     // Start is called before the first frame update
+    [Obsolete]
     void Start()
     {
         
         freelookref.GetComponent<CinemachineFreeLook>().Follow = playerObj.transform;
         freelookref.GetComponent<CinemachineFreeLook>().LookAt = playerObj.transform;
+        foreach(Transform t in CurrentLevel.transform)
+        {
+            if(t.tag == "Uplift")
+            {
+                CurrentLevelUplifter = t.gameObject;
+            }
+        }
+        
         //CamerasForGamePlay();
         //Canvas.SetActive(false);
         //StartCoroutine(CameraAnimator());
