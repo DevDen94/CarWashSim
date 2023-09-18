@@ -41,10 +41,10 @@ public class GamePlayController : MonoBehaviour
         {
             instance = this;
         }
-
+        Debug.Log("l" + PlayerPrefs.GetInt("CurrentLevel"));
         CurrentLevel = Instantiate(Levels[PlayerPrefs.GetInt("CurrentLevel")]);
        
-        playerObj = Instantiate(Cars[PlayerPrefs.GetInt("Cars")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
+        playerObj = Instantiate(Cars[PlayerPrefs.GetInt("CurrentLevel")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
        
     }
 
@@ -63,12 +63,7 @@ public class GamePlayController : MonoBehaviour
             }
         }
         
-        //CamerasForGamePlay();
-        //Canvas.SetActive(false);
-        //StartCoroutine(CameraAnimator());
-       
-        //playerObj = Cars[PlayerPrefs.GetInt("Cars")].gameObject;
-        //playerObj.SetActive(true);
+        
 
     }
 
@@ -102,53 +97,13 @@ public class GamePlayController : MonoBehaviour
                 
                 break;
            
-            case 4:
-                ///Next//
-                /*if (PlayerPrefs.GetInt("CurrentLevel") < LevelManager.Instance.Levels.Length - 1)
-                {
-                    PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
-                }*/
-                PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("UnlockLevel"));
-                SceneManager.LoadScene(2);
-                Time.timeScale = 1f;
-                break;
-            
             
 
         }
 
 
     }///PanelsControlers///
-    public IEnumerator CameraAnimator()
-    {
-        if (CameraBool == true)
-        {
-            Panels[3].gameObject.SetActive(true);
-
-        }
-        CinemachineCam.SetActive(false);
-       
-        GameObject g = Instantiate(AnimationCam, playerObj.transform);
-        
-        yield return new WaitForSeconds(7f);
-        if(CameraBool == true)
-        {
-            Panels[2].gameObject.SetActive(true);
-           
-        }
-        else
-        {
-
-            Destroy(g);
-            CamerasForGamePlay();
-            
-            Canvas.SetActive(true);
-        }
-        CameraBool = false;
-
-
-
-    }///AnimatinCamera///
+  
 
     public void CamerasForGamePlay()
     {

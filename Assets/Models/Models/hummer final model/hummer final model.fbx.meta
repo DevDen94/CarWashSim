@@ -3,7 +3,62 @@ guid: 7c3cef155bea10347a53319e0611176a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clignotant
+    second: {fileID: 2100000, guid: 5522d02f06374294cab77f56b3325c64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dessous
+    second: {fileID: 2100000, guid: 486a1e934bbc23145bf08c3cf9f5f80d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Interieur_2
+    second: {fileID: 2100000, guid: e87ceeb9107dea948b3b4981b54819d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Miroir
+    second: {fileID: 2100000, guid: fa02cd61f25fca04d832b2bf79c4b260, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: back red light
+    second: {fileID: 2100000, guid: b9428edbacb8fa54da82c0cb9a0a9358, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t.001
+    second: {fileID: 2100000, guid: 4cecb80cd8de81f4c8969e3cd78ab71d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire rim texture.001
+    second: {fileID: 2100000, guid: b396b84a61db4e84ca4f76ce36f5a573, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire rim texture.002
+    second: {fileID: 2100000, guid: 5ce7d0701f92eb64d9ef6ae060f3ed44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire texture.002
+    second: {fileID: 2100000, guid: b3766c76bde43bb43a7fd26092c4ffd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window glass
+    second: {fileID: 2100000, guid: 224aa4f62e6b90b4d992cc52b6549fe7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: y.001
+    second: {fileID: 2100000, guid: e61b47ceaa6683c4eb18e3a15a1547bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

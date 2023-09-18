@@ -49,12 +49,14 @@ public class Gun : MonoBehaviour
             lastFireTime = Time.time;
             WaterSpringOn();
             WaterReduction();
+            levemanager.Instance.HandAnim.Play("HandAnimationOn");
 
         }
         else
         if (!levemanager.Instance.isToggleOn && !ControlFreak2.CF2Input.GetButton("Fire1"))
         {
             waterSpringOff();
+            levemanager.Instance.HandAnim.Play("HandAnimationOff");
         }
 
         if (levemanager.Instance.isToggleOn)

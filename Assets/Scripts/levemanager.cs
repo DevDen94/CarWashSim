@@ -36,9 +36,12 @@ public class levemanager : MonoBehaviour
     public int MudPatches;
     public int CompletePatches;
     bool LevelComplete_;
-
+    [Header("Hand Animation")]
+    public Animator HandAnim;
+   
     private void Start()
     {
+        
         CountdownTime = TimeInLevel;
         TimeSlider.maxValue = CountdownTime;
 
@@ -54,6 +57,7 @@ public class levemanager : MonoBehaviour
         CompletePatches = 0;
         LevelComplete_ = false;
         StartCoroutine(LevelCompleteCouroutine());
+        
       
     }
     public void UpliftFunc()
@@ -63,7 +67,7 @@ public class levemanager : MonoBehaviour
     public IEnumerator LevelCompleteCouroutine()
     {
         yield return new WaitForSeconds(0.001f);
-        if (CompletePatches == 16)
+        if (CompletePatches == 13)
         {
             UpliftBtn.SetActive(true);
 
@@ -83,6 +87,13 @@ public class levemanager : MonoBehaviour
         {
             LevelComplete_ = true;
             LevelComplete.SetActive(true);
+            
+            if (PlayerPrefs.GetInt("CurrentLevel") < GamePlayController.instance.Levels.Length-1)
+            {
+               
+                PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
+               
+            }
         }
         StartCoroutine(LevelCompleteCouroutine());
 
@@ -125,6 +136,7 @@ public class levemanager : MonoBehaviour
     {
         isToggleOn = true;
         SprinkleOn.Invoke();
+        HandAnim.Play("HandAnimationOn");
     }
 
 
@@ -132,6 +144,7 @@ public class levemanager : MonoBehaviour
     {
         isToggleOn = false;
         SprinkleOff.Invoke();
+        HandAnim.Play("HandAnimationOff");
     }
 
     public void HighPressure()
@@ -150,6 +163,7 @@ public class levemanager : MonoBehaviour
 
     public void Next()
     {
+       
         SceneManager.LoadScene(2);
     }
 
