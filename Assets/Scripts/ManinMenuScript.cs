@@ -7,7 +7,10 @@ public class ManinMenuScript : MonoBehaviour
 
 
     public GameObject MainMenuPAnel, SettingPanel, LoadingPanel, ExitPanel;
-
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
     public void Play()
     {
         AudioManager.Instance.Buttonclick();

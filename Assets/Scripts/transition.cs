@@ -39,7 +39,7 @@ public class transition : MonoBehaviour
     public void CleanCar(RaycastHit hit)
     {
 
-        Debug.LogError("RayCastFire");
+       // Debug.LogError("RayCastFire");
         if (hit.collider.GetComponent<Renderer>().material == material)
         {
             
@@ -51,10 +51,11 @@ public class transition : MonoBehaviour
             }
             else if (transitionAmount >= 1 && !isCompleteWash)
             {
-                Debug.LogError("RayCastFire");
+                //Debug.LogError("RayCastFire");
                 isCompleteWash = true;
                 levemanager.Instance.CompletePatches = levemanager.Instance.CompletePatches + 1;
                 levemanager.Instance.LevelProgress.value = levemanager.Instance.LevelProgress.value + 1;
+                this.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             }
         }
 

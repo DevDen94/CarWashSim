@@ -21,37 +21,30 @@ public class LoadingScript : MonoBehaviour
         }
 
         progress = 0f;
+        Time.timeScale = 1f;
 
-        if (Value==0)
-            StartCoroutine(LoadAsyncScene("MainMenu"));
-        if(Value==1)
-            StartCoroutine(LoadAsyncScene("Level"+PlayerPrefs.GetInt("LN").ToString()));
+        StartCoroutine(LoadAsyncScene());
     }
 
-    private IEnumerator LoadAsyncScene(string sceneName)
+    private IEnumerator LoadAsyncScene()
     {
-       
-        
 
-        if (progress < 1f)
-        {
-            progress += loadingSpeed;
-            progress = Mathf.Clamp01(progress);
 
-            progressBar.fillAmount = progress;
-            progressText.text = (progress * 100f).ToString("F0") + "%";
-            yield return new WaitForSeconds(0.01f);
-            if (Value == 0)
-                StartCoroutine(LoadAsyncScene("MainMenu"));
-            if (Value == 1)
-                StartCoroutine(LoadAsyncScene("Level" + PlayerPrefs.GetInt("LN").ToString()));
-        }
-        else
-        {
-            SceneManager.LoadScene(sceneName);
-        }
+
        
+        while (progressBar.fillAmount <1)
+         {
+           
+            progressText.text = (progressBar.fillAmount * 100f).ToString("F0") + "%";
+            yield return null;
+         }
         
+        AsyncOperation oper = SceneManager.LoadSceneAsync(Value);
+        oper.allowSceneActivation = true;
+       
+
+
+
     }
 }
 

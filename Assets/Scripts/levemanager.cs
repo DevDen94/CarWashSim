@@ -67,7 +67,7 @@ public class levemanager : MonoBehaviour
     public IEnumerator LevelCompleteCouroutine()
     {
         yield return new WaitForSeconds(0.001f);
-        if (CompletePatches == 13)
+        if (CompletePatches == 12)
         {
             UpliftBtn.SetActive(true);
 
@@ -92,7 +92,8 @@ public class levemanager : MonoBehaviour
             {
                
                 PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
-               
+                PlayerPrefs.SetInt("UnlockLevel", 1);
+                LevelComplete_ = false;
             }
         }
         StartCoroutine(LevelCompleteCouroutine());
@@ -169,7 +170,13 @@ public class levemanager : MonoBehaviour
 
     public void Restart()
     {
+        if(PlayerPrefs.GetInt("UnlockLevel") == 1)
+        {
+            PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
+            PlayerPrefs.SetInt("UnlockLevel", 0);
+        }
         SceneManager.LoadScene(2);
+
     }
 
     public void Home()

@@ -8,6 +8,7 @@ TagManager:
   - TrafficLight
   - CarWash
   - Uplift
+  - GarageCam
   layers:
   - Default
   - TransparentFX

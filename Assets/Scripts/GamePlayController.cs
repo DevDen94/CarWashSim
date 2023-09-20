@@ -52,7 +52,7 @@ public class GamePlayController : MonoBehaviour
     [Obsolete]
     void Start()
     {
-        
+        Time.timeScale = 1f;
         freelookref.GetComponent<CinemachineFreeLook>().Follow = playerObj.transform;
         freelookref.GetComponent<CinemachineFreeLook>().LookAt = playerObj.transform;
         foreach(Transform t in CurrentLevel.transform)
