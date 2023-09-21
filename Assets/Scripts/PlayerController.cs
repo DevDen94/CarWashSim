@@ -5,33 +5,77 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
-    public float mouseSensitivity = 2.0f;
+    public float rotationSpeed = 2.0f;
+    public float lookSpeed = 2.0f;
+    public float jumpForce = 5.0f;
+    public float gravity = 9.81f;
 
     private CharacterController controller;
-    public Camera playerCamera;
-    private float verticalRotation = 0;
+    private float verticalVelocity = 0.0f;
 
-    private void Start()
+    public Transform playerCamera;
+
+    private float verticalRotation = 0.0f;
+
+    void Start()
     {
         controller = GetComponent<CharacterController>();
-        //playerCamera = GetComponentInChildren<Camera>();
         //Cursor.lockState = CursorLockMode.Locked;
+
+        // Assuming you have a child object for the camera.
+       // playerCamera = transform.Find("Camera");
     }
 
-    private void Update()
+    void Update()
     {
-        // Player movement
-        float horizontalMovement = ControlFreak2.CF2Input.GetAxis("Horizontal");
-        float verticalMovement = ControlFreak2.CF2Input.GetAxis("Vertical");
-        Vector3 moveDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        // Get player input for movement
+        float horizontalInput = ControlFreak2.CF2Input.GetAxis("Horizontal");
+        float verticalInput = ControlFreak2.CF2Input.GetAxis("Vertical");
 
-        // Player rotation
-        float mouseX = ControlFreak2.CF2Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = ControlFreak2.CF2Input.GetAxis("Mouse Y") * mouseSensitivity;
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90, 90);
-        playerCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-        transform.Rotate(Vector3.up * mouseX);
+        // Calculate movement direction
+        Vector3 forwardMovement = transform.forward * verticalInput;
+        Vector3 horizontalMovement = transform.right * horizontalInput;
+
+        // Calculate total movement direction
+        Vector3 moveDirection = forwardMovement + horizontalMovement;
+
+        // Apply movement speed
+        moveDirection.Normalize();
+        moveDirection *= moveSpeed;
+
+        // Check if the player is grounded
+        if (controller.isGrounded)
+        {
+            // Reset vertical velocity if grounded
+            verticalVelocity = -0.5f;
+
+            // Handle jumping
+            if (Input.GetButtonDown("Jump"))
+            {
+                verticalVelocity = jumpForce;
+            }
+        }
+        else
+        {
+            // Apply gravity when not grounded
+            verticalVelocity -= gravity * Time.deltaTime;
+        }
+
+        // Add vertical velocity to the movement direction
+        moveDirection.y = verticalVelocity;
+
+        // Move the CharacterController
+        controller.Move(moveDirection * Time.deltaTime);
+
+        // Calculate rotation based on mouse input for player
+        float rotationY = ControlFreak2.CF2Input.GetAxis("Mouse X") * rotationSpeed;
+        transform.Rotate(0, rotationY, 0);
+
+        // Calculate rotation based on mouse input for camera
+        float rotationX = -ControlFreak2.CF2Input.GetAxis("Mouse Y") * lookSpeed;
+        verticalRotation += rotationX;
+        verticalRotation = Mathf.Clamp(verticalRotation, -90.0f, 90.0f);
+        playerCamera.localEulerAngles = new Vector3(verticalRotation, 0, 0);
     }
+
 }
