@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audioMixer,ButtonClick; // Reference to your Audio Mixer.
+    public AudioSource audioMixer,ButtonClick,WashClick; // Reference to your Audio Mixer.
     private string volumeKey = "Volume"; // Key for PlayerPrefs.
     public Slider VolumeSlider;
     public Text Volume;

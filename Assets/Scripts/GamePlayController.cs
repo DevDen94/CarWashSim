@@ -47,7 +47,10 @@ public class GamePlayController : MonoBehaviour
         playerObj = Instantiate(Cars[PlayerPrefs.GetInt("CurrentLevel")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
        
     }
-
+    private void OnEnable()
+    {
+        
+    }
     // Start is called before the first frame update
     [Obsolete]
     void Start()
@@ -55,9 +58,9 @@ public class GamePlayController : MonoBehaviour
         Time.timeScale = 1f;
         freelookref.GetComponent<CinemachineFreeLook>().Follow = playerObj.transform;
         freelookref.GetComponent<CinemachineFreeLook>().LookAt = playerObj.transform;
-        foreach(Transform t in CurrentLevel.transform)
+        foreach (Transform t in CurrentLevel.transform)
         {
-            if(t.tag == "Uplift")
+            if (t.tag == "Uplift")
             {
                 CurrentLevelUplifter = t.gameObject;
             }

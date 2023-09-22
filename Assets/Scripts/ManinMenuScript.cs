@@ -21,9 +21,10 @@ public class ManinMenuScript : MonoBehaviour
     }
     public void Play()
     {
+        LoadingPanel.SetActive(true);
         AudioManager.Instance.Buttonclick();
         AdsManager.instance.ShowinterAd();
-        LoadingPanel.SetActive(true);
+        //LoadingPanel.SetActive(true);
     }
 
     public void Back()
@@ -74,8 +75,9 @@ public class ManinMenuScript : MonoBehaviour
     }
     public void openExitPanel()
     {
-        AdsManager.instance.ShowinterAd();
         ExitPanel.SetActive(true);
+        AdsManager.instance.ShowinterAd();
+        
     }
 
     public void offExitPanel()

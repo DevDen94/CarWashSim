@@ -38,19 +38,22 @@ public class BusArrow : MonoBehaviour
     {
         while (true)
         {
-            
-            yield return new WaitForSeconds(0.01f);
+            if (Target)
+            {
+
+                yield return new WaitForSeconds(0.01f);
 
 
-            Vector3 targetPostition = new Vector3(Target.position.x,
-                                       this.transform.position.y,
-                                       Target.position.z);
-            this.transform.LookAt(targetPostition);
-            float DIS = Vector3.Distance(Target.position, this.transform.position);
-            float normalizedValue = (DIS - mindis) / (StartDIS - mindis);
-            //float normalizedValue = (DIS - 10) / (DIS - 10);
-            Color lerpedColor = Color.Lerp(minColor, maxColor, normalizedValue);
-            ARROW.GetComponent<MeshRenderer>().material.color = lerpedColor;
+                Vector3 targetPostition = new Vector3(Target.position.x,
+                                           this.transform.position.y,
+                                           Target.position.z);
+                this.transform.LookAt(targetPostition);
+                float DIS = Vector3.Distance(Target.position, this.transform.position);
+                float normalizedValue = (DIS - mindis) / (StartDIS - mindis);
+                //float normalizedValue = (DIS - 10) / (DIS - 10);
+                Color lerpedColor = Color.Lerp(minColor, maxColor, normalizedValue);
+                ARROW.GetComponent<MeshRenderer>().material.color = lerpedColor;
+            }
            
         }
 

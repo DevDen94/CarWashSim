@@ -29,8 +29,9 @@ public class LoadingScript : MonoBehaviour
     }
     private void Start()
     {
-        AdsManager.instance.ShowBigBanner();
+        
         StartCoroutine(LoadAsyncScene());
+        AdsManager.instance.ShowBigBanner();
     }
 
 

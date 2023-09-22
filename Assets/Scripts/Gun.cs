@@ -157,6 +157,7 @@ public class Gun : MonoBehaviour
                 {
                     Destroy(hitInfo.collider.gameObject);
                     hitsRemaining = hitsToDestroy;
+                   
                 }
             }
         }

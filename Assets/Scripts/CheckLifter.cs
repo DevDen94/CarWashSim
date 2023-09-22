@@ -20,4 +20,5 @@ public class CheckLifter : MonoBehaviour
     {
         UpliftButton.SetActive(false);
     }
+    
 }

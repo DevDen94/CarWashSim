@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4277622071775299168
 MeshCollider:
@@ -489,8 +491,6 @@ GameObject:
   - component: {fileID: 9205014486337163497}
   - component: {fileID: 7912937431697628286}
   - component: {fileID: 4046490559541899592}
-  - component: {fileID: 4046490559541899594}
-  - component: {fileID: 4046490559541899593}
   m_Layer: 0
   m_Name: Object_3.004
   m_TagString: Untagged
@@ -564,33 +564,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4046490559541899594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286288017190850472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCompleteWash: 0
---- !u!64 &4046490559541899593
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286288017190850472}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2356655302143712380, guid: 8c33ffe1258a7844d92fc2945d97f19f, type: 3}
 --- !u!1 &334375450788873417
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3076364841132202211
 MeshCollider:
@@ -802,6 +777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3519951719281806980
 MeshCollider:
@@ -915,6 +892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4260587231198622861
 MeshCollider:
@@ -1692,6 +1671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3396121240799455220
 MeshCollider:
@@ -1805,6 +1786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4176544216818150580
 MeshCollider:
@@ -2001,6 +1984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4166080966044439315
 MeshCollider:
@@ -2197,6 +2182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &2033914506132437670
 MeshCollider:
@@ -2559,6 +2546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &1501509215171989635
 MeshCollider:
@@ -2755,6 +2744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3488071730975713214
 MeshCollider:
@@ -3117,6 +3108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &1892871466135129412
 MeshCollider:
@@ -3927,6 +3920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &2727655819518001913
 MeshCollider:
@@ -4137,6 +4132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!1 &2995529129574030972
 GameObject:
@@ -4236,6 +4233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4476303075431129209
 MeshCollider:
@@ -4598,6 +4597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3203760381454075444
 MeshCollider:
@@ -4711,6 +4712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3267049198999443120
 MeshCollider:
@@ -5156,6 +5159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3942083720030958116
 MeshCollider:
@@ -5684,6 +5689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4128854858589310904
 MeshCollider:
@@ -21685,6 +21692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4754617014369550481}
+  - component: {fileID: 3296532709828736970}
   m_Layer: 0
   m_Name: EXTERIOR
   m_TagString: Untagged
@@ -21733,6 +21741,18 @@ Transform:
   m_Father: {fileID: 1239980248918698444}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3296532709828736970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754617014369550480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafdc7a33006794693e540c45eff14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4754617014462589948
 GameObject:
   m_ObjectHideFlags: 0
@@ -37585,6 +37605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4145054067262541955
 MeshCollider:
@@ -38279,6 +38301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &3044368267703226166
 MeshCollider:
@@ -40384,6 +40408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &2902476154003200816
 MeshCollider:
@@ -41659,6 +41685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &1483059683055952779
 MeshCollider:
@@ -41772,6 +41800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &8422494161089065072
 MeshCollider:
@@ -42466,6 +42496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &4362637841817871070
 MeshCollider:
@@ -42911,6 +42943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e4be1305886e449b0751421f171fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  transitionAmount: 0
   isCompleteWash: 0
 --- !u!64 &9164928883687985152
 MeshCollider:

@@ -18,7 +18,7 @@ public class levemanager : MonoBehaviour
     public float TotalWater;
 
     public bool isToggleOn;
-
+    public bool ThisScriptOn = false;
 
 
     public UnityEvent SprinkleOn,SprinkleOff;
@@ -44,11 +44,13 @@ public class levemanager : MonoBehaviour
     private void OnEnable()
     {
         CubeCollider.SetActive(true);
+        ThisScriptOn = false;
     }
 
 
     private void Start()
     {
+        ThisScriptOn = true;
         val = 0;
         CountdownTime = TimeInLevel;
         TimeSlider.maxValue = CountdownTime;
@@ -65,8 +67,8 @@ public class levemanager : MonoBehaviour
         CompletePatches = 0;
         LevelComplete_ = false;
         StartCoroutine(LevelCompleteCouroutine());
-        
-      
+        PlayerPrefs.SetInt("UnlockLevel", 0);
+
     }
     public void UpliftFunc()
     {
@@ -108,8 +110,7 @@ public class levemanager : MonoBehaviour
         {
             LevelComplete_ = true;
             LevelComplete.SetActive(true);
-            AdsManager.instance.ShowinterAd();
-            AdsManager.instance.ShowBigBanner();
+           
             if (PlayerPrefs.GetInt("CurrentLevel") < GamePlayController.instance.Levels.Length-1)
             {
                
@@ -117,6 +118,15 @@ public class levemanager : MonoBehaviour
                 PlayerPrefs.SetInt("UnlockLevel", 1);
                 LevelComplete_ = false;
             }
+            AdsManager.instance.ShowinterAd();
+            AdsManager.instance.ShowBigBanner();
+        }
+        if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 3)
+        {
+            levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
+
+            GetchildMat.Instance.AllCarWash();
+            Debug.LogError("AA");
         }
         StartCoroutine(LevelCompleteCouroutine());
 
@@ -220,6 +230,19 @@ public class levemanager : MonoBehaviour
         Time.timeScale = 1f;
         Pause.SetActive(false);
         
+    }
+    public IEnumerator AllWashCouroutine()
+    {
+        if (levemanager.Instance.ThisScriptOn == true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            ///Allmesheswash//
+            
+           
+        }
+        Debug.LogError("AA" + levemanager.Instance.ThisScriptOn);
+        StartCoroutine(AllWashCouroutine());
+
     }
 
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class transition : MonoBehaviour
 {
    
-    private Material material;
-    private float transitionAmount = 0.0f;
+    public Material material;
+    public float transitionAmount = 0.0f;
     
 
     public static transition Instance;
@@ -17,7 +17,7 @@ public class transition : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    public void Start()
     {
         isCompleteWash = false;
 
@@ -26,7 +26,8 @@ public class transition : MonoBehaviour
         {
             material = renderer.material;
         }
-
+        //StartCoroutine(AllWashCouroutine());
+        Debug.LogError("start");
     }
 
 
@@ -46,19 +47,45 @@ public class transition : MonoBehaviour
             // Calculate the transition amount based on hit position or any criteria
             if (transitionAmount <= 1)
             {
-                transitionAmount = transitionAmount + 0.009f;
+                //transitionAmount = transitionAmount + 0.009f;
+                transitionAmount = transitionAmount + 0.2f;
+                Debug.Log("Raycast" + transitionAmount);
                 material.SetFloat("_TransitionAmount", transitionAmount);
+                Debug.LogWarning(transitionAmount);
             }
             else if (transitionAmount >= 1 && !isCompleteWash)
             {
                 //Debug.LogError("RayCastFire");
+                transitionAmount = 1f;
+                material.SetFloat("_TransitionAmount", transitionAmount);
                 isCompleteWash = true;
                 levemanager.Instance.CompletePatches = levemanager.Instance.CompletePatches + 1;
                 levemanager.Instance.LevelProgress.value = levemanager.Instance.LevelProgress.value + 1;
                 this.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+                AudioManager.Instance.WashClick.Play();
             }
+            
         }
 
+    }
+    public IEnumerator AllWashCouroutine()
+    {
+        if (levemanager.Instance.ThisScriptOn == true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            ///Allmesheswash//
+            if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 2)
+            {
+                levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
+                transitionAmount = 1f;
+                material.SetFloat("_TransitionAmount", transitionAmount);
+                
+            }
+            Debug.LogError("AA");
+        }
+        Debug.LogError("AA" + levemanager.Instance.ThisScriptOn);
+        StartCoroutine(AllWashCouroutine());
+       
     }
 
 
