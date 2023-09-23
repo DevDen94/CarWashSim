@@ -131,8 +131,11 @@ public class levemanager : MonoBehaviour
             levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
 
             GetchildMat.Instance.AllCarWash();
+            
             Debug.LogError("AA");
+            LevelProgress.value = MudPatches;
         }
+       
         StartCoroutine(LevelCompleteCouroutine());
 
     }
