@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
 
     public Material CarMaterial;
     int value;
-
+    bool SpraySoundBool;
 
     //public Color objectColor;
     //public Color fadeColor;
@@ -50,6 +50,7 @@ public class Gun : MonoBehaviour
             WaterSpringOn();
             WaterReduction();
             levemanager.Instance.HandAnim.Play("HandAnimationOn");
+            //AudioManager.Instance.SpraySound.Play();
 
         }
         else
@@ -57,6 +58,7 @@ public class Gun : MonoBehaviour
         {
             waterSpringOff();
             levemanager.Instance.HandAnim.Play("HandAnimationOff");
+            //AudioManager.Instance.SpraySound.Stop();
         }
 
         if (levemanager.Instance.isToggleOn)
@@ -177,6 +179,7 @@ public class Gun : MonoBehaviour
             waterSplashHigh.Play();
             onHitEffectHigh.Play();
             FireRaycastForLow();
+           
 
         }// Start the particle system
         else if (!levemanager.Instance.HighWaterPressure)
@@ -185,6 +188,8 @@ public class Gun : MonoBehaviour
             waterSplashLow.Play();
             onHitEffectLow.Play();
         }// Start the particle system
+
+        AudioManager.Instance.SpraySoundFuncOn();
     }
 
     public void waterSpringOff()
@@ -193,12 +198,14 @@ public class Gun : MonoBehaviour
         {
             waterSplashHigh.Stop();
             onHitEffectHigh.Stop();
+            
         }// Start the particle system
         else if (!levemanager.Instance.HighWaterPressure)
         {
             waterSplashLow.Stop();
             onHitEffectLow.Stop();
         }// Start the particle system
+        AudioManager.Instance.SpraySoundFuncOff();
     }
 
     void FireRaycastForLow()

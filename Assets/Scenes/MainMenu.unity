@@ -1304,7 +1304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: V 0.1 , 0.1
+  m_Text: V 1.0.0:1.0.0
 --- !u!222 &333122722
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4993,6 +4993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 1996533712}
   ButtonClick: {fileID: 1449103775}
+  WashClick: {fileID: 0}
+  SpraySound: {fileID: 0}
   VolumeSlider: {fileID: 1014563503}
   Volume: {fileID: 1977952403}
 --- !u!1 &1235337343

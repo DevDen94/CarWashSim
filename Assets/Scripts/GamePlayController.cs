@@ -41,6 +41,8 @@ public class GamePlayController : MonoBehaviour
         {
             instance = this;
         }
+
+       
         Debug.Log("l" + PlayerPrefs.GetInt("CurrentLevel"));
         CurrentLevel = Instantiate(Levels[PlayerPrefs.GetInt("CurrentLevel")]);
        
@@ -80,9 +82,10 @@ public class GamePlayController : MonoBehaviour
             default:
                 ////pause////
                 Panels[0].SetActive(true);
+                Time.timeScale = 0f;
                 AdsManager.instance.ShowinterAd();
                 AdsManager.instance.ShowBigBanner();
-                Time.timeScale = 0f;
+                
                 //Cars[PlayerPrefs.GetInt("currentBus")].gameObject.SetActive(false);
                 break;
             case 1:

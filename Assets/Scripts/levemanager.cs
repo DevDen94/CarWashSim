@@ -118,6 +118,11 @@ public class levemanager : MonoBehaviour
                 PlayerPrefs.SetInt("UnlockLevel", 1);
                 LevelComplete_ = false;
             }
+            else
+            {
+                PlayerPrefs.SetInt("CurrentLevel", UnityEngine.Random.Range(0, GamePlayController.instance.Levels.Length - 2));
+                Debug.Log("random" + PlayerPrefs.GetInt("CurrentLevel"));
+            }
             AdsManager.instance.ShowinterAd();
             AdsManager.instance.ShowBigBanner();
         }

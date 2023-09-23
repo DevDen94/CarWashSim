@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Paint in 3D/Unlit Alpha
   target: {fileID: 4800000, guid: 1d0a640c19ee2ce4a847b01951ebf568, type: 3}
   variantHash: -1360290330
-  projectHash: 1684891381
+  projectHash: -297226255
   variants:
   - Pipe: 0
     Code: "//<HASH>-1342361412</HASH>\n////////////////////////////////////////\n//
