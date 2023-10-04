@@ -16,7 +16,7 @@ public class TriggerScript : MonoBehaviour
     {
         if(other.gameObject.tag == "CarWash")
         {
-           
+            this.gameObject.tag = "Untagged";
             this.gameObject.transform.SetPositionAndRotation(new Vector3
                               (other.transform.position.x,transform.position.y,other.transform.position.z), other.transform.rotation);
             this.transform.GetChild(2).gameObject.SetActive(false);
@@ -24,12 +24,14 @@ public class TriggerScript : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<PrometeoCarController>().enabled = false;
+            //GamePlayController.instance.Canvas.SetActive(false);
             GameObject d = Instantiate(GamePlayController.instance.AnimationCam, this.transform);
             yield return new WaitForSeconds(3f);
             Destroy(d);
-            GamePlayController.instance.SwitchControlToCarWash();
+            //GamePlayController.instance.Canvas.SetActive(true);
             this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
-           
+            GamePlayController.instance.Panels[1].gameObject.SetActive(true);
+            GetchildMat.Instance.AllCarWashMeshON();
         }
         if(other.gameObject.tag == "GarageCam")
         {

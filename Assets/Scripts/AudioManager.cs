@@ -33,9 +33,12 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            audioMixer.volume = 0.5f;
-            VolumeSlider.value = 0.5f;
-            Debug.Log("haselse");
+            if (audioMixer && VolumeSlider != null)
+            {
+                audioMixer.volume = 0.5f;
+                VolumeSlider.value = 0.5f;
+            }
+            
         }
         
         

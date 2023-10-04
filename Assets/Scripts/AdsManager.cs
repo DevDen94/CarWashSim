@@ -48,6 +48,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 
     public bool isAppOpen;
 
+    public bool SmallBAnerView;
+
+
     private void Awake()
     {
 
@@ -175,13 +178,19 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     
     public void ShowSmallBanner()
     {
+
+        
+        SmallBAnerView = true;
         _bannerView.Show();
         _bannerView1.Hide();
+        Debug.LogError(SmallBAnerView);
     }
     public void ShowBigBanner()
     {
+        SmallBAnerView = false;
         _bannerView1.Show();
         _bannerView.Hide();
+        Debug.LogError(SmallBAnerView);
     }
 
 

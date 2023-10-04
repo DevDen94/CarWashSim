@@ -245,7 +245,7 @@ public class PrometeoCarController : MonoBehaviour
           if(throttleButton == null && reverseButton == null &&
           turnRightButton == null && turnLeftButton == null
           && handbrakeButton == null){
-                Debug.LogError("aya");
+               
             ///MobileInputRef//
             throttlePTI = ControlCanvas.instance.throttleBtn.GetComponent<PrometeoTouchInput>();
             reversePTI = ControlCanvas.instance.Reverse.GetComponent<PrometeoTouchInput>();

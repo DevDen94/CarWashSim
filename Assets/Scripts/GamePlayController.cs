@@ -32,22 +32,23 @@ public class GamePlayController : MonoBehaviour
     public GameObject freelookref;
     [Header("UpLifter")]
     public GameObject CurrentLevelUplifter;
-   
+    public GameObject FpsStartPoint;
 
     private void Awake()
     {
-        //Instantiate(Environment);
+       
         if(instance== null)
         {
             instance = this;
         }
 
-       
-        Debug.Log("l" + PlayerPrefs.GetInt("CurrentLevel"));
         CurrentLevel = Instantiate(Levels[PlayerPrefs.GetInt("CurrentLevel")]);
-       
+
         playerObj = Instantiate(Cars[PlayerPrefs.GetInt("CurrentLevel")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
-       
+
+
+
+
     }
     private void OnEnable()
     {
@@ -58,6 +59,8 @@ public class GamePlayController : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        //Instantiate(Environment);
+        
         freelookref.GetComponent<CinemachineFreeLook>().Follow = playerObj.transform;
         freelookref.GetComponent<CinemachineFreeLook>().LookAt = playerObj.transform;
         foreach (Transform t in CurrentLevel.transform)
@@ -66,6 +69,15 @@ public class GamePlayController : MonoBehaviour
             {
                 CurrentLevelUplifter = t.gameObject;
             }
+        }
+        if(PlayerPrefs.GetInt("LevelRestart") == 1)
+        {
+            SwitchControlToCarWash();
+            
+        }
+        else
+        {
+            PlayerPrefs.SetInt("LevelRestart", 0);
         }
         AdsManager.instance.ShowSmallBanner();
         
@@ -105,8 +117,15 @@ public class GamePlayController : MonoBehaviour
                 SceneManager.LoadScene(2);
                 
                 break;
-           
-            
+            case 4:
+                ///Next////
+                Time.timeScale = 1f;
+                Panels[1].SetActive(false);
+                SwitchControlToCarWash();
+
+                break;
+
+
 
         }
 
@@ -133,6 +152,18 @@ public class GamePlayController : MonoBehaviour
         Canvas.SetActive(false);
         CinemachineCam.SetActive(false);
        CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
+       
+        foreach (Transform child in CurrentLevel.transform)
+        {
+            if (child.tag == "CarWash")
+            {
+                playerObj.transform.SetPositionAndRotation(child.position, child.rotation);
+            }
+           
+        }
+        Fpsposition.Instance.FpsPosition();
+        PlayerPrefs.SetInt("LevelRestart", 1);
+       
     }
 }
     // Update is called once per frame
