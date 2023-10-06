@@ -31,6 +31,9 @@ public class TriggerScript : MonoBehaviour
             //GamePlayController.instance.Canvas.SetActive(true);
             this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
             GamePlayController.instance.Panels[1].gameObject.SetActive(true);
+            GoogleAdMobController.instance.ShowInterstitialAd();
+            GoogleAdMobController.instance.ShowBigBannerAd();
+
             GetchildMat.Instance.AllCarWashMeshON();
         }
         if(other.gameObject.tag == "GarageCam")

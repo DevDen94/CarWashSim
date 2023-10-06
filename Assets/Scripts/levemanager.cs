@@ -201,15 +201,16 @@ public class levemanager : MonoBehaviour
 
     public void Next()
     {
-       
+        GoogleAdMobController.instance.ShowInterstitialAd();
+        GoogleAdMobController.instance.ShowSmallBannerAd();
         SceneManager.LoadScene(2);
         PlayerPrefs.SetInt("LevelRestart", 0);
-        AdsManager.instance.ShowinterAd();
+        //AdsManager.instance.ShowinterAd();
     }
 
     public void Restart()
     {
-
+        GoogleAdMobController.instance.ShowSmallBannerAd();
         LevelComplete_ = false;
         CanvasBool = false;
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
@@ -235,8 +236,8 @@ public class levemanager : MonoBehaviour
 
         this.enabled = false;
         this.enabled = true;
-        AdsManager.instance.ShowSmallBanner();
-        AdsManager.instance.ShowinterAd();
+       // AdsManager.instance.ShowSmallBanner();
+       // AdsManager.instance.ShowinterAd();
         //SceneManager.LoadScene(2);
 
     }
@@ -244,13 +245,13 @@ public class levemanager : MonoBehaviour
     public void Home()
     {
         SceneManager.LoadScene(0);
-        AdsManager.instance.ShowinterAd();
+     //   AdsManager.instance.ShowinterAd();
         //PlayerPrefs.SetInt("LevelRestart", 1);
     }
 
     public void onPauseClick()
     {
-
+        GoogleAdMobController.instance.ShowBigBannerAd();
         Pause.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -259,6 +260,7 @@ public class levemanager : MonoBehaviour
     public void onResume()
     {
         Time.timeScale = 1f;
+        GoogleAdMobController.instance.ShowSmallBannerAd();
         Pause.SetActive(false);
         
     }

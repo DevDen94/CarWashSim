@@ -88,8 +88,8 @@ public class Gun : MonoBehaviour
             {
                 isTimeOver = true;
                 levemanager.Instance.LevelFail.SetActive(true);
-                AdsManager.instance.ShowinterAd();
-                AdsManager.instance.ShowBigBanner();
+                //AdsManager.instance.ShowinterAd();
+                //AdsManager.instance.ShowBigBanner();
             }
         }
 
@@ -122,8 +122,8 @@ public class Gun : MonoBehaviour
         if (levemanager.Instance.WaterSlider.value <= 0)
         {
             levemanager.Instance.LevelFail.SetActive(true);
-            AdsManager.instance.ShowinterAd();
-            AdsManager.instance.ShowBigBanner();
+           // AdsManager.instance.ShowinterAd();
+          //  AdsManager.instance.ShowBigBanner();
         }
 
     }

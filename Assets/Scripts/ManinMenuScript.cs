@@ -10,21 +10,20 @@ public class ManinMenuScript : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        AdsManager.instance.ShowSmallBanner();
-
-        if (AdsManager.instance.isAppOpen)
-        {
-            AdsManager.instance.ShowAppOpenAd();
-            AdsManager.instance.isAppOpen=false;
-        }
+        //AdsManager.instance.ShowSmallBanner();
+        GoogleAdMobController.instance.ShowSmallBannerAd();
+        //if (AdsManager.instance.isAppOpen)
+        //{
+        //    AdsManager.instance.ShowAppOpenAd();
+        //    AdsManager.instance.isAppOpen=false;
+        //}
 
     }
     public void Play()
     {
         LoadingPanel.SetActive(true);
         AudioManager.Instance.Buttonclick();
-        AdsManager.instance.ShowinterAd();
-        //LoadingPanel.SetActive(true);
+        GoogleAdMobController.instance.ShowInterstitialAd();
     }
 
     public void Back()
@@ -76,7 +75,8 @@ public class ManinMenuScript : MonoBehaviour
     public void openExitPanel()
     {
         ExitPanel.SetActive(true);
-        AdsManager.instance.ShowinterAd();
+        //AdsManager.instance.ShowinterAd();
+        GoogleAdMobController.instance.ShowInterstitialAd();
         
     }
 

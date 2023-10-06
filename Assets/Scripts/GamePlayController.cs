@@ -1,4 +1,4 @@
-using System.Collections;
+  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,8 +79,8 @@ public class GamePlayController : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelRestart", 0);
         }
-        AdsManager.instance.ShowSmallBanner();
-        
+        // AdsManager.instance.ShowSmallBanner();
+        GoogleAdMobController.instance.ShowSmallBannerAd();
 
     }
 
@@ -95,15 +95,19 @@ public class GamePlayController : MonoBehaviour
                 ////pause////
                 Panels[0].SetActive(true);
                 Time.timeScale = 0f;
-                AdsManager.instance.ShowinterAd();
-                AdsManager.instance.ShowBigBanner();
-                
+                // AdsManager.instance.ShowinterAd();
+                //  AdsManager.instance.ShowBigBanner();
+                GoogleAdMobController.instance.ShowInterstitialAd();
+                GoogleAdMobController.instance.ShowBigBannerAd();
+
                 //Cars[PlayerPrefs.GetInt("currentBus")].gameObject.SetActive(false);
                 break;
             case 1:
                 ///resume////
                 Panels[0].SetActive(false);
-                AdsManager.instance.ShowSmallBanner();
+                GoogleAdMobController.instance.ShowSmallBannerAd();
+
+                //  AdsManager.instance.ShowSmallBanner();
                 Time.timeScale = 1f;
                 //Cars[PlayerPrefs.GetInt("currentBus")].gameObject.SetActive(true);
                 break;
@@ -120,6 +124,8 @@ public class GamePlayController : MonoBehaviour
             case 4:
                 ///Next////
                 Time.timeScale = 1f;
+                GoogleAdMobController.instance.ShowSmallBannerAd();
+
                 Panels[1].SetActive(false);
                 SwitchControlToCarWash();
 

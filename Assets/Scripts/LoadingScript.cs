@@ -31,17 +31,21 @@ public class LoadingScript : MonoBehaviour
     {
         
         StartCoroutine(LoadAsyncScene());
-        AdsManager.instance.ShowBigBanner();
+        Invoke(nameof(showBigBanner),0.5f);
+      //  AdsManager.instance.ShowBigBanner();
     }
 
 
-
+    public void showBigBanner()
+    {
+        GoogleAdMobController.instance.ShowBigBannerAd();
+    }
 
     private IEnumerator LoadAsyncScene()
     {
 
 
-
+        
         
         while (progressBar.fillAmount <1)
          {

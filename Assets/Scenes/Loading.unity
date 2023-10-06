@@ -805,8 +805,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1113768920}
-  - component: {fileID: 1113768919}
   - component: {fileID: 1113768921}
+  - component: {fileID: 1113768924}
+  - component: {fileID: 1113768923}
+  - component: {fileID: 1113768922}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -814,32 +816,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1113768919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09efe7ed72a30445a04474462c5c078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BannerAd: ca-app-pub-5227706387493609/4297775649
-  BigBannerAd: ca-app-pub-5227706387493609/2984693975
-  inter: ca-app-pub-5227706387493609/8045448968
-  appopen: ca-app-pub-5227706387493609/9166958948
-  rewarded: ca-app-pub-5227706387493609/9166958948
-  Test: 0
-  SmartBannerAdPosition: 2
-  BigBannerAdPosition: 4
-  BannerType_: 2
-  UnityAdsID: 5421989
-  BANNER_PLACEMENT: 
-  InterstatialPlacement: 
-  REWARDED_VIDEO_PLACEMENT: 
-  isAppOpen: 0
 --- !u!4 &1113768920
 Transform:
   m_ObjectHideFlags: 0
@@ -867,6 +843,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0648f591ae7d14d8d7fe1166f6db54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1113768922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb88bbafd34af34eaf5b0575218890a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isShowingAd: 0
+--- !u!114 &1113768923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6226826dc886e0f48a462b46b4c40390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1113768924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d58f420833d1840b4a5b4af8c3c4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appId: ca-app-pub-5227706387493609~6133052756
+  bannerId: ca-app-pub-5227706387493609/4297775649
+  interstitialId: ca-app-pub-5227706387493609/8045448968
+  rewardedId: ca-app-pub-5227706387493609/2984693975
+  appOpenId: ca-app-pub-5227706387493609/9166958948
+  rewardedInterstitialId: ca-app-pub-5227706387493609/8045448968
+  BigBannerId: ca-app-pub-5227706387493609/2984693975
+  debug: 0
+  test: 0
+  UnityAdsID: 5421989
+  BANNER_PLACEMENT: 
+  InterstatialPlacement: 
+  REWARDED_VIDEO_PLACEMENT: 
+  IsAppOpen: 0
 --- !u!1 &1565463576
 GameObject:
   m_ObjectHideFlags: 0
