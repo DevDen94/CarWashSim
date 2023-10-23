@@ -20,14 +20,19 @@ public class CheckLifter : MonoBehaviour
     {
         UpliftButton.SetActive(false);
     }
-    public void ResetUplifter()
+    /*public void ResetUplifter()
     {
-        this.transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        this.transform.position = new Vector3(transform.position.x, -0.26f, transform.position.z);
         this.gameObject.GetComponent<Animator>().enabled = false;
-        Invoke(nameof(ResetAnim), 1f);
+        this.gameObject.GetComponent<Animator>().Play("New State");
+        
+        Invoke(nameof(ResetAnim), 0.5f);
     }
     public void ResetAnim()
     {
+       
+        GamePlayController.instance.playerObj.transform.SetParent(this.transform);
         this.gameObject.GetComponent<Animator>().enabled = true;
-    }
+        //this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+    }*/
 }

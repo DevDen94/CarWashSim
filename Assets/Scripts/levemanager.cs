@@ -41,6 +41,7 @@ public class levemanager : MonoBehaviour
     public GameObject CubeCollider;
     public bool uplift;
     int val;
+    private Vector3 CarResetPos;
     private void OnEnable()
     {
         CubeCollider.SetActive(true);
@@ -210,7 +211,7 @@ public class levemanager : MonoBehaviour
 
     public void Restart()
     {
-        GoogleAdMobController.instance.ShowSmallBannerAd();
+       
         LevelComplete_ = false;
         CanvasBool = false;
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
@@ -220,7 +221,7 @@ public class levemanager : MonoBehaviour
             Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
         }
        
-        GamePlayController.instance.SwitchControlToCarWash();
+        //GamePlayController.instance.SwitchControlToCarWash();
         GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
         GetchildMat.Instance.AllCarDirty();
         LevelFail.SetActive(false);
@@ -236,12 +237,27 @@ public class levemanager : MonoBehaviour
 
         this.enabled = false;
         this.enabled = true;
-        GamePlayController.instance.playerObj.transform.parent = null;
+        if(uplift == true)
+        {
+            UpliftFunc();
+        }
+       
+
+        GamePlayController.instance.Canvas.SetActive(false);
+        GamePlayController.instance.CinemachineCam.SetActive(false);
+        GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
+        PlayerPrefs.SetInt("LevelRestart", 1);
+        GoogleAdMobController.instance.ShowSmallBannerAd();
+        // CarResetPos = GamePlayController.instance.playerObj.transform.position;
+        //GamePlayController.instance.playerObj.transform.parent = null;
         //this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
-        CheckLifter.instance.ResetUplifter()
-;       // AdsManager.instance.ShowSmallBanner();
-       // AdsManager.instance.ShowinterAd();
-       //SceneManager.LoadScene(2);
+
+
+        // GamePlayController.instance.CurrentLevelUplifter.gameObject.GetComponent<Animator>().Play("New State");
+
+        // AdsManager.instance.ShowSmallBanner();
+        // AdsManager.instance.ShowinterAd();
+        //SceneManager.LoadScene(2);
 
     }
 
@@ -307,5 +323,21 @@ public class levemanager : MonoBehaviour
     private void OnDisable()
     {
         
+    }
+    public void ResetUplifter()
+    {
+        //GamePlayController.instance.CurrentLevelUplifter.transform.position = new Vector3(transform.position.x, -0.26f, transform.position.z);
+        //GamePlayController.instance.CurrentLevelUplifter.gameObject.GetComponent<Animator>().enabled = false;
+        
+        //GamePlayController.instance.playerObj.transform.position = new Vector3(-0.0141990799f, 0.0317986384f, 0.0350000001f);
+        Invoke(nameof(ResetAnim), 0f);
+    }
+    public void ResetAnim()
+    {
+
+        //GamePlayController.instance.playerObj.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+        //GamePlayController.instance.playerObj.transform.position = CarResetPos;
+        //GamePlayController.instance.CurrentLevelUplifter.gameObject.GetComponent<Animator>().enabled = true;
+        //this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
     }
 }

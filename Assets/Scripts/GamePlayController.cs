@@ -163,13 +163,17 @@ public class GamePlayController : MonoBehaviour
         {
             if (child.tag == "CarWash")
             {
+                //CurrentLevelUplifter.gameObject.GetComponent<Animator>().Play("New State");
+                //playerObj.transform.parent = null;
                 playerObj.transform.SetPositionAndRotation(child.position, child.rotation);
             }
            
         }
         Fpsposition.Instance.FpsPosition();
+        //playerObj.transform.SetParent(CurrentLevelUplifter.transform);
+        //levemanager.Instance.uplift = false;
         PlayerPrefs.SetInt("LevelRestart", 1);
-       
+        //playerObj.transform.parent = null;
     }
 }
     // Update is called once per frame
