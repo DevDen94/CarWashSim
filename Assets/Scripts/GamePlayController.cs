@@ -124,11 +124,11 @@ public class GamePlayController : MonoBehaviour
             case 4:
                 ///Next////
                 Time.timeScale = 1f;
-                GoogleAdMobController.instance.ShowSmallBannerAd();
+               
 
                 Panels[1].SetActive(false);
                 SwitchControlToCarWash();
-
+                GoogleAdMobController.instance.ShowSmallBannerAd();
                 break;
 
 

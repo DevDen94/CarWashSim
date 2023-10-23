@@ -236,9 +236,12 @@ public class levemanager : MonoBehaviour
 
         this.enabled = false;
         this.enabled = true;
-       // AdsManager.instance.ShowSmallBanner();
+        GamePlayController.instance.playerObj.transform.parent = null;
+        //this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+        CheckLifter.instance.ResetUplifter()
+;       // AdsManager.instance.ShowSmallBanner();
        // AdsManager.instance.ShowinterAd();
-        //SceneManager.LoadScene(2);
+       //SceneManager.LoadScene(2);
 
     }
 
@@ -251,18 +254,20 @@ public class levemanager : MonoBehaviour
 
     public void onPauseClick()
     {
-        GoogleAdMobController.instance.ShowBigBannerAd();
+       
         Pause.SetActive(true);
         Time.timeScale = 0f;
+        GoogleAdMobController.instance.ShowBigBannerAd();
     }
 
 
     public void onResume()
     {
         Time.timeScale = 1f;
-        GoogleAdMobController.instance.ShowSmallBannerAd();
-        Pause.SetActive(false);
         
+        Pause.SetActive(false);
+        GoogleAdMobController.instance.ShowSmallBannerAd();
+
     }
     public IEnumerator AllWashCouroutine()
     {

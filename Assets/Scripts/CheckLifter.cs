@@ -20,5 +20,14 @@ public class CheckLifter : MonoBehaviour
     {
         UpliftButton.SetActive(false);
     }
-    
+    public void ResetUplifter()
+    {
+        this.transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        this.gameObject.GetComponent<Animator>().enabled = false;
+        Invoke(nameof(ResetAnim), 1f);
+    }
+    public void ResetAnim()
+    {
+        this.gameObject.GetComponent<Animator>().enabled = true;
+    }
 }
