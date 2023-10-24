@@ -27,7 +27,7 @@ public class transition : MonoBehaviour
             material = renderer.material;
         }
         //StartCoroutine(AllWashCouroutine());
-        Debug.LogError("start");
+       
     }
 
 
@@ -61,7 +61,7 @@ public class transition : MonoBehaviour
                 isCompleteWash = true;
                 levemanager.Instance.CompletePatches = levemanager.Instance.CompletePatches + 1;
                 levemanager.Instance.LevelProgress.value = levemanager.Instance.LevelProgress.value + 1;
-                this.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+                //this.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                 AudioManager.Instance.WashClick.Play();
             }
             

@@ -84,17 +84,42 @@ public class levemanager : MonoBehaviour
         if (MudPatches == CompletePatches && LevelComplete_ == false&&CanvasBool == false)
         {
             AudioManager.Instance.SpraySound.Stop();
-            GameObject d = Instantiate(GamePlayController.instance.AnimationCam, GamePlayController.instance.playerObj.transform);
+            if(uplift == true)
+            {
+                UpliftFunc();
+            }
+             
+            GamePlayController.instance.WashMan.SetActive(true);
+            //GamePlayController.instance.WashMan.transform.GetChild(0).gameObject.SetActive(true);
+             GameObject d = Instantiate(GamePlayController.instance.WashMan, transform);
             GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
             GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
             //GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("DownliftAnim");
+            
+            yield return new WaitForSeconds(4.5f);
+            CanvasBool = true;
+           
+            GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
+           // d.gameObject.GetComponent<AnimatedCam>().enabled = false;
+            yield return new WaitForSeconds(4.5f);
+            d.transform.GetChild(1).gameObject.SetActive(true);
+            //GamePlayController.instance.WashMan.transform.GetChild(1).gameObject.SetActive(true);
+            // yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(8.5f);
+            
+            
             GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(true);
-            yield return new WaitForSeconds(8f);
-            Destroy(d);
-            GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            yield return new WaitForSeconds(3.5f);
+            // d.gameObject.GetComponent<AnimatedCam>().enabled = true ;
             LevelComplete_ = true;
             CanvasBool = true;
-            Debug.Log("falsef");
+           
+            //GamePlayController.instance.WashMan.transform.GetChild(1).gameObject.SetActive(false);
+            //GamePlayController.instance.WashMan.transform.GetChild(0).gameObject.SetActive(true);
+            //GamePlayController.instance.WashMan.gameObject.SetActive(false);
+            GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            Destroy(d);
+
 
         }
         if (MudPatches == CompletePatches && LevelComplete_)
@@ -122,6 +147,7 @@ public class levemanager : MonoBehaviour
             LevelComplete_ = false;
             yield return null;
             //AdsManager.instance.ShowBigBanner();
+            Debug.LogError(LevelComplete);
             
         }
         if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 3)
@@ -232,6 +258,11 @@ public class levemanager : MonoBehaviour
         Time.timeScale = 1f;
         SprikleOff();
         AudioManager.Instance.SpraySound.mute = false;
+        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
+        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
+        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
+        Invoke(nameof(ResetCarAnim), 1f);
+        ResetCarAnim();
         GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
         Fpsposition.Instance.FpsPosition();
 
@@ -247,6 +278,7 @@ public class levemanager : MonoBehaviour
         GamePlayController.instance.CinemachineCam.SetActive(false);
         GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
         PlayerPrefs.SetInt("LevelRestart", 1);
+        //GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
         GoogleAdMobController.instance.ShowSmallBannerAd();
         // CarResetPos = GamePlayController.instance.playerObj.transform.position;
         //GamePlayController.instance.playerObj.transform.parent = null;
@@ -324,13 +356,10 @@ public class levemanager : MonoBehaviour
     {
         
     }
-    public void ResetUplifter()
+    public void ResetCarAnim()
     {
-        //GamePlayController.instance.CurrentLevelUplifter.transform.position = new Vector3(transform.position.x, -0.26f, transform.position.z);
-        //GamePlayController.instance.CurrentLevelUplifter.gameObject.GetComponent<Animator>().enabled = false;
-        
-        //GamePlayController.instance.playerObj.transform.position = new Vector3(-0.0141990799f, 0.0317986384f, 0.0350000001f);
-        Invoke(nameof(ResetAnim), 0f);
+        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
+        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
     }
     public void ResetAnim()
     {
@@ -339,5 +368,61 @@ public class levemanager : MonoBehaviour
         //GamePlayController.instance.playerObj.transform.position = CarResetPos;
         //GamePlayController.instance.CurrentLevelUplifter.gameObject.GetComponent<Animator>().enabled = true;
         //this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+        /*if (MudPatches == CompletePatches && LevelComplete_ == false && CanvasBool == false)
+        {
+            AudioManager.Instance.SpraySound.Stop();
+            GameObject d = Instantiate(GamePlayController.instance.AnimationCam, GamePlayController.instance.playerObj.transform);
+            GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            //GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("DownliftAnim");
+            GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(true);
+            GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
+
+            yield return new WaitForSeconds(8f);
+            Destroy(d);
+            GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            LevelComplete_ = true;
+            CanvasBool = true;
+            Debug.Log("falsef");
+
+        }
+        if (MudPatches == CompletePatches && LevelComplete_)
+        {
+
+
+            LevelComplete_ = false;
+            CanvasBool = true;
+            LevelComplete.SetActive(true);
+            //GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            if (PlayerPrefs.GetInt("CurrentLevel") < GamePlayController.instance.Levels.Length - 1)
+            {
+
+                PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
+                PlayerPrefs.SetInt("UnlockLevel", 1);
+                PlayerPrefs.SetInt("LevelRestart", 0);
+                Debug.Log("aya1" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
+
+            }
+            else
+            {
+                PlayerPrefs.SetInt("CurrentLevel", UnityEngine.Random.Range(0, GamePlayController.instance.Levels.Length - 2));
+
+            }
+            LevelComplete_ = false;
+            yield return null;
+            //AdsManager.instance.ShowBigBanner();
+
+        }
+        if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 3)
+        {
+            levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
+
+            GetchildMat.Instance.AllCarWash();
+
+
+            LevelProgress.value = MudPatches;
+        }
+
+        StartCoroutine(LevelCompleteCouroutine());*/
     }
 }

@@ -33,7 +33,7 @@ public class GamePlayController : MonoBehaviour
     [Header("UpLifter")]
     public GameObject CurrentLevelUplifter;
     public GameObject FpsStartPoint;
-
+    public GameObject WashMan;
     private void Awake()
     {
        
