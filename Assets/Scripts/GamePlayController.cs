@@ -155,27 +155,27 @@ public class GamePlayController : MonoBehaviour
     }
     public void SwitchControlToCarWash()
     {
+
         playerObj.GetComponent<Animator>().SetBool("run", false);
+
         Canvas.SetActive(false);
         CinemachineCam.SetActive(false);
        CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
-     
+        
         playerObj.GetComponent<Animator>().enabled = false;
         foreach (Transform child in CurrentLevel.transform)
         {
             if (child.tag == "CarWash")
             {
-                //CurrentLevelUplifter.gameObject.GetComponent<Animator>().Play("New State");
-                //playerObj.transform.parent = null;
+                
                 playerObj.transform.SetPositionAndRotation(child.position, child.rotation);
             }
            
         }
         Fpsposition.Instance.FpsPosition();
-        //playerObj.transform.SetParent(CurrentLevelUplifter.transform);
-        //levemanager.Instance.uplift = false;
+        
         PlayerPrefs.SetInt("LevelRestart", 1);
-        //playerObj.transform.parent = null;
+        
     }
 }
     // Update is called once per frame

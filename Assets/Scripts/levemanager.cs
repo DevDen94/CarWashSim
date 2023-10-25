@@ -58,7 +58,7 @@ public class levemanager : MonoBehaviour
     public void UpliftFunc()
     {
         
-       // AnimatorStateInfo stateInfo = GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo stateInfo = GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
         if (!uplift)
         {
             GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("UpliftAnim");
@@ -261,8 +261,6 @@ public class levemanager : MonoBehaviour
         SprikleOff();
         AudioManager.Instance.SpraySound.mute = false;
        
-        //GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
-       
         GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
         Fpsposition.Instance.FpsPosition();
 
@@ -285,20 +283,9 @@ public class levemanager : MonoBehaviour
         Gun.Instance.isTimeOver = false;
         LevelComplete_ = false;
         CanvasBool = false;
-        //Invoke(nameof(PanelsDelay), 1f);
-        //GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
-        GoogleAdMobController.instance.ShowSmallBannerAd();
-        // CarResetPos = GamePlayController.instance.playerObj.transform.position;
-        //GamePlayController.instance.playerObj.transform.parent = null;
        
-
-
-     
-
-        // AdsManager.instance.ShowSmallBanner();
-        // AdsManager.instance.ShowinterAd();
-        //SceneManager.LoadScene(2);
-
+        GoogleAdMobController.instance.ShowSmallBannerAd();
+        
     }
 
     public void Home()
