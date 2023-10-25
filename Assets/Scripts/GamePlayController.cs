@@ -155,10 +155,12 @@ public class GamePlayController : MonoBehaviour
     }
     public void SwitchControlToCarWash()
     {
+        playerObj.GetComponent<Animator>().SetBool("run", false);
         Canvas.SetActive(false);
         CinemachineCam.SetActive(false);
        CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
-       
+     
+        playerObj.GetComponent<Animator>().enabled = false;
         foreach (Transform child in CurrentLevel.transform)
         {
             if (child.tag == "CarWash")

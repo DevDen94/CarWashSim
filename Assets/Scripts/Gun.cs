@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public static Gun Instance;
     public Transform gunMuzzleHighPressure, gunMuzzleLighPressure; // The point from which the raycast will be fired.
     public float fireRange = 0.1f; // Maximum distance the raycast can reach.
     private float lastFireTime;
@@ -30,12 +31,21 @@ public class Gun : MonoBehaviour
     //public Color fadeColor;
     //public float fadeTime = 2;
     //public float fadeStart = 0;
-
-    private void Start()
+    private void Awake()
+    {
+        Instance = this;
+    }
+    private void OnEnable()
     {
         value = 179;
         isTimeOver = false;
         levemanager.Instance.Time_.text = "00:00";
+    }
+    private void Start()
+    {
+       /* value = 179;
+        isTimeOver = false;
+        levemanager.Instance.Time_.text = "00:00";*/
         //CarMaterial.color = fadeColor;
     }
 

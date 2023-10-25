@@ -57,7 +57,8 @@ public class levemanager : MonoBehaviour
     }
     public void UpliftFunc()
     {
-        AnimatorStateInfo stateInfo = GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+        
+       // AnimatorStateInfo stateInfo = GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
         if (!uplift)
         {
             GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("UpliftAnim");
@@ -90,35 +91,36 @@ public class levemanager : MonoBehaviour
             }
              
             GamePlayController.instance.WashMan.SetActive(true);
-            //GamePlayController.instance.WashMan.transform.GetChild(0).gameObject.SetActive(true);
+          
              GameObject d = Instantiate(GamePlayController.instance.WashMan, transform);
             GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
             GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
-            //GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("DownliftAnim");
+             CanvasBool = true;
             
-            yield return new WaitForSeconds(4.5f);
-            CanvasBool = true;
-           
+            yield return new WaitForSeconds(4f);//4.5
+
+
+            GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run", true);
             GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
-           // d.gameObject.GetComponent<AnimatedCam>().enabled = false;
+            GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run",true);
+            //GamePlayController.instance.playerObj.GetComponent<Animator>().Play("CarReverse");
+            // d.gameObject.GetComponent<AnimatedCam>().enabled = false;
             yield return new WaitForSeconds(4.5f);
             d.transform.GetChild(1).gameObject.SetActive(true);
-            //GamePlayController.instance.WashMan.transform.GetChild(1).gameObject.SetActive(true);
-            // yield return new WaitForSeconds(6f);
+            
             yield return new WaitForSeconds(8.5f);
             
             
             GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(true);
+           
             yield return new WaitForSeconds(3.5f);
-            // d.gameObject.GetComponent<AnimatedCam>().enabled = true ;
             LevelComplete_ = true;
             CanvasBool = true;
-           
-            //GamePlayController.instance.WashMan.transform.GetChild(1).gameObject.SetActive(false);
-            //GamePlayController.instance.WashMan.transform.GetChild(0).gameObject.SetActive(true);
-            //GamePlayController.instance.WashMan.gameObject.SetActive(false);
+ 
             GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
             Destroy(d);
+            GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run", false);
+            //GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
 
 
         }
@@ -144,10 +146,12 @@ public class levemanager : MonoBehaviour
                 PlayerPrefs.SetInt("CurrentLevel", UnityEngine.Random.Range(0, GamePlayController.instance.Levels.Length - 2));
                
             }
+            yield return new WaitForSeconds(1f);//1
+            GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
             LevelComplete_ = false;
+            
             yield return null;
-            //AdsManager.instance.ShowBigBanner();
-            Debug.LogError(LevelComplete);
+           
             
         }
         if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 3)
@@ -228,41 +232,37 @@ public class levemanager : MonoBehaviour
 
     public void Next()
     {
-        GoogleAdMobController.instance.ShowInterstitialAd();
-        GoogleAdMobController.instance.ShowSmallBannerAd();
+        
         SceneManager.LoadScene(2);
         PlayerPrefs.SetInt("LevelRestart", 0);
+        GoogleAdMobController.instance.ShowInterstitialAd();
+        GoogleAdMobController.instance.ShowSmallBannerAd();
         //AdsManager.instance.ShowinterAd();
     }
 
     public void Restart()
     {
        
-        LevelComplete_ = false;
-        CanvasBool = false;
+        
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
             PlayerPrefs.SetInt("UnlockLevel", 0);
             Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
         }
-       
-        //GamePlayController.instance.SwitchControlToCarWash();
+        GamePlayController.instance.playerObj.transform.parent = null;
+        GamePlayController.instance.SwitchControlToCarWash();
         GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
         GetchildMat.Instance.AllCarDirty();
-        LevelFail.SetActive(false);
-        Pause.SetActive(false);
-        LevelComplete.SetActive(false);
+       
         NoozleHigh.SetActive(false);
         NoozleLow.SetActive(false);
         Time.timeScale = 1f;
         SprikleOff();
         AudioManager.Instance.SpraySound.mute = false;
-        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
-        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
-        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
-        Invoke(nameof(ResetCarAnim), 1f);
-        ResetCarAnim();
+       
+        //GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
+       
         GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
         Fpsposition.Instance.FpsPosition();
 
@@ -278,14 +278,22 @@ public class levemanager : MonoBehaviour
         GamePlayController.instance.CinemachineCam.SetActive(false);
         GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
         PlayerPrefs.SetInt("LevelRestart", 1);
+        GamePlayController.instance.playerObj.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+        LevelFail.SetActive(false);
+        Pause.SetActive(false);
+        LevelComplete.SetActive(false);
+        Gun.Instance.isTimeOver = false;
+        LevelComplete_ = false;
+        CanvasBool = false;
+        //Invoke(nameof(PanelsDelay), 1f);
         //GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
         GoogleAdMobController.instance.ShowSmallBannerAd();
         // CarResetPos = GamePlayController.instance.playerObj.transform.position;
         //GamePlayController.instance.playerObj.transform.parent = null;
-        //this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+       
 
 
-        // GamePlayController.instance.CurrentLevelUplifter.gameObject.GetComponent<Animator>().Play("New State");
+     
 
         // AdsManager.instance.ShowSmallBanner();
         // AdsManager.instance.ShowinterAd();
@@ -352,16 +360,13 @@ public class levemanager : MonoBehaviour
         StartCoroutine(LevelCompleteCouroutine());
         PlayerPrefs.SetInt("UnlockLevel", 0);
     }
-    private void OnDisable()
+    public void PanelsDelay()
     {
-        
+        LevelFail.SetActive(false);
+        Pause.SetActive(false);
+        LevelComplete.SetActive(false);
     }
-    public void ResetCarAnim()
-    {
-        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
-        GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = false;
-    }
-    public void ResetAnim()
+    public void Extra()
     {
 
         //GamePlayController.instance.playerObj.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
