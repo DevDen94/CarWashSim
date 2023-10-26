@@ -266,17 +266,19 @@ public class levemanager : MonoBehaviour
 
         this.enabled = false;
         this.enabled = true;
-        if(uplift == true)
+        /*if(uplift == true)
         {
             UpliftFunc();
-        }
-       
-
+        }*/
+        GamePlayController.instance.playerObj.transform.parent = null;
+        GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("Empty");
         GamePlayController.instance.Canvas.SetActive(false);
         GamePlayController.instance.CinemachineCam.SetActive(false);
         GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
         PlayerPrefs.SetInt("LevelRestart", 1);
-        GamePlayController.instance.playerObj.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
+
+        Invoke(nameof(ParentSet), 1f);
+        uplift = false;
         LevelFail.SetActive(false);
         Pause.SetActive(false);
         LevelComplete.SetActive(false);
@@ -347,11 +349,9 @@ public class levemanager : MonoBehaviour
         StartCoroutine(LevelCompleteCouroutine());
         PlayerPrefs.SetInt("UnlockLevel", 0);
     }
-    public void PanelsDelay()
+    public void ParentSet()
     {
-        LevelFail.SetActive(false);
-        Pause.SetActive(false);
-        LevelComplete.SetActive(false);
+        GamePlayController.instance.playerObj.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
     }
     public void Extra()
     {
