@@ -242,7 +242,7 @@ public class levemanager : MonoBehaviour
 
     public void Restart()
     {
-       
+       //restartOnWashLevel
         
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
@@ -251,30 +251,27 @@ public class levemanager : MonoBehaviour
             Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
         }
         GamePlayController.instance.playerObj.transform.parent = null;
-        GamePlayController.instance.SwitchControlToCarWash();
-        GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
-        GetchildMat.Instance.AllCarDirty();
+        GamePlayController.instance.SwitchControlToCarWash();//Switchtowash
+        GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);//wash level player on
+        GetchildMat.Instance.AllCarDirty();//againCarDirty
        
         NoozleHigh.SetActive(false);
         NoozleLow.SetActive(false);
         Time.timeScale = 1f;
-        SprikleOff();
+        SprikleOff();//particle off
         AudioManager.Instance.SpraySound.mute = false;
        
         GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
-        Fpsposition.Instance.FpsPosition();
-
+        Fpsposition.Instance.FpsPosition();//FpsPlayerPosition
         this.enabled = false;
         this.enabled = true;
-        /*if(uplift == true)
-        {
-            UpliftFunc();
-        }*/
+
+
         GamePlayController.instance.playerObj.transform.parent = null;
         GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("Empty");
         GamePlayController.instance.Canvas.SetActive(false);
         GamePlayController.instance.CinemachineCam.SetActive(false);
-        GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
+        GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);//wash level on
         PlayerPrefs.SetInt("LevelRestart", 1);
 
         Invoke(nameof(ParentSet), 1f);
@@ -351,6 +348,7 @@ public class levemanager : MonoBehaviour
     }
     public void ParentSet()
     {
+        //parentSetAfter1sec
         GamePlayController.instance.playerObj.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
     }
     public void Extra()
@@ -416,5 +414,5 @@ public class levemanager : MonoBehaviour
         }
 
         StartCoroutine(LevelCompleteCouroutine());*/
-    }
+    }//Unused
 }
