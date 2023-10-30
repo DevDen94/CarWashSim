@@ -49,8 +49,8 @@ public class GoogleAdMobController : MonoBehaviour, IUnityAdsInitializationListe
     public bool IsAppOpenAdLoading { get; private set; }
 
     public bool IsAppOpen;
-    
 
+    public DateTime GivenDate;
 
 
     #region UNITY MONOBEHAVIOR METHODS
@@ -76,7 +76,7 @@ public class GoogleAdMobController : MonoBehaviour, IUnityAdsInitializationListe
 
 #elif UNITY_IOS
         BANNER_PLACEMENT = "Banner_iOS";
-        InterstatialPlacemen = "Interstitial_iOS";
+        InterstatialPlacement = "Interstitial_iOS";
         REWARDED_VIDEO_PLACEMENT = "Rewarded_iOS";
 #endif
     }
@@ -124,6 +124,10 @@ public class GoogleAdMobController : MonoBehaviour, IUnityAdsInitializationListe
             Advertisement.Initialize(UnityAdsID, test, this);
             InitilizeUnityAds();
         }
+
+
+        GivenDate = new DateTime(2023, 11, 01);
+
     }
 
     private void HandleInitCompleteAction(InitializationStatus initstatus)
@@ -355,6 +359,9 @@ public class GoogleAdMobController : MonoBehaviour, IUnityAdsInitializationListe
 
     public void ShowInterstitialAd()
     {
+
+
+        if (DateTime.Now > GivenDate) { 
         if (!PlayerPrefs.HasKey("IAPDone"))
         {
             if (_interstitialAd.IsLoaded())
@@ -374,8 +381,9 @@ public class GoogleAdMobController : MonoBehaviour, IUnityAdsInitializationListe
                   Advertisement.Show(InterstatialPlacement, this);
                 
             }
-            Invoke(nameof(LoadInterAd), 0.5f);
+            //Invoke(nameof(LoadInterAd), 0.5f);
             Invoke(nameof(InitilizeUnityAds), 0.5f);
+        }
         }
     }
 

@@ -1,11 +1,11 @@
-//<HASH>-1327103536</HASH>
+//<HASH>2086291685</HASH>
 ////////////////////////////////////////
 // Generated with Better Shaders
 //
 // Auto-generated shader code, don't hand edit!
 //
 //   Unity Version: 2020.3.0f1
-//   Render Pipeline: URP2021
+//   Render Pipeline: URP2022
 //   Platform: WindowsEditor
 ////////////////////////////////////////
 
@@ -98,13 +98,17 @@ ZWrite On
             #pragma multi_compile_fragment _ _LIGHT_LAYERS
             #pragma multi_compile_fragment _ DEBUG_DISPLAY
             #pragma multi_compile_fragment _ _LIGHT_COOKIES
-            #pragma multi_compile _ _CLUSTERED_RENDERING
+            #pragma multi_compile_fragment _ _WRITE_RENDERING_LAYERS
+            #pragma multi_compile _ _FORWARD_PLUS
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+        
             // GraphKeywords: <None>
 
             #define SHADER_PASS SHADERPASS_FORWARD
             #define VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
             #define _PASSFORWARD 1
             #define _FOG_FRAGMENT 1
+            
 
             
 
@@ -136,8 +140,8 @@ ZWrite On
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             
-
         
 
                #undef WorldNormalVector
@@ -1252,17 +1256,26 @@ ZWrite On
 #endif
 
          // fragment shader
-         half4 Frag (VertexToPixel IN
+         void Frag (VertexToPixel IN
+              , out half4 outColor : SV_Target0
+            #ifdef _WRITE_RENDERING_LAYERS
+              , out float4 outRenderingLayers : SV_Target1
+            #endif
             #ifdef _DEPTHOFFSET_ON
               , out float outputDepth : SV_Depth
             #endif
             #if NEED_FACING
                , bool facing : SV_IsFrontFace
             #endif
-         ) : SV_Target
+         )
          {
            UNITY_SETUP_INSTANCE_ID(IN);
            UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
+
+           #if defined(LOD_FADE_CROSSFADE)
+              LODFadeCrossFade(IN.pos);
+           #endif
+
 
            ShaderData d = CreateShaderData(IN
                   #if NEED_FACING
@@ -1422,7 +1435,12 @@ ZWrite On
             #endif
             ChainFinalColorForward(l, d, color);
 
-            return color;
+            outColor = color;
+
+            #ifdef _WRITE_RENDERING_LAYERS
+                uint renderingLayers = GetMeshRenderingLayer();
+                outRenderingLayers = float4(EncodeMeshRenderingLayer(renderingLayers), 0, 0, 0);
+            #endif
 
          }
 
@@ -1471,11 +1489,13 @@ ZWrite On
             #pragma multi_compile _ _MIXED_LIGHTING_SUBTRACTIVE
             #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
             #pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT
-            #pragma multi_compile_fragment _ _LIGHT_LAYERS
+            #pragma multi_compile_fragment _ _WRITE_RENDERING_LAYERS
             #pragma multi_compile_fragment _ _RENDER_PASS_ENABLED
             #pragma multi_compile_fragment _ DEBUG_DISPLAY
             #pragma multi_compile _ SHADOWS_SHADOWMASK
-            
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+        
+
             #define _FOG_FRAGMENT 1
 
             #define VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
@@ -1508,6 +1528,7 @@ ZWrite On
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             
 
             
@@ -2635,6 +2656,10 @@ ZWrite On
                UNITY_SETUP_INSTANCE_ID(IN);
                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
 
+               #if defined(LOD_FADE_CROSSFADE)
+                  LODFadeCrossFade(IN.pos);
+               #endif
+
                ShaderData d = CreateShaderData(IN
                   #if NEED_FACING
                      , facing
@@ -2767,7 +2792,8 @@ ZWrite On
             #pragma multi_compile_instancing
   
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
-
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+        
 
             #define _NORMAL_DROPOFF_TS 1
             #define ATTRIBUTES_NEED_NORMAL
@@ -2795,7 +2821,7 @@ ZWrite On
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-   
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             
                   #undef WorldNormalVector
       #define WorldNormalVector(data, normal) mul(normal, data.TBNMatrix)
@@ -3915,6 +3941,10 @@ ZWrite On
             ) : SV_Target
             {
                UNITY_SETUP_INSTANCE_ID(IN);
+
+               #if defined(LOD_FADE_CROSSFADE)
+                  LODFadeCrossFade(IN.pos);
+               #endif
 
                ShaderData d = CreateShaderData(IN
                   #if NEED_FACING
@@ -5121,6 +5151,10 @@ ZWrite On
             {
                UNITY_SETUP_INSTANCE_ID(IN);
                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
+
+                #if defined(LOD_FADE_CROSSFADE) && USE_UNITY_CROSSFADE
+                    LODFadeCrossFade(IN.pos);
+                #endif
 
                ShaderData d = CreateShaderData(IN
                   #if NEED_FACING
@@ -6379,7 +6413,8 @@ ZWrite On
             #pragma multi_compile_fog
             #pragma multi_compile_instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON
-
+            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
+        
 
             #define SHADERPASS SHADERPASS_DEPTHNORMALSONLY
             #define _PASSDEPTH 1
@@ -6415,7 +6450,7 @@ ZWrite On
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
             #include "Packages/com.unity.shadergraph/ShaderGraphLibrary/ShaderVariablesFunctions.hlsl"
-
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             
 
         
@@ -7528,17 +7563,25 @@ ZWrite On
          
 
          // fragment shader
-         half4 Frag (VertexToPixel IN
+         void Frag (VertexToPixel IN
+            , out half4 outNormalWS : SV_Target0
+         #ifdef _WRITE_RENDERING_LAYERS
+            , out float4 outRenderingLayers : SV_Target1
+         #endif
             #ifdef _DEPTHOFFSET_ON
               , out float outputDepth : SV_Depth
             #endif
             #if NEED_FACING
                , bool facing : SV_IsFrontFace
             #endif
-         ) : SV_Target
+         )
          {
            UNITY_SETUP_INSTANCE_ID(IN);
            UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN);
+
+           #if defined(LOD_FADE_CROSSFADE)
+              LODFadeCrossFade(IN.pos);
+           #endif
 
            ShaderData d = CreateShaderData(IN
                   #if NEED_FACING
@@ -7567,13 +7610,18 @@ ZWrite On
               float2 octNormalWS = PackNormalOctQuadEncode(normalWS);           // values between [-1, +1], must use fp32 on some platforms
               float2 remappedOctNormalWS = saturate(octNormalWS * 0.5 + 0.5);   // values between [ 0,  1]
               half3 packedNormalWS = PackFloat2To888(remappedOctNormalWS);      // values between [ 0,  1]
-              return half4(packedNormalWS, 0.0);
+              outNormalWS = half4(packedNormalWS, 0.0);
           #else
               float3 wsn = l.Normal;
               #if !_WORLDSPACENORMAL
                 wsn = TangentToWorldSpace(d, l.Normal);
               #endif
-              return half4(NormalizeNormalPerPixel(wsn), 0.0);
+              outNormalWS = half4(NormalizeNormalPerPixel(wsn), 0.0);
+          #endif
+
+          #ifdef _WRITE_RENDERING_LAYERS
+            uint renderingLayers = GetMeshRenderingLayer();
+            outRenderingLayers = float4(EncodeMeshRenderingLayer(renderingLayers), 0, 0, 0);
           #endif
 
          
