@@ -11,7 +11,8 @@ public class levemanager : MonoBehaviour
     public Text Time_, WaterInGallon;
     //public GameObject UpliftBtn;
     public static levemanager Instance;
-
+    public GameObject[] Waterbuttons;
+    public GameObject SoapBtn;
     public int TimeInLevel;
     public float CountdownTime;
 
@@ -22,8 +23,8 @@ public class levemanager : MonoBehaviour
     private bool CanvasBool = false;
 
     public UnityEvent SprinkleOn,SprinkleOff;
-    public bool HighWaterPressure;
-    public GameObject NoozleLow, NoozleHigh;
+    public bool HighWaterPressure,SoapOnBool;
+    public GameObject NoozleLow, NoozleHigh,SoapEffect;
 
 
     public Slider LevelProgress;
@@ -163,7 +164,22 @@ public class levemanager : MonoBehaviour
             
             LevelProgress.value = MudPatches;
         }
-       
+        if (PlayerPrefs.GetInt("AdSoap") > 20)
+        {
+            foreach(GameObject g in Waterbuttons)
+            {
+                g.SetActive(true);
+                SoapBtn.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject g in Waterbuttons)
+            {
+                g.SetActive(false);
+                SoapBtn.SetActive(true);
+            }
+        }
         StartCoroutine(LevelCompleteCouroutine());
 
     }
@@ -206,16 +222,40 @@ public class levemanager : MonoBehaviour
         isToggleOn = true;
         SprinkleOn.Invoke();
         HandAnim.Play("HandAnimationOn");
+        SoapEffect.SetActive(false);
+        //SoapOn();
+        // SoapOnBool = true;
     }
-
-
     public void SprikleOff()
     {
         isToggleOn = false;
         SprinkleOff.Invoke();
         HandAnim.Play("HandAnimationOff");
+       
+        // SoapOn();
+        // SoapOnBool = false;
     }
-
+    public void SoapOn()
+    {
+        if (SoapOnBool == true)
+        {
+            SoapOnBool = false;
+            SoapEffect.SetActive(true);
+            HandAnim.Play("HandAnimationOn");
+        }
+        else
+        {
+           
+            SoapEffect.SetActive(false);
+            HandAnim.Play("HandAnimationOff");
+            SoapOnBool = true;
+            isToggleOn = false;
+            SprinkleOff.Invoke();
+        }
+       
+        
+    }
+   
     public void HighPressure()
     {
         HighWaterPressure = true;
