@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     private float lastFireTime;
     public float fireRate = 0.1f;
     public ParticleSystem waterSplashLow, onHitEffectLow, waterSplashHigh, onHitEffectHigh;
-
+    public GameObject BubblesWaterLow,BubblesWaterHigh;
     public bool WaterSplash;
 
 
@@ -189,7 +189,7 @@ public class Gun : MonoBehaviour
             waterSplashHigh.Play();
             onHitEffectHigh.Play();
             FireRaycastForLow();
-           
+            BubblesWaterHigh.SetActive(true);
 
         }// Start the particle system
         else if (!levemanager.Instance.HighWaterPressure)
@@ -197,6 +197,7 @@ public class Gun : MonoBehaviour
             FireRaycastForLow();
             waterSplashLow.Play();
             onHitEffectLow.Play();
+            BubblesWaterLow.SetActive(true);
         }// Start the particle system
 
         AudioManager.Instance.SpraySoundFuncOn();
@@ -209,11 +210,15 @@ public class Gun : MonoBehaviour
             waterSplashHigh.Stop();
             onHitEffectHigh.Stop();
             
+            BubblesWaterHigh.SetActive(false);
+
         }// Start the particle system
         else if (!levemanager.Instance.HighWaterPressure)
         {
             waterSplashLow.Stop();
             onHitEffectLow.Stop();
+           
+            BubblesWaterLow.SetActive(false);
         }// Start the particle system
         AudioManager.Instance.SpraySoundFuncOff();
     }

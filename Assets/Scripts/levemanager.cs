@@ -168,16 +168,16 @@ public class levemanager : MonoBehaviour
         {
             foreach(GameObject g in Waterbuttons)
             {
-                g.SetActive(true);
-                SoapBtn.SetActive(false);
+                //g.SetActive(true);
+                //SoapBtn.SetActive(false);
             }
         }
         else
         {
             foreach (GameObject g in Waterbuttons)
             {
-                g.SetActive(false);
-                SoapBtn.SetActive(true);
+                //g.SetActive(false);
+                //SoapBtn.SetActive(true);
             }
         }
         StartCoroutine(LevelCompleteCouroutine());
