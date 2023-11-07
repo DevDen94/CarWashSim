@@ -12,7 +12,7 @@ public class transition : MonoBehaviour
 
     public static transition Instance;
     public bool isCompleteWash;
-    public bool IsSoap;
+    public bool IsSoap,ForWash;
     public int CompleteSoap;
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class transition : MonoBehaviour
 
     public void Start()
     {
+        ForWash = false;
         isCompleteWash = false;
         IsSoap = false;
         Renderer renderer = GetComponent<Renderer>();
@@ -28,8 +29,8 @@ public class transition : MonoBehaviour
         {
             material = renderer.material;
         }
-        //StartCoroutine(AllWashCouroutine());
-        //levemanager.Instance.SoapEffect.transform.GetChild(1).gameObject.tag = "Soap";
+        PlayerPrefs.SetInt("Washed", 0);
+        PlayerPrefs.SetInt("AdSoap", 0);
     }
 
 
@@ -41,13 +42,17 @@ public class transition : MonoBehaviour
     private Renderer objectRenderer;
     public void CleanCar(RaycastHit hit)
     {
-
-       // Debug.LogError("RayCastFire");
+        if (hit.collider.gameObject.GetComponent<transition>().ForWash == true)
+        {
+            hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Debug.LogError("RayCastFire");
+        }
+        // 
         if (hit.collider.GetComponent<Renderer>().material == material)
         {
             
             // Calculate the transition amount based on hit position or any criteria
-            if (transitionAmount <= 1)
+          /*  if (transitionAmount <= 1)
             {
                 //transitionAmount = transitionAmount + 0.009f;
                 transitionAmount = transitionAmount + 0.2f;
@@ -68,31 +73,31 @@ public class transition : MonoBehaviour
                 AudioManager.Instance.WashClick.Play();
                 hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                
-            }
+            }*/
            
         }
 
     }
-    public IEnumerator AllWashCouroutine() // WHEN cAR 70% WASHED
+    public IEnumerator AllWashCouroutine() // WHEN cAR 70% WASHED Unused
     {
-        if (levemanager.Instance.ThisScriptOn == true)
-        {
-            yield return new WaitForSeconds(0.01f);
-            ///Allmesheswash//
-            if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 2)
-            {
-                levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
-                transitionAmount = 1f;
-                material.SetFloat("_TransitionAmount", transitionAmount);
-                
+        /* if (levemanager.Instance.ThisScriptOn == true)
+         {
+             yield return new WaitForSeconds(0.01f);
+             ///Allmesheswash//
+             if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 2)
+             {
+                 levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
+                 transitionAmount = 1f;
+                 material.SetFloat("_TransitionAmount", transitionAmount);
 
-                //this.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
-            }
-           
-        }
-       
-        StartCoroutine(AllWashCouroutine());
-       
+
+                 //this.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Stop();
+             }
+
+         }
+
+         StartCoroutine(AllWashCouroutine());*/
+        yield return null;
     }
     public void OnTriggerEnter(Collider other) 
     {
@@ -101,16 +106,37 @@ public class transition : MonoBehaviour
         if (other.gameObject.tag == "Soap"&& IsSoap == false)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            //this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            
             IsSoap = true;
+            ForWash = true;
             PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
-            Debug.LogError(PlayerPrefs.GetInt("AdSoap"));
-            //other.gameObject.tag = "Untagged";
+            StartCoroutine(ChangeColor());
+        }
+        if (other.gameObject.tag == "Soap" && ForWash == true&&levemanager.Instance.isToggleOn)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            //material.SetColor("_BaseColor", Color.white);
+            PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
+            StartCoroutine(ChangeColor());
+            ForWash = false;
+           
+
         }
        
-
     }
-
+    public IEnumerator ChangeColor()
+    {
+        
+        yield return new WaitForSeconds(5f);
+        if (IsSoap == true||ForWash == true)
+        {
+            material.SetColor("_BaseColor", Color.white);
+        }
+        else
+        {
+            StartCoroutine(ChangeColor());
+        }
+    }
     /* public IEnumerator AllSoapParticleOff()
      {
          if (levemanager.Instance.ThisScriptOn == true)

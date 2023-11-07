@@ -42,11 +42,11 @@ public class GetchildMat : MonoBehaviour
             g.transitionAmount = 1f;
             Material m = g.gameObject.GetComponent<MeshRenderer>().material;
             m.SetFloat("_TransitionAmount", 1f);
+            m.SetColor("_BaseColor", Color.white);
+            g.GetComponent<PaintTarget>().ClearPaint();
             g.gameObject.transform.GetChild(0).gameObject.SetActive(false);
            
-            g.gameObject.GetComponent<P3dPaintableTexture>().Redo();
-            g.gameObject.GetComponent<P3dPaintableTexture>().Clear();
-            g.gameObject.GetComponent<P3dPaintableTexture>().ClearStates();
+           
         }
     }
     public void AllCarDirty()
