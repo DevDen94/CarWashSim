@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class TriggerScript : MonoBehaviour
 {
+    public static TriggerScript Instance;
+    public GameObject DirtyObjects;
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         BusArrow.Instance.Target =GamePlayController.instance.CurrentLevelUplifter.gameObject.transform;
         BusArrow.Instance.MaxDistanceMeasure();
+        
     }
 
     [System.Obsolete]
@@ -46,6 +53,9 @@ public class TriggerScript : MonoBehaviour
        
         yield return null;
     }
-    
+    public void ForDirtyOnColliders()
+    {
+
+    }
     
 }

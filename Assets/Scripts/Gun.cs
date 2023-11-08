@@ -221,13 +221,14 @@ public class Gun : MonoBehaviour
     {
 
        levemanager.Instance.SoapEffect.SetActive(true);
+       
 
     }
     public void SoapOff()
     {
 
         levemanager.Instance.SoapEffect.SetActive(false);
-
+        
     }
 
     public void waterSpringOff()
@@ -272,9 +273,9 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, fireRange))
         {
             //PaintTarget.CursorColor();
-            PaintTarget.PaintCursor(PaintExample.Instance.brush);
-           
-           
+            //PaintTarget.PaintCursor(PaintExample.Instance.brush);
+            PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
+
             if (hitInfo.collider.GetComponent<transition>() != null)
             {
                //PaintTarget.Instance.RayColor(hitInfo);

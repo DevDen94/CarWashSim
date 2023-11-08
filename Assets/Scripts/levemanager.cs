@@ -32,7 +32,7 @@ public class levemanager : MonoBehaviour
 
     [Space]
 
-    public GameObject LevelComplete, LevelFail, Pause;
+    public GameObject LevelComplete, LevelFail, Pause,LoadingPanel;
 
     public int MudPatches;
     public int CompletePatches;
@@ -165,24 +165,34 @@ public class levemanager : MonoBehaviour
             
             LevelProgress.value = MudPatches;
         }
-        if (PlayerPrefs.GetInt("AdSoap") > 20)
+        if (PlayerPrefs.GetInt("AdSoap") > MudPatches - 10)
         {
             foreach(GameObject g in Waterbuttons)
             {
-                //g.SetActive(true);
-                //SoapBtn.SetActive(false);
+                
+                if(SoapOnBool == false)
+                {
+                    g.SetActive(true);
+                    SoapBtn.SetActive(false);
+                }
+               
+                if (SoapOnBool == true)
+                {
+                    SoapBtn.SetActive(true);
+                    g.SetActive(false);
+                }
             }
         }
         else
         {
             foreach (GameObject g in Waterbuttons)
             {
-                //g.SetActive(false);
-                //SoapBtn.SetActive(true);
+                SoapBtn.SetActive(true);
+                g.SetActive(false);
             }
         }
         StartCoroutine(LevelCompleteCouroutine());
-
+       
     }
 
     public void Update()
@@ -287,8 +297,8 @@ public class levemanager : MonoBehaviour
 
     public void Restart()
     {
-       //restartOnWashLevel
-        
+        //restartOnWashLevel
+        LoadingPanel.SetActive(true);
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
@@ -327,9 +337,11 @@ public class levemanager : MonoBehaviour
         Gun.Instance.isTimeOver = false;
         LevelComplete_ = false;
         CanvasBool = false;
-       
+        TriggerScript.Instance.DirtyObjects.SetActive(true);
+        Invoke(nameof(GiveControlAfterDirty), 6f);
         GoogleAdMobController.instance.ShowSmallBannerAd();
-        
+        PlayerPrefs.SetInt("Washed", 0);
+        PlayerPrefs.SetInt("AdSoap", 0);
     }
 
     public void Home()
@@ -460,4 +472,9 @@ public class levemanager : MonoBehaviour
 
         StartCoroutine(LevelCompleteCouroutine());*/
     }//Unused
+    public void GiveControlAfterDirty()
+    {
+        LoadingPanel.SetActive(false);
+        TriggerScript.Instance.DirtyObjects.SetActive(false);
+    }
 }

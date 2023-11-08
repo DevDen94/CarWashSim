@@ -244,12 +244,12 @@ public class PaintTarget : MonoBehaviour
     public static void PaintLine(Vector3 start, Vector3 end, Brush brush)
     {
         Ray ray = new Ray(start, (end - start).normalized);
-        PaintRaycast(ray, brush);
+        //PaintRaycast(ray, brush);
     }
 
     public static void PaintRay(Ray ray, Brush brush)
     {
-        PaintRaycast(ray, brush);
+        //PaintRaycast(ray, brush);
     }
 
     public static void PaintCursor(Brush brush)
@@ -261,35 +261,93 @@ public class PaintTarget : MonoBehaviour
         }
 
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        PaintRaycast(Gun.Instance.ray, brush,true);
+        //if(!Gun)
+      /*  if (levemanager.Instance.ThisScriptOn!=null)
+        {
+            PaintRaycast(Gun.Instance.ray, brush, true);
+        }
+        else
+        {
+            PaintRaycast(DirtyCar.Instance.ray, brush, true);
+        }*/
+
+       
     }
 
-    private static void PaintRaycast(Ray ray, Brush brush, bool multi = true)
+    public static void PaintRaycast(Ray ray, RaycastHit hitInfo , Brush brush, bool multi = true)
     {
-       // RaycastHit hit;
-        //if (Physics.Raycast(ray, out hit, 10000))
-        //{
-            //if (multi)
-           // {
-                RaycastHit[] hits = Physics.SphereCastAll(Gun.Instance.hitInfo.point, brush.splatScale , ray.direction);
-                for (int h=0; h < hits.Length; h++)
-                {
-                    PaintTarget paintTarget = hits[h].collider.gameObject.GetComponent<PaintTarget>();
-                    if (paintTarget != null)
-                    {
-                        PaintObject(paintTarget, Gun.Instance.hitInfo.point, hits[h].normal, brush);
-                     /*Gun.Instance.hitInfo.collider.GetComponent<transition>().CleanCar(Gun.Instance.hitInfo);*/
+        RaycastHit[] hits = Physics.SphereCastAll(hitInfo.point, brush.splatScale, ray.direction);
+        for (int h = 0; h < hits.Length; h++)
+        {
+            PaintTarget paintTarget = hits[h].collider.gameObject.GetComponent<PaintTarget>();
+            if (paintTarget != null)
+            {
+                PaintObject(paintTarget, hitInfo.point, hits[h].normal, brush);
+                /*Gun.Instance.hitInfo.collider.GetComponent<transition>().CleanCar(Gun.Instance.hitInfo);*/
             }
+        }
+        // }
+        //else
+        //{
+        PaintTarget paintTarget1 = hitInfo.collider.gameObject.GetComponent<PaintTarget>();
+        if (!paintTarget1) return;
+        PaintObject(paintTarget1, hitInfo.point, hitInfo.normal, brush);
+      /*  if (PlayerPrefs.GetInt("CurrentLevel") == 1)
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(Gun.Instance.hitInfo.point, brush.splatScale, ray.direction);
+            for (int h = 0; h < hits.Length; h++)
+            {
+                PaintTarget paintTarget = hits[h].collider.gameObject.GetComponent<PaintTarget>();
+                if (paintTarget != null)
+                {
+                    PaintObject(paintTarget, Gun.Instance.hitInfo.point, hits[h].normal, brush);
+                    *//*Gun.Instance.hitInfo.collider.GetComponent<transition>().CleanCar(Gun.Instance.hitInfo);*//*
                 }
-           // }
+            }
+            // }
             //else
             //{
-                PaintTarget paintTarget1 = Gun.Instance.hitInfo.collider.gameObject.GetComponent<PaintTarget>();
-              if (!paintTarget1) return;
-                PaintObject(paintTarget1, Gun.Instance.hitInfo.point, Gun.Instance.hitInfo.normal, brush);
-           //}
-        //}
+            PaintTarget paintTarget1 = Gun.Instance.hitInfo.collider.gameObject.GetComponent<PaintTarget>();
+            if (!paintTarget1) return;
+            PaintObject(paintTarget1, Gun.Instance.hitInfo.point, Gun.Instance.hitInfo.normal, brush);
+        }
+        else
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(hitInfo.point, brush.splatScale, ray.direction);
+            for (int h = 0; h < hits.Length; h++)
+            {
+                PaintTarget paintTarget = hits[h].collider.gameObject.GetComponent<PaintTarget>();
+                if (paintTarget != null)
+                {
+                    PaintObject(paintTarget, hitInfo.point, hits[h].normal, brush);
+                    *//*Gun.Instance.hitInfo.collider.GetComponent<transition>().CleanCar(Gun.Instance.hitInfo);*//*
+                }
+            }
+            // }
+            //else
+            //{
+            PaintTarget paintTarget1 = hitInfo.collider.gameObject.GetComponent<PaintTarget>();
+            if (!paintTarget1) return;
+            PaintObject(paintTarget1, hitInfo.point, hitInfo.normal, brush);
+        }*/
+            //}
+            //}
+       
+        /* RaycastHit[] hits = Physics.SphereCastAll(Gun.Instance.hitInfo.point, brush.splatScale , ray.direction);
+         for (int h=0; h < hits.Length; h++)
+         {
+             PaintTarget paintTarget = hits[h].collider.gameObject.GetComponent<PaintTarget>();
+             if (paintTarget != null)
+             {
+                 PaintObject(paintTarget, Gun.Instance.hitInfo.point, hits[h].normal, brush);
+
+     }
+         }
+
+         PaintTarget paintTarget1 = Gun.Instance.hitInfo.collider.gameObject.GetComponent<PaintTarget>();
+       if (!paintTarget1) return;
+         PaintObject(paintTarget1, Gun.Instance.hitInfo.point, Gun.Instance.hitInfo.normal, brush);*/
+
     }
 
     public static void PaintObject(PaintTarget target, Vector3 point, Vector3 normal, Brush brush)

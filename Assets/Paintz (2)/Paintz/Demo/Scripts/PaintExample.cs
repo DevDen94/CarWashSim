@@ -41,6 +41,7 @@ public class PaintExample : MonoBehaviour
             brush.splatsX = 4;
             brush.splatsY = 4;
         }
+        brush.splatChannel = 0;
     }
 
     private void Update()
@@ -70,6 +71,7 @@ public class PaintExample : MonoBehaviour
         {
             HoldingButtonDown = false;
         }
+        //PaintTarget.PaintCursor(brush);
     }
 
 
@@ -173,20 +175,5 @@ public class PaintExample : MonoBehaviour
             if (Input.GetKey(KeyCode.E)) { transform.position -= transform.up * climbSpeed * Time.deltaTime; }
         }
     }
-    public void AddColor()
-    {
-        if (!SingleShotClick || (SingleShotClick && !HoldingButtonDown))
-        {
-            if (ClearOnClick) PaintTarget.ClearAllPaint();
-            PaintTarget.PaintCursor(brush);
-            if (IndexBrush) brush.splatIndex++;
-            HoldingButtonDown = true;
-        }
-
-        //}
-        else
-        {
-            HoldingButtonDown = false;
-        }
-    }
+  
 }

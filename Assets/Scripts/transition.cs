@@ -103,59 +103,33 @@ public class transition : MonoBehaviour
     {
 
          
-        if (other.gameObject.tag == "Soap"&& IsSoap == false)
+        if (other.gameObject.tag == "Soap"&& IsSoap == false && levemanager.Instance.SoapOnBool == true)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             
             IsSoap = true;
             ForWash = true;
             PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
-            StartCoroutine(ChangeColor());
+            //StartCoroutine(ChangeColor());
         }
         if (other.gameObject.tag == "Soap" && ForWash == true&&levemanager.Instance.isToggleOn)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             //material.SetColor("_BaseColor", Color.white);
             PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
-            StartCoroutine(ChangeColor());
+            //StartCoroutine(ChangeColor());
             ForWash = false;
-           
+            Invoke(nameof(For1meshComplete), 2f);
 
         }
        
     }
-    public IEnumerator ChangeColor()
+    public void For1meshComplete()
     {
-        
-        yield return new WaitForSeconds(5f);
-        if (IsSoap == true||ForWash == true)
-        {
-            material.SetColor("_BaseColor", Color.white);
-        }
-        else
-        {
-            StartCoroutine(ChangeColor());
-        }
+
+        ForWash = true;
     }
-    /* public IEnumerator AllSoapParticleOff()
-     {
-         if (levemanager.Instance.ThisScriptOn == true)
-         {
-             yield return new WaitForSeconds(0.01f);
-             ///Allmesheswash//
-             if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 2)
-             {
-                 levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
-                 transitionAmount = 1f;
-                 material.SetFloat("_TransitionAmount", transitionAmount);
-
-             }
-
-         }
-
-         StartCoroutine(AllWashCouroutine());
-
-     }*/
+   
 
    
 
