@@ -109,15 +109,23 @@ public class transition : MonoBehaviour
             
             IsSoap = true;
             ForWash = true;
-            PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
-            //StartCoroutine(ChangeColor());
+            if(PlayerPrefs.GetInt("CurrentLevel") >= 2)
+            {
+                PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 15);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
+            }
+           
+            
         }
         if (other.gameObject.tag == "Soap" && ForWash == true&&levemanager.Instance.isToggleOn)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            //material.SetColor("_BaseColor", Color.white);
+            
             PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
-            //StartCoroutine(ChangeColor());
+           
             ForWash = false;
             Invoke(nameof(For1meshComplete), 2f);
 

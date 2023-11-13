@@ -298,50 +298,61 @@ public class levemanager : MonoBehaviour
     public void Restart()
     {
         //restartOnWashLevel
-        LoadingPanel.SetActive(true);
+        PlayerPrefs.SetInt("Washed", 0);
+        PlayerPrefs.SetInt("AdSoap", 0);
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
             PlayerPrefs.SetInt("UnlockLevel", 0);
-            Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
+           
         }
-        GamePlayController.instance.playerObj.transform.parent = null;
-        GamePlayController.instance.SwitchControlToCarWash();//Switchtowash
-        GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);//wash level player on
-        GetchildMat.Instance.AllCarDirty();//againCarDirty
-       
-        NoozleHigh.SetActive(false);
-        NoozleLow.SetActive(false);
-        Time.timeScale = 1f;
-        SprikleOff();//particle off
-        AudioManager.Instance.SpraySound.mute = false;
-       
-        GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
-        Fpsposition.Instance.FpsPosition();//FpsPlayerPosition
-        this.enabled = false;
-        this.enabled = true;
+        SceneManager.LoadScene(2);
+        #region reset
+        /* LoadingPanel.SetActive(true);
+         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
+         {
+             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
+             PlayerPrefs.SetInt("UnlockLevel", 0);
+             Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
+         }
+         GamePlayController.instance.playerObj.transform.parent = null;
+         GamePlayController.instance.SwitchControlToCarWash();//Switchtowash
+         GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);//wash level player on
+         GetchildMat.Instance.AllCarDirty();//againCarDirty
+
+         NoozleHigh.SetActive(false);
+         NoozleLow.SetActive(false);
+         Time.timeScale = 1f;
+         SprikleOff();//particle off
+         AudioManager.Instance.SpraySound.mute = false;
+
+         GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
+         Fpsposition.Instance.FpsPosition();//FpsPlayerPosition
+         this.enabled = false;
+         this.enabled = true;
 
 
-        GamePlayController.instance.playerObj.transform.parent = null;
-        GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("Empty");
-        GamePlayController.instance.Canvas.SetActive(false);
-        GamePlayController.instance.CinemachineCam.SetActive(false);
-        GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);//wash level on
-        PlayerPrefs.SetInt("LevelRestart", 1);
+         GamePlayController.instance.playerObj.transform.parent = null;
+         GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("Empty");
+         GamePlayController.instance.Canvas.SetActive(false);
+         GamePlayController.instance.CinemachineCam.SetActive(false);
+         GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);//wash level on
+         PlayerPrefs.SetInt("LevelRestart", 1);
 
-        Invoke(nameof(ParentSet), 1f);
-        uplift = false;
-        LevelFail.SetActive(false);
-        Pause.SetActive(false);
-        LevelComplete.SetActive(false);
-        Gun.Instance.isTimeOver = false;
-        LevelComplete_ = false;
-        CanvasBool = false;
-        TriggerScript.Instance.DirtyObjects.SetActive(true);
-        Invoke(nameof(GiveControlAfterDirty), 6f);
-        GoogleAdMobController.instance.ShowSmallBannerAd();
-        PlayerPrefs.SetInt("Washed", 0);
-        PlayerPrefs.SetInt("AdSoap", 0);
+         Invoke(nameof(ParentSet), 1f);
+         uplift = false;
+         LevelFail.SetActive(false);
+         Pause.SetActive(false);
+         LevelComplete.SetActive(false);
+         Gun.Instance.isTimeOver = false;
+         LevelComplete_ = false;
+         CanvasBool = false;
+         TriggerScript.Instance.DirtyObjects.SetActive(true);
+         Invoke(nameof(GiveControlAfterDirty), 6f);
+         GoogleAdMobController.instance.ShowSmallBannerAd();
+         PlayerPrefs.SetInt("Washed", 0);
+         PlayerPrefs.SetInt("AdSoap", 0);*/
+        #endregion
     }
 
     public void Home()

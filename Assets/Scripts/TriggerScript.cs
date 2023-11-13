@@ -37,9 +37,12 @@ public class TriggerScript : MonoBehaviour
             Destroy(d);
             //GamePlayController.instance.Canvas.SetActive(true);
             this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
-            GamePlayController.instance.Panels[1].gameObject.SetActive(true);
-            GoogleAdMobController.instance.ShowInterstitialAd();
-            GoogleAdMobController.instance.ShowBigBannerAd();
+            GamePlayController.instance.CinemachineCam.SetActive(false);
+           GamePlayController.instance.SwitchControlToCarWash();
+
+            //GamePlayController.instance.Panels[1].gameObject.SetActive(true);
+            // GoogleAdMobController.instance.ShowInterstitialAd();
+            // GoogleAdMobController.instance.ShowBigBannerAd();
 
             GetchildMat.Instance.AllCarWashMeshON();
         }
@@ -53,9 +56,6 @@ public class TriggerScript : MonoBehaviour
        
         yield return null;
     }
-    public void ForDirtyOnColliders()
-    {
-
-    }
+  
     
 }
