@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     private float lastFireTime;
     public float fireRate = 0.1f;
     public ParticleSystem waterSplashLow, onHitEffectLow, waterSplashHigh, onHitEffectHigh;
-
+    public GameObject BubblesWaterLow,BubblesWaterHigh;
     public bool WaterSplash;
 
 
@@ -80,7 +80,21 @@ public class Gun : MonoBehaviour
 
         }
 
+        if (levemanager.Instance.SoapOnBool == true)
+        {
 
+            lastFireTime = Time.time;
+            SoapOn();
+           
+            //WaterSpringOn();
+            //WaterReduction();
+            FireRaycastForLow();
+        }
+        else
+        {
+            SoapOff();
+        }
+        
 
 
         //----------------------TIme Logic---------------------------
@@ -189,17 +203,32 @@ public class Gun : MonoBehaviour
             waterSplashHigh.Play();
             onHitEffectHigh.Play();
             FireRaycastForLow();
-           
-
+            BubblesWaterHigh.SetActive(true);
+            transition.Instance.ForWash = true;
         }// Start the particle system
         else if (!levemanager.Instance.HighWaterPressure)
         {
             FireRaycastForLow();
             waterSplashLow.Play();
             onHitEffectLow.Play();
+            BubblesWaterLow.SetActive(true);
+            transition.Instance.ForWash = true;
         }// Start the particle system
-
+        PaintExample.Instance.brush.splatChannel = 4;
         AudioManager.Instance.SpraySoundFuncOn();
+    }
+    public void SoapOn()
+    {
+
+       levemanager.Instance.SoapEffect.SetActive(true);
+       
+
+    }
+    public void SoapOff()
+    {
+
+        levemanager.Instance.SoapEffect.SetActive(false);
+        
     }
 
     public void waterSpringOff()
@@ -209,15 +238,20 @@ public class Gun : MonoBehaviour
             waterSplashHigh.Stop();
             onHitEffectHigh.Stop();
             
+            BubblesWaterHigh.SetActive(false);
+            transition.Instance.ForWash = false;
         }// Start the particle system
         else if (!levemanager.Instance.HighWaterPressure)
         {
             waterSplashLow.Stop();
             onHitEffectLow.Stop();
+           
+            BubblesWaterLow.SetActive(false);
+            transition.Instance.ForWash = false;
         }// Start the particle system
         AudioManager.Instance.SpraySoundFuncOff();
     }
-
+    public RaycastHit hitInfo;
     void FireRaycastForLow()
     {
 
@@ -233,18 +267,22 @@ public class Gun : MonoBehaviour
             ray = new Ray(gunMuzzleLighPressure.position, gunMuzzleLighPressure.forward);
             
         }
-        RaycastHit hitInfo;
+       //RaycastHit hitInfo;
         
         // Perform the raycast and check if it hits something.
         if (Physics.Raycast(ray, out hitInfo, fireRange))
         {
+            //PaintTarget.CursorColor();
+            //PaintTarget.PaintCursor(PaintExample.Instance.brush);
+            PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
+
             if (hitInfo.collider.GetComponent<transition>() != null)
             {
+               //PaintTarget.Instance.RayColor(hitInfo);
+                //if (!hitInfo.collider.GetComponent<transition>().isCompleteWash)
                 
-                if (!hitInfo.collider.GetComponent<transition>().isCompleteWash)
-                    hitInfo.collider.GetComponent<transition>().CleanCar(hitInfo);
-                else
-                    return;
+                // else
+                return;
                // Debug.Log("RayCast");
             }
             else

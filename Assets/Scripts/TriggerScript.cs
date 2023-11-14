@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class TriggerScript : MonoBehaviour
 {
+    public static TriggerScript Instance;
+    public GameObject DirtyObjects;
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         BusArrow.Instance.Target =GamePlayController.instance.CurrentLevelUplifter.gameObject.transform;
         BusArrow.Instance.MaxDistanceMeasure();
+        
     }
 
     [System.Obsolete]
@@ -30,9 +37,12 @@ public class TriggerScript : MonoBehaviour
             Destroy(d);
             //GamePlayController.instance.Canvas.SetActive(true);
             this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
-            GamePlayController.instance.Panels[1].gameObject.SetActive(true);
-            GoogleAdMobController.instance.ShowInterstitialAd();
-            GoogleAdMobController.instance.ShowBigBannerAd();
+            GamePlayController.instance.CinemachineCam.SetActive(false);
+           GamePlayController.instance.SwitchControlToCarWash();
+
+            //GamePlayController.instance.Panels[1].gameObject.SetActive(true);
+            // GoogleAdMobController.instance.ShowInterstitialAd();
+            // GoogleAdMobController.instance.ShowBigBannerAd();
 
             GetchildMat.Instance.AllCarWashMeshON();
         }
@@ -46,6 +56,6 @@ public class TriggerScript : MonoBehaviour
        
         yield return null;
     }
-    
+  
     
 }

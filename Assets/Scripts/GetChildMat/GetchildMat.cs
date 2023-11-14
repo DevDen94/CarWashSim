@@ -1,3 +1,4 @@
+using PaintIn3D;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,8 +31,13 @@ public class GetchildMat : MonoBehaviour
             {
                 particles.Add(p);
             }
+           
         }
-        AllCarWashMeshoff();
+        GamePlayController.instance.playerObj.GetComponent<Rigidbody>().isKinematic = true;
+        GamePlayController.instance.playerObj.GetComponent<BoxCollider>().enabled = false;
+        GamePlayController.instance.Panels[2].SetActive(true);
+        Invoke(nameof(AllCarWashMeshoff), 6f);
+        //AllCarWashMeshoff();
 
     }
     public void AllCarWash()
@@ -41,16 +47,25 @@ public class GetchildMat : MonoBehaviour
             g.transitionAmount = 1f;
             Material m = g.gameObject.GetComponent<MeshRenderer>().material;
             m.SetFloat("_TransitionAmount", 1f);
+            //m.SetColor("_BaseColor", Color.white);
+            g.GetComponent<PaintTarget>().ClearPaint();
+            g.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+           
+
         }
     }
     public void AllCarDirty()
     {
         foreach (transition g in trt)
         {
-            g.transitionAmount = 0f;
-            Material m = g.gameObject.GetComponent<MeshRenderer>().material;
-            m.SetFloat("_TransitionAmount", 0f);
+           
+            g.GetComponent<PaintTarget>().ClearPaint();
+            g.IsSoap = false;
+            g.ForWash = false;
             g.isCompleteWash = false;
+            //g.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            g.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+           
 
         }
         foreach (ParticleSystem g in particles)
@@ -58,22 +73,43 @@ public class GetchildMat : MonoBehaviour
             g.Stop();
 
         }
-        
     }
     public void AllCarWashMeshON()
     {
+        //AllMeshColliderOn
         foreach (transition g in trt)
         {
-            g.gameObject.GetComponent<MeshCollider>().enabled = true;
+            if (g.gameObject.GetComponent<MeshCollider>() != null)
+            {
+                g.gameObject.GetComponent<MeshCollider>().enabled = true;
+            }
+            else
+            {
+                g.gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
         }
     }
     public void AllCarWashMeshoff()
     {
+        //AllMeshColliderOf
         foreach (transition g in trt)
         {
-            g.gameObject.GetComponent<MeshCollider>().enabled = false;
+            if (g.gameObject.GetComponent<MeshCollider>() != null)
+            {
+                g.gameObject.GetComponent<MeshCollider>().enabled = false;
+            }
+            else
+            {
+                g.gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+            
         }
+        GamePlayController.instance.playerObj.GetComponent<Rigidbody>().isKinematic = false;
+        GamePlayController.instance.playerObj.GetComponent<BoxCollider>().enabled = true;
+        GamePlayController.instance.Panels[2].SetActive(false);
+        TriggerScript.Instance.DirtyObjects.SetActive(false);
     }
+    
 
 
 }

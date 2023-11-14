@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 public class levemanager : MonoBehaviour
 {
     public Slider TimeSlider, WaterSlider;
     public Text Time_, WaterInGallon;
     //public GameObject UpliftBtn;
     public static levemanager Instance;
-
+    public GameObject[] Waterbuttons;
+    public GameObject SoapBtn;
     public int TimeInLevel;
     public float CountdownTime;
 
@@ -21,9 +22,9 @@ public class levemanager : MonoBehaviour
     public bool ThisScriptOn = false;
     private bool CanvasBool = false;
 
-    public UnityEvent SprinkleOn,SprinkleOff;
-    public bool HighWaterPressure;
-    public GameObject NoozleLow, NoozleHigh;
+    public UnityEvent SprinkleOn,SprinkleOff,SoapOnevent,SoapOfEvent;
+    public bool HighWaterPressure,SoapOnBool;
+    public GameObject NoozleLow, NoozleHigh,SoapEffect,SoapHintPopUp;
 
 
     public Slider LevelProgress;
@@ -31,7 +32,7 @@ public class levemanager : MonoBehaviour
 
     [Space]
 
-    public GameObject LevelComplete, LevelFail, Pause;
+    public GameObject LevelComplete, LevelFail, Pause,LoadingPanel;
 
     public int MudPatches;
     public int CompletePatches;
@@ -52,7 +53,7 @@ public class levemanager : MonoBehaviour
 
     private void Start()
     {
-        
+        SoapOnBool = false;
 
     }
     public void UpliftFunc()
@@ -61,21 +62,27 @@ public class levemanager : MonoBehaviour
         AnimatorStateInfo stateInfo = GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
         if (!uplift)
         {
+            GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().speed = 1f;
             GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("UpliftAnim");
 
-            CheckLifter.instance.UpliftButton.SetActive(false);
+            CheckLifter.instance.DisableUpLift();
             uplift = true;
         }
         else if(uplift)
         {
+            GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().speed = 1f;
             GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("DownliftAnim");
-            CheckLifter.instance.UpliftButton.SetActive(false);
+            CheckLifter.instance.DisableUpLift();
             uplift = false;
         }
+        //Time.timeScale = 1f;
+        //CheckLifter.instance.DisableUpLift();
     }
     public IEnumerator LevelCompleteCouroutine()
     {
         yield return new WaitForSeconds(0.001f);
+        CompletePatches = PlayerPrefs.GetInt("Washed");
+        levemanager.Instance.LevelProgress.value = CompletePatches;
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
             LevelComplete_ = false;
@@ -88,6 +95,7 @@ public class levemanager : MonoBehaviour
             if(uplift == true)
             {
                 UpliftFunc();
+                uplift = false;
             }
              
             GamePlayController.instance.WashMan.SetActive(true);
@@ -99,7 +107,8 @@ public class levemanager : MonoBehaviour
             
             yield return new WaitForSeconds(4f);//4.5
 
-
+           // GetchildMat.Instance.AllCarWash();
+            //GamePlayController.instance.playerObj.GetComponent<Animator>().speed =1f;
             GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run", true);
             GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
             GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run",true);
@@ -154,18 +163,50 @@ public class levemanager : MonoBehaviour
            
             
         }
-        if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 3)
+        if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - 3)
         {
             levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
-
+            PlayerPrefs.SetInt("Washed", MudPatches);
             GetchildMat.Instance.AllCarWash();
             
             
             LevelProgress.value = MudPatches;
         }
-       
+        if (PlayerPrefs.GetInt("AdSoap") > MudPatches - 10)
+        {
+            foreach(GameObject g in Waterbuttons)
+            {
+                
+                if(SoapOnBool == false)
+                {
+                    g.SetActive(true);
+                    SoapBtn.SetActive(false);
+                    SoapBtn.GetComponent<DOTweenAnimation>().enabled = false;
+                    SoapBtn.GetComponent<DOTweenVisualManager>().enabled = false;
+                    SoapHintPopUp.SetActive(false);
+                }
+               
+                if (SoapOnBool == true)
+                {
+                    SoapBtn.SetActive(true);
+                    g.SetActive(false);
+                    SoapBtn.GetComponent<DOTweenAnimation>().enabled = true;
+                    SoapBtn.GetComponent<DOTweenVisualManager>().enabled = true;
+                    SoapHintPopUp.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject g in Waterbuttons)
+            {
+                SoapBtn.SetActive(true);
+                g.SetActive(false);
+                SoapHintPopUp.SetActive(false);
+            }
+        }
         StartCoroutine(LevelCompleteCouroutine());
-
+       
     }
 
     public void Update()
@@ -206,15 +247,43 @@ public class levemanager : MonoBehaviour
         isToggleOn = true;
         SprinkleOn.Invoke();
         HandAnim.Play("HandAnimationOn");
+        SoapEffect.SetActive(false);
+        //SoapOn();
+        // SoapOnBool = true;
     }
-
-
     public void SprikleOff()
     {
         isToggleOn = false;
         SprinkleOff.Invoke();
         HandAnim.Play("HandAnimationOff");
+       
+       
     }
+    public void SoapOnFunc()
+    {
+
+        SoapOnevent.Invoke();
+            SoapOnBool = true;
+          
+            HandAnim.Play("HandAnimationOn");
+             PaintExample.Instance.brush.splatChannel = 1;
+             AudioManager.Instance.SpraySoundFuncOn();
+        
+        
+
+    }
+    public void SoapOfFunc()
+    {
+
+        SoapOfEvent.Invoke();
+        SoapEffect.SetActive(false);
+            HandAnim.Play("HandAnimationOff");
+            SoapOnBool = false;
+            isToggleOn = false;
+            SprinkleOff.Invoke();
+        
+    }
+
 
     public void HighPressure()
     {
@@ -242,49 +311,62 @@ public class levemanager : MonoBehaviour
 
     public void Restart()
     {
-       //restartOnWashLevel
-        
+        //restartOnWashLevel
+        PlayerPrefs.SetInt("Washed", 0);
+        PlayerPrefs.SetInt("AdSoap", 0);
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
             PlayerPrefs.SetInt("UnlockLevel", 0);
-            Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
+           
         }
-        GamePlayController.instance.playerObj.transform.parent = null;
-        GamePlayController.instance.SwitchControlToCarWash();//Switchtowash
-        GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);//wash level player on
-        GetchildMat.Instance.AllCarDirty();//againCarDirty
-       
-        NoozleHigh.SetActive(false);
-        NoozleLow.SetActive(false);
-        Time.timeScale = 1f;
-        SprikleOff();//particle off
-        AudioManager.Instance.SpraySound.mute = false;
-       
-        GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
-        Fpsposition.Instance.FpsPosition();//FpsPlayerPosition
-        this.enabled = false;
-        this.enabled = true;
+        SceneManager.LoadScene(2);
+        #region reset
+        /* LoadingPanel.SetActive(true);
+         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
+         {
+             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") - 1);
+             PlayerPrefs.SetInt("UnlockLevel", 0);
+             Debug.Log("aya2" + PlayerPrefs.GetInt("CurrentLevel") + LevelComplete_ + CanvasBool);
+         }
+         GamePlayController.instance.playerObj.transform.parent = null;
+         GamePlayController.instance.SwitchControlToCarWash();//Switchtowash
+         GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);//wash level player on
+         GetchildMat.Instance.AllCarDirty();//againCarDirty
+
+         NoozleHigh.SetActive(false);
+         NoozleLow.SetActive(false);
+         Time.timeScale = 1f;
+         SprikleOff();//particle off
+         AudioManager.Instance.SpraySound.mute = false;
+
+         GamePlayController.instance.playerObj.transform.GetChild(1).gameObject.SetActive(false);
+         Fpsposition.Instance.FpsPosition();//FpsPlayerPosition
+         this.enabled = false;
+         this.enabled = true;
 
 
-        GamePlayController.instance.playerObj.transform.parent = null;
-        GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("Empty");
-        GamePlayController.instance.Canvas.SetActive(false);
-        GamePlayController.instance.CinemachineCam.SetActive(false);
-        GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);//wash level on
-        PlayerPrefs.SetInt("LevelRestart", 1);
+         GamePlayController.instance.playerObj.transform.parent = null;
+         GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("Empty");
+         GamePlayController.instance.Canvas.SetActive(false);
+         GamePlayController.instance.CinemachineCam.SetActive(false);
+         GamePlayController.instance.CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);//wash level on
+         PlayerPrefs.SetInt("LevelRestart", 1);
 
-        Invoke(nameof(ParentSet), 1f);
-        uplift = false;
-        LevelFail.SetActive(false);
-        Pause.SetActive(false);
-        LevelComplete.SetActive(false);
-        Gun.Instance.isTimeOver = false;
-        LevelComplete_ = false;
-        CanvasBool = false;
-       
-        GoogleAdMobController.instance.ShowSmallBannerAd();
-        
+         Invoke(nameof(ParentSet), 1f);
+         uplift = false;
+         LevelFail.SetActive(false);
+         Pause.SetActive(false);
+         LevelComplete.SetActive(false);
+         Gun.Instance.isTimeOver = false;
+         LevelComplete_ = false;
+         CanvasBool = false;
+         TriggerScript.Instance.DirtyObjects.SetActive(true);
+         Invoke(nameof(GiveControlAfterDirty), 6f);
+         GoogleAdMobController.instance.ShowSmallBannerAd();
+         PlayerPrefs.SetInt("Washed", 0);
+         PlayerPrefs.SetInt("AdSoap", 0);*/
+        #endregion
     }
 
     public void Home()
@@ -415,4 +497,9 @@ public class levemanager : MonoBehaviour
 
         StartCoroutine(LevelCompleteCouroutine());*/
     }//Unused
+    public void GiveControlAfterDirty()
+    {
+        LoadingPanel.SetActive(false);
+        TriggerScript.Instance.DirtyObjects.SetActive(false);
+    }
 }

@@ -70,7 +70,7 @@ public class GamePlayController : MonoBehaviour
                 CurrentLevelUplifter = t.gameObject;
             }
         }
-        if(PlayerPrefs.GetInt("LevelRestart") == 1)
+        /*if(PlayerPrefs.GetInt("LevelRestart") == 1)
         {
             SwitchControlToCarWash();
             
@@ -78,7 +78,7 @@ public class GamePlayController : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("LevelRestart", 0);
-        }
+        }*/
         // AdsManager.instance.ShowSmallBanner();
         GoogleAdMobController.instance.ShowSmallBannerAd();
 
@@ -170,6 +170,7 @@ public class GamePlayController : MonoBehaviour
                 
                 playerObj.transform.SetPositionAndRotation(child.position, child.rotation);
             }
+
            
         }
         Fpsposition.Instance.FpsPosition();

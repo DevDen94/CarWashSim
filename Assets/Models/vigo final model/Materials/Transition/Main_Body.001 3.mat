@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Main_Body.001 3
-  m_Shader: {fileID: 4800000, guid: 898e92d4f6e129d4aaa8d46283cd8855, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 47a09cbb6c738c74f8cd8a02630c7212, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CleanTex:
-        m_Texture: {fileID: 2800000, guid: 367fb0cc1c4896647b568cab38fc2862, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c3ab5e4bd7c7814eb62b321be65311f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ClearCoatMap:
@@ -89,7 +89,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: fb292c2136eaf92479730ca2fcf0bbef, type: 3}
+        m_Texture: {fileID: 2800000, guid: b0ac65af8d7f0db44a3cd02914605c62, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
@@ -116,6 +116,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SplatBumpMap:
+        m_Texture: {fileID: 2800000, guid: e51291d9ba813ec4f8a6350e43a1f075, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SplatTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -130,12 +138,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AClip: 0
+    - _Alpha: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoat: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Clip: 0.5
     - _Cull: 2
     - _Cutoff: 0.5
     - _DecalMetalic: 0
@@ -176,6 +187,12 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SplatBumpScale: 0.5
+    - _SplatEdgeBump: 1
+    - _SplatEdgeWidth: 1
+    - _SplatEmission: 0
+    - _SplatMetallic: 0
+    - _SplatSmoothness: 0.75
     - _SrcBlend: 1
     - _Surface: 0
     - _TransitionAmount: 1
@@ -186,13 +203,14 @@ Material:
     m_Colors:
     - _BBoxMax: {r: 0, g: 0, b: 0, a: 0}
     - _BBoxMin: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 1, b: 0.8282521, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor: {r: 1, g: 1, b: 1, a: 1}
     - _DecalTileOffset: {r: 1, g: 1, b: 0, a: 0}
     - _DirtColor: {r: 1, g: 1, b: 1, a: 1}
     - _DirtTileOffset: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emission_ST: {r: 1, g: 1, b: 0, a: 0}
     - _EnviCubeMapPos: {r: 0, g: 0, b: 0, a: 0}
     - _EnviPosition: {r: 0, g: 0, b: 0, a: 0}
     - _EnviRotation: {r: 0, g: 0, b: 0, a: 0}
@@ -200,7 +218,13 @@ Material:
     - _FresnelColor2: {r: 1, g: 1, b: 1, a: 1}
     - _LiveryColor: {r: 1, g: 1, b: 1, a: 1}
     - _LiveryTileOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _MatallicMap_ST: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SplatBump_ST: {r: 10, g: 10, b: 0, a: 0}
+    - _SplatColor1: {r: 0.6415094, g: 0.4958081, b: 0.3177287, a: 1}
+    - _SplatColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _SplatColor3: {r: 0, g: 0, b: 1, a: 1}
+    - _SplatColor4: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &380594891536563456
 MonoBehaviour:
