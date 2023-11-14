@@ -15,8 +15,10 @@ public class ButtonTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
 
-           CheckLifter.instance.DisableUpLift();
+          
             GamePlayController.instance.CurrentLevelUplifter.GetComponent<Animator>().speed = 0f;
+            
+            CheckLifter.instance.DisableUpLift();
         }
         yield return null;
     }
@@ -25,8 +27,10 @@ public class ButtonTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            CheckLifter.instance.EnableUplift();
+           
             GamePlayController.instance.CurrentLevelUplifter.GetComponent<Animator>().speed = 1f;
+            yield return new WaitForSeconds(2f);
+            CheckLifter.instance.EnableUplift();
         }
         yield return null;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 public class levemanager : MonoBehaviour
 {
     public Slider TimeSlider, WaterSlider;
@@ -24,7 +24,7 @@ public class levemanager : MonoBehaviour
 
     public UnityEvent SprinkleOn,SprinkleOff,SoapOnevent,SoapOfEvent;
     public bool HighWaterPressure,SoapOnBool;
-    public GameObject NoozleLow, NoozleHigh,SoapEffect;
+    public GameObject NoozleLow, NoozleHigh,SoapEffect,SoapHintPopUp;
 
 
     public Slider LevelProgress;
@@ -62,22 +62,27 @@ public class levemanager : MonoBehaviour
         AnimatorStateInfo stateInfo = GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
         if (!uplift)
         {
+            GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().speed = 1f;
             GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("UpliftAnim");
 
-            CheckLifter.instance.UpliftButton.SetActive(false);
+            CheckLifter.instance.DisableUpLift();
             uplift = true;
         }
         else if(uplift)
         {
+            GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().speed = 1f;
             GamePlayController.instance.CurrentLevelUplifter.transform.GetComponent<Animator>().Play("DownliftAnim");
-            CheckLifter.instance.UpliftButton.SetActive(false);
+            CheckLifter.instance.DisableUpLift();
             uplift = false;
         }
+        //Time.timeScale = 1f;
+        //CheckLifter.instance.DisableUpLift();
     }
     public IEnumerator LevelCompleteCouroutine()
     {
         yield return new WaitForSeconds(0.001f);
         CompletePatches = PlayerPrefs.GetInt("Washed");
+        levemanager.Instance.LevelProgress.value = CompletePatches;
         if (PlayerPrefs.GetInt("UnlockLevel") == 1)
         {
             LevelComplete_ = false;
@@ -90,6 +95,7 @@ public class levemanager : MonoBehaviour
             if(uplift == true)
             {
                 UpliftFunc();
+                uplift = false;
             }
              
             GamePlayController.instance.WashMan.SetActive(true);
@@ -101,7 +107,8 @@ public class levemanager : MonoBehaviour
             
             yield return new WaitForSeconds(4f);//4.5
 
-
+           // GetchildMat.Instance.AllCarWash();
+            //GamePlayController.instance.playerObj.GetComponent<Animator>().speed =1f;
             GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run", true);
             GamePlayController.instance.playerObj.GetComponent<Animator>().enabled = true;
             GamePlayController.instance.playerObj.GetComponent<Animator>().SetBool("run",true);
@@ -156,7 +163,7 @@ public class levemanager : MonoBehaviour
            
             
         }
-        if (levemanager.Instance.CompletePatches == levemanager.Instance.MudPatches - 3)
+        if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - 3)
         {
             levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
             PlayerPrefs.SetInt("Washed", MudPatches);
@@ -174,12 +181,18 @@ public class levemanager : MonoBehaviour
                 {
                     g.SetActive(true);
                     SoapBtn.SetActive(false);
+                    SoapBtn.GetComponent<DOTweenAnimation>().enabled = false;
+                    SoapBtn.GetComponent<DOTweenVisualManager>().enabled = false;
+                    SoapHintPopUp.SetActive(false);
                 }
                
                 if (SoapOnBool == true)
                 {
                     SoapBtn.SetActive(true);
                     g.SetActive(false);
+                    SoapBtn.GetComponent<DOTweenAnimation>().enabled = true;
+                    SoapBtn.GetComponent<DOTweenVisualManager>().enabled = true;
+                    SoapHintPopUp.SetActive(true);
                 }
             }
         }
@@ -189,6 +202,7 @@ public class levemanager : MonoBehaviour
             {
                 SoapBtn.SetActive(true);
                 g.SetActive(false);
+                SoapHintPopUp.SetActive(false);
             }
         }
         StartCoroutine(LevelCompleteCouroutine());

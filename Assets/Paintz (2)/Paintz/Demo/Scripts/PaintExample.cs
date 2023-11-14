@@ -88,7 +88,7 @@ public class PaintExample : MonoBehaviour
         //    Application.LoadLevel(0);
         //}
 
-        GUILayout.BeginVertical(GUI.skin.box);
+      //  GUILayout.BeginVertical(GUI.skin.box);///////
 
        // GUILayout.BeginHorizontal();
         //if (GUILayout.Button("Channel 0")) brush.splatChannel = 0;
@@ -125,12 +125,12 @@ public class PaintExample : MonoBehaviour
         //GUILayout.Box(colorTex, GUILayout.Width(128), GUILayout.Height(32));
         //GUILayout.Box("CURSOR COLOR:" + PaintTarget.CursorColor());
 
-        GUI.DrawTexture(new Rect(0, Screen.height - 32, 32, 32), colorTex);
+        //GUI.DrawTexture(new Rect(0, Screen.height - 32, 32, 32), colorTex);////
        // GUILayout.Box("CURSOR CHANNEL:" + PaintTarget.CursorChannel());
 
-        Help = GUILayout.Toggle(Help, "Show Help");
+       // Help = GUILayout.Toggle(Help, "Show Help");
 
-        if (Help)
+       /* if (Help)
         {
             GUILayout.Label("Movement: (Hold Right Mouse Button)");
             GUILayout.Label("W/S/A/D - Move Forward/Back/Left/Right");
@@ -138,9 +138,9 @@ public class PaintExample : MonoBehaviour
             GUILayout.Label("Q/E - Move Up/Down");
             GUILayout.Label("Scroll Wheel - Zoom");
             GUILayout.Label("Paint: Left Mouse Button");
-        }
+        }*/
 
-        GUILayout.EndVertical();
+       // GUILayout.EndVertical();/////////
     }
 
     private void CameraControl()
