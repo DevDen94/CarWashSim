@@ -135,7 +135,7 @@ public class levemanager : MonoBehaviour
         }
         if (MudPatches == CompletePatches && LevelComplete_)
         {
-
+            GamePlayController.instance.CarDownBlockers.SetActive(false);
             
             LevelComplete_ = false;
             CanvasBool = true;
@@ -245,6 +245,7 @@ public class levemanager : MonoBehaviour
     public void SprikleOn()
     {
         isToggleOn = true;
+        
         SprinkleOn.Invoke();
         HandAnim.Play("HandAnimationOn");
         SoapEffect.SetActive(false);

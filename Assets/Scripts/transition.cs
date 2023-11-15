@@ -12,7 +12,7 @@ public class transition : MonoBehaviour
 
     public static transition Instance;
     public bool isCompleteWash;
-    public bool IsSoap,ForWash;
+    public bool IsSoap,ForWash,Forwashsingle;
     public int CompleteSoap;
     private void Awake()
     {
@@ -24,6 +24,7 @@ public class transition : MonoBehaviour
         ForWash = false;
         isCompleteWash = false;
         IsSoap = false;
+        Forwashsingle = false;
         Renderer renderer = GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -109,7 +110,9 @@ public class transition : MonoBehaviour
             
             IsSoap = true;
             ForWash = true;
-            if(PlayerPrefs.GetInt("CurrentLevel") >= 2)
+            //Forwashsingle = true;
+            Debug.Log("dropping");
+            if (PlayerPrefs.GetInt("CurrentLevel") >= 2)
             {
                 PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 15);
             }
@@ -120,22 +123,26 @@ public class transition : MonoBehaviour
            
             
         }
-        if (other.gameObject.tag == "Soap" && ForWash == true&&levemanager.Instance.isToggleOn)
+        if (other.gameObject.tag == "Soap" && ForWash == true&& levemanager.Instance.isToggleOn == true)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             
             PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
-           
+
+            Debug.Log("soaping");
+
             ForWash = false;
+            levemanager.Instance.isToggleOn = false;
             Invoke(nameof(For1meshComplete), 2f);
 
         }
-       
+
     }
     public void For1meshComplete()
     {
 
         ForWash = true;
+        levemanager.Instance.isToggleOn = true;
     }
    
 

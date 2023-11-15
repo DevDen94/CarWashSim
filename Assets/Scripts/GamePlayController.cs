@@ -34,6 +34,9 @@ public class GamePlayController : MonoBehaviour
     public GameObject CurrentLevelUplifter;
     public GameObject FpsStartPoint;
     public GameObject WashMan;
+
+    public GameObject CarDownBlockers;
+
     private void Awake()
     {
        
@@ -86,7 +89,6 @@ public class GamePlayController : MonoBehaviour
 
     
     public void PanelManager(int i)
-
 
     {
         switch (i)
