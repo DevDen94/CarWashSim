@@ -132,7 +132,7 @@ public class transition : MonoBehaviour
             Debug.Log("soaping");
 
             ForWash = false;
-            levemanager.Instance.isToggleOn = false;
+            //levemanager.Instance.isToggleOn = false;
             Invoke(nameof(For1meshComplete), 2f);
 
         }
