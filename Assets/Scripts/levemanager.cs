@@ -18,7 +18,7 @@ public class levemanager : MonoBehaviour
 
     public float TotalWater;
 
-    public bool isToggleOn;
+    public bool isToggleOn, directOn; //forToggling
     public bool ThisScriptOn = false;
     private bool CanvasBool = false;
 
@@ -244,6 +244,7 @@ public class levemanager : MonoBehaviour
 
     public void SprikleOn()
     {
+        directOn = true;
         isToggleOn = true;
         
         SprinkleOn.Invoke();
@@ -254,6 +255,7 @@ public class levemanager : MonoBehaviour
     }
     public void SprikleOff()
     {
+        directOn = false;
         isToggleOn = false;
         SprinkleOff.Invoke();
         HandAnim.Play("HandAnimationOff");

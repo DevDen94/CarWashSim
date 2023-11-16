@@ -53,9 +53,11 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if(!ControlFreak2.CF2Input.GetButton("Fire1"))
+        if(!ControlFreak2.CF2Input.GetButton("Fire1") && !levemanager.Instance.directOn)
         {
             levemanager.Instance.isToggleOn = false;
+
+            Debug.Log("ayieeen");
         }
 
         // Check if the fire button (e.g., left mouse button) is pressed.
@@ -68,7 +70,6 @@ public class Gun : MonoBehaviour
             levemanager.Instance.HandAnim.Play("HandAnimationOn");
             levemanager.Instance.isToggleOn = true;
             //AudioManager.Instance.SpraySound.Play();
-            Debug.Log("Is toggle on 22");
         }
         else
         if (!levemanager.Instance.isToggleOn && !ControlFreak2.CF2Input.GetButton("Fire1"))
@@ -77,7 +78,6 @@ public class Gun : MonoBehaviour
             levemanager.Instance.HandAnim.Play("HandAnimationOff");
             levemanager.Instance.isToggleOn = false;
 
-            Debug.Log("Is toggle offing");
 
             //AudioManager.Instance.SpraySound.Stop();
         }
