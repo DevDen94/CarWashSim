@@ -32,7 +32,7 @@ public class levemanager : MonoBehaviour
 
     [Space]
 
-    public GameObject LevelComplete, LevelFail, Pause,LoadingPanel;
+    public GameObject LevelComplete, LevelFail, Pause,LoadingPanel, objectivePanel;
 
     public int MudPatches;
     public int CompletePatches;
@@ -264,6 +264,7 @@ public class levemanager : MonoBehaviour
     }
     public void SoapOnFunc()
     {
+        Debug.Log("Soap On");
 
         SoapOnevent.Invoke();
             SoapOnBool = true;
@@ -277,16 +278,33 @@ public class levemanager : MonoBehaviour
     }
     public void SoapOfFunc()
     {
+        
 
+        
         SoapOfEvent.Invoke();
         SoapEffect.SetActive(false);
             HandAnim.Play("HandAnimationOff");
             SoapOnBool = false;
             isToggleOn = false;
             SprinkleOff.Invoke();
+
         
     }
 
+    public void ApplyingSoapOnFullBody()
+    {
+        Debug.Log("Soap Off");
+        objectivePanel.SetActive(true);
+        TriggerScript.Instance.DirtyObjects.SetActive(true);
+        Invoke(nameof(SoapApplyOnFullCar), 5f);
+    }
+
+    void SoapApplyOnFullCar()
+    {
+        Debug.Log("Soap applyed all");
+        objectivePanel.SetActive(false);
+        TriggerScript.Instance.DirtyObjects.SetActive(false);
+    }
 
     public void HighPressure()
     {

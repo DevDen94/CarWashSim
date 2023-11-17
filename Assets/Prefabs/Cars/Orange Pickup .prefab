@@ -10372,6 +10372,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &7294791111300743187
 Rigidbody:
@@ -10811,6 +10812,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1965051557143401273
 MeshCollider:
@@ -11116,6 +11118,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3304015561943025110
 MeshCollider:
@@ -11386,6 +11389,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2359682896514921059
 MeshCollider:

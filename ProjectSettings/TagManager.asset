@@ -11,6 +11,8 @@ TagManager:
   - Uplift
   - ButtonOff
   - Soap
+  - Vehicle
+  - WashingMesh
   layers:
   - Default
   - TransparentFX

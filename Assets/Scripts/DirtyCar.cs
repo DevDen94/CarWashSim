@@ -15,6 +15,8 @@ public class DirtyCar : MonoBehaviour
 
     PaintExample pe_;
 
+    int _splatChannel = -1;
+
     private void Awake()
     {
         Instance = this;
@@ -26,6 +28,11 @@ public class DirtyCar : MonoBehaviour
         brush_ = pe_.brush;
 
         From = this.transform;
+    }
+
+    private void OnEnable()
+    {
+        _splatChannel++;
     }
 
     // Update is called once per frame
@@ -42,7 +49,7 @@ public class DirtyCar : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 30))
         {
-            PaintExample.Instance.brush.splatChannel = 0;
+            PaintExample.Instance.brush.splatChannel = _splatChannel;
             //PaintTarget.PaintCursor(brush_);
             PaintTarget.PaintRaycast(ray,hitInfo,PaintExample.Instance.brush,true);
 

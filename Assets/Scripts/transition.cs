@@ -111,20 +111,24 @@ public class transition : MonoBehaviour
             IsSoap = true;
             ForWash = true;
             //Forwashsingle = true;
-            Debug.Log("dropping");
             if (PlayerPrefs.GetInt("CurrentLevel") >= 2)
             {
-                PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 15);
+                Debug.Log("15");
+
+                PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
             }
             else
             {
+                Debug.Log("1");
                 PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
             }
            
             
         }
-        if (other.gameObject.tag == "Soap" && ForWash == true&& levemanager.Instance.isToggleOn == true)
+        if (other.gameObject.tag == "Soap" /*&& gameObject.CompareTag("WashingMesh")*/ && ForWash == true&& levemanager.Instance.isToggleOn == true)
         {
+            //this.gameObject.tag = "Untagged";
+
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             
             PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);

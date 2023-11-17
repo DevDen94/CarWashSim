@@ -223,6 +223,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4277622071775299168
 MeshCollider:
@@ -1266,6 +1267,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3076364841132202211
 MeshCollider:
@@ -1493,6 +1495,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3473701157050662888
 MeshCollider:
@@ -1703,6 +1706,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3519951719281806980
 MeshCollider:
@@ -2012,6 +2016,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4260587231198622861
 MeshCollider:
@@ -2666,6 +2671,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4089281073124508
 MeshCollider:
@@ -3590,6 +3596,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &907122928700832128
 GameObject:
@@ -3712,6 +3719,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!114 &7255533875664945991
 MonoBehaviour:
@@ -4272,6 +4280,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3396121240799455220
 MeshCollider:
@@ -4500,6 +4509,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4176544216818150580
 MeshCollider:
@@ -4895,6 +4905,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4166080966044439315
 MeshCollider:
@@ -5289,6 +5300,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2033914506132437670
 MeshCollider:
@@ -5599,6 +5611,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &5745220050842122246
 MeshCollider:
@@ -11068,6 +11081,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1501509215171989635
 MeshCollider:
@@ -11544,6 +11558,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3687674063001522575
 MeshCollider:
@@ -17095,6 +17110,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &5115717594067552504
 MeshCollider:
@@ -17353,6 +17369,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1892871466135129412
 MeshCollider:
@@ -18819,6 +18836,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &356285373083997951
 MeshCollider:
@@ -19805,6 +19823,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2727655819518001913
 MeshCollider:
@@ -20280,6 +20299,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!114 &7937209225359850856
 MonoBehaviour:
@@ -25370,6 +25390,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4476303075431129209
 MeshCollider:
@@ -25948,6 +25969,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &3087911186896815889
 GameObject:
@@ -26453,6 +26475,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3203760381454075444
 MeshCollider:
@@ -26746,6 +26769,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3267049198999443120
 MeshCollider:
@@ -27088,6 +27112,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &259259488023063043
 MeshCollider:
@@ -27330,6 +27355,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2811695478719576403
 MeshCollider:
@@ -27569,6 +27595,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &3544444165462192965
 GameObject:
@@ -27760,6 +27787,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &8175974574038851758
 MeshCollider:
@@ -28366,6 +28394,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1040486351412581166
 MeshCollider:
@@ -28576,6 +28605,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3942083720030958116
 MeshCollider:
@@ -30198,6 +30228,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &8829379045533384992
 MeshCollider:
@@ -40808,6 +40839,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &4752115550470835847
 GameObject:
@@ -72177,6 +72209,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &4803282837176261921
 GameObject:
@@ -72620,6 +72653,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4145054067262541955
 MeshCollider:
@@ -72847,6 +72881,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &626045121535050811
 MeshCollider:
@@ -73953,6 +73988,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3044368267703226166
 MeshCollider:
@@ -75393,6 +75429,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &6039776142289244414
 MeshCollider:
@@ -80737,6 +80774,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &6594136221033144004
 MeshCollider:
@@ -81593,6 +81631,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &5507933995799736849
 MeshCollider:
@@ -86650,6 +86689,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3192916684374874641
 MeshCollider:
@@ -87293,6 +87333,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &6462329492011493792
 GameObject:
@@ -88824,6 +88865,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &6895575006716829701
 GameObject:
@@ -89128,6 +89170,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &6932257135675411256
 GameObject:
@@ -89734,6 +89777,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &214114734679609865
 MeshCollider:
@@ -90142,6 +90186,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2902476154003200816
 MeshCollider:
@@ -95459,6 +95504,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &8282683421959609021
 MeshCollider:
@@ -96112,6 +96158,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1746478640796350206
 MeshCollider:
@@ -96404,6 +96451,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1462953046252062850
 MeshCollider:
@@ -96892,6 +96940,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!114 &47911483184245255
 MonoBehaviour:
@@ -102040,6 +102089,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &8101261262651365944
 GameObject:
@@ -103054,6 +103104,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1483059683055952779
 MeshCollider:
@@ -103282,6 +103333,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &8422494161089065072
 MeshCollider:
@@ -104184,6 +104236,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!1 &8771504680302909342
 GameObject:
@@ -104458,6 +104511,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &110995251092267210
 MeshCollider:
@@ -104914,6 +104968,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!114 &425220325442663666
 MonoBehaviour:
@@ -105053,6 +105108,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4908933865273120102
 MeshCollider:
@@ -110273,6 +110329,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4362637841817871070
 MeshCollider:
@@ -120622,6 +120679,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &759045507777859161
 MeshCollider:
@@ -120913,6 +120971,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &9164928883687985152
 MeshCollider:
