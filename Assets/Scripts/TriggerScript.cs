@@ -13,7 +13,7 @@ public class TriggerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BusArrow.Instance.Target =GamePlayController.instance.CurrentLevelUplifter.gameObject.transform;
+        BusArrow.Instance.Target = GamePlayController.instance.CurrentLevelUplifter.gameObject.transform;
         BusArrow.Instance.MaxDistanceMeasure();
         
     }

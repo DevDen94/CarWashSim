@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ControlFreak2.TouchControl;
 
 public class Gun : MonoBehaviour
 {
@@ -289,9 +290,31 @@ public class Gun : MonoBehaviour
         // Perform the raycast and check if it hits something.
         if (Physics.Raycast(ray, out hitInfo, fireRange))
         {
+
+
             //PaintTarget.CursorColor();
             //PaintTarget.PaintCursor(PaintExample.Instance.brush);
-            PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
+
+            
+
+            Renderer renderer = hitInfo.collider.GetComponent<Renderer>();
+            if(PaintExample.Instance.brush.splatChannel == 4)
+            {
+                if(hitInfo.collider.GetComponent<PaintTarget>() != null)
+                {
+                    if (hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel() == 1)
+                    {
+                        Debug.Log("splat channel is : " + hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel());
+                        PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
+                    }
+                }
+            }
+            else
+            {
+                PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
+            }
+
+            //PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
 
             if (hitInfo.collider.GetComponent<transition>() != null)
             {

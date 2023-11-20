@@ -42,6 +42,7 @@ public class levemanager : MonoBehaviour
     public GameObject CubeCollider;
     public bool uplift;
     int val;
+    int mudPatchesDiff;
     private Vector3 CarResetPos;
     private void OnEnable()
     {
@@ -53,7 +54,16 @@ public class levemanager : MonoBehaviour
 
     private void Start()
     {
-        SoapOnBool = false;
+        if (PlayerPrefs.GetInt("CurrentLevel") >= 2)
+        {
+            mudPatchesDiff = 5;
+        }
+        else
+        {
+            mudPatchesDiff = 10;
+        }
+
+            SoapOnBool = false;
 
     }
     public void UpliftFunc()
@@ -163,7 +173,7 @@ public class levemanager : MonoBehaviour
            
             
         }
-        if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - 3)
+        if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - 10)
         {
             levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
             PlayerPrefs.SetInt("Washed", MudPatches);
@@ -172,7 +182,7 @@ public class levemanager : MonoBehaviour
             
             LevelProgress.value = MudPatches;
         }
-        if (PlayerPrefs.GetInt("AdSoap") > MudPatches - 10)
+        if (PlayerPrefs.GetInt("AdSoap") > MudPatches - mudPatchesDiff)
         {
             foreach(GameObject g in Waterbuttons)
             {

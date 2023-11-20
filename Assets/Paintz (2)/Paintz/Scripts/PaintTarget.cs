@@ -91,6 +91,53 @@ public class PaintTarget : MonoBehaviour
         
     }
 
+    public int checkingSplatChannel()
+    {
+        Ray ray;
+        ray = new(Gun.Instance.transform.position, Gun.Instance.transform.forward);
+
+        return RayChannelNew(ray);
+    }
+
+    public static int RayChannelNew(Ray ray)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10000))
+        {
+            PaintTarget paintTarget = hit.collider.gameObject.GetComponent<PaintTarget>();
+            if (!paintTarget) return -1;
+            if (!paintTarget.validTarget) return -1;
+            if (!paintTarget.bHasMeshCollider) return -1;
+
+            Renderer r = paintTarget.GetComponent<Renderer>();
+            if (!r) return -1;
+
+            RenderTexture rt = (RenderTexture)r.sharedMaterial.GetTexture("_SplatTex");
+            if (!rt) return -1;
+
+            UpdatePickColors(paintTarget, rt);
+
+            Texture2D tc = paintTarget.splatTexPick;
+            if (!tc) return -1;
+
+
+            int x = (int)(hit.textureCoord2.x * tc.width);
+            int y = (int)(hit.textureCoord2.y * tc.height);
+
+            Color pc = tc.GetPixel(x, y);
+
+            int l = -1;
+            if (pc.r > .5) l = 0;
+            if (pc.g > .5) l = 1;
+            if (pc.b > .5) l = 2;
+            if (pc.a > .5) l = 3;
+
+            return l;
+        }
+
+        return -1;
+    }
+
     public static int RayChannel(RaycastHit hit)
     {
        
@@ -607,6 +654,9 @@ public class PaintTarget : MonoBehaviour
 
     public void ClearPaint()
     {
+
+        Debug.Log("Clearing Paint");
+
         if (setupComplete)
         {
             CommandBuffer cb = new CommandBuffer();

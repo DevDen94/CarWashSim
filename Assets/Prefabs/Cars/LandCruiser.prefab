@@ -9863,7 +9863,7 @@ GameObject:
   - component: {fileID: 6325634435936514412}
   m_Layer: 0
   m_Name: 3-_Glass.002
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9952,6 +9952,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &983121591195161395
 Rigidbody:
@@ -19980,7 +19981,7 @@ GameObject:
   - component: {fileID: 1085260776714485228}
   m_Layer: 0
   m_Name: 1-_Body.011
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20069,6 +20070,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &751683076789271658
 MeshCollider:
@@ -20291,7 +20293,7 @@ GameObject:
   - component: {fileID: 8219228313405344623}
   m_Layer: 0
   m_Name: 1-_Body.032
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20381,6 +20383,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1159500622624866497
 MeshCollider:
@@ -35607,7 +35610,7 @@ GameObject:
   - component: {fileID: 331490241960474527}
   m_Layer: 0
   m_Name: 1-_Body.027
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35696,6 +35699,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1546408574259952468
 MeshCollider:
@@ -35866,7 +35870,7 @@ GameObject:
   - component: {fileID: 4512111956930935713}
   m_Layer: 0
   m_Name: 1-_Body.025
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35955,6 +35959,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2893982448795068262
 MeshCollider:
@@ -36094,7 +36099,7 @@ GameObject:
   - component: {fileID: 2511518525750768556}
   m_Layer: 0
   m_Name: 1-_Body.018
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36197,6 +36202,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &3108414281581943630
 Rigidbody:
@@ -36353,7 +36359,7 @@ GameObject:
   - component: {fileID: 1879568049100406904}
   m_Layer: 0
   m_Name: 1-_Body.021
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36442,6 +36448,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3481183430061810506
 MeshCollider:
@@ -36825,7 +36832,7 @@ GameObject:
   - component: {fileID: 8916910262891832802}
   m_Layer: 0
   m_Name: 3-_Glass.005
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36914,6 +36921,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &5139849680771525914
 Rigidbody:
@@ -36980,7 +36988,7 @@ GameObject:
   - component: {fileID: 5873741345198190615}
   m_Layer: 0
   m_Name: 3-_Glass.001
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37069,6 +37077,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &8244346257409690168
 Rigidbody:
@@ -37170,7 +37179,7 @@ GameObject:
   - component: {fileID: 2198860339298305768}
   m_Layer: 0
   m_Name: 1-_Body.010
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37259,6 +37268,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2993597544712025757
 MeshCollider:
@@ -37396,7 +37406,7 @@ GameObject:
   - component: {fileID: 8457513798090938325}
   m_Layer: 0
   m_Name: 3-_Glass.010
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37485,6 +37495,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &5856010347413007382
 Rigidbody:
@@ -37862,7 +37873,7 @@ GameObject:
   - component: {fileID: 1104834687980441540}
   m_Layer: 0
   m_Name: 3-_Glass.011
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37951,6 +37962,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &7378280818454371202
 Rigidbody:
@@ -38050,7 +38062,7 @@ GameObject:
   - component: {fileID: 4082596549872786143}
   m_Layer: 0
   m_Name: 1-_Body
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38139,6 +38151,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4182655660815955614
 MeshCollider:
@@ -38390,7 +38403,7 @@ GameObject:
   - component: {fileID: 6981181437645376742}
   m_Layer: 0
   m_Name: 3-_Glass.004
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38479,6 +38492,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &1892604242230940727
 Rigidbody:
@@ -38610,7 +38624,7 @@ GameObject:
   - component: {fileID: 6300111865748372852}
   m_Layer: 0
   m_Name: 1-_Body.026
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38699,6 +38713,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4602446656082005204
 MeshCollider:
@@ -38873,7 +38888,7 @@ GameObject:
   - component: {fileID: 3594536037852428889}
   m_Layer: 0
   m_Name: 1-_Body.020
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38962,6 +38977,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4371304114425991376
 MeshCollider:
@@ -39101,7 +39117,7 @@ GameObject:
   - component: {fileID: 758224907926991621}
   m_Layer: 0
   m_Name: 1-_Body.017
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39204,6 +39220,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &5595299826804129161
 Rigidbody:
@@ -40217,7 +40234,7 @@ GameObject:
   - component: {fileID: 8747265957668634506}
   m_Layer: 0
   m_Name: 3-_Glass.009
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40306,6 +40323,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &6038032848663721704
 Rigidbody:
@@ -45315,7 +45333,7 @@ GameObject:
   - component: {fileID: 3997293106055824158}
   m_Layer: 0
   m_Name: 3-_Glass.007
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45404,6 +45422,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &7395230210056216834
 Rigidbody:
@@ -45472,7 +45491,7 @@ GameObject:
   - component: {fileID: 4807585507813699763}
   m_Layer: 0
   m_Name: 1-_Body.029
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45561,6 +45580,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2954783053208769434
 MeshCollider:
@@ -45931,7 +45951,7 @@ GameObject:
   - component: {fileID: 1834572932767024489}
   m_Layer: 0
   m_Name: 1-_Body.031
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46020,6 +46040,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3906139119265061883
 MeshCollider:
@@ -46275,7 +46296,7 @@ GameObject:
   - component: {fileID: 3293882252273906618}
   m_Layer: 0
   m_Name: 1-_Body.023
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46364,6 +46385,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3899957724613694062
 MeshCollider:
@@ -51344,7 +51366,7 @@ GameObject:
   - component: {fileID: 3107030675187032847}
   m_Layer: 0
   m_Name: 3-_Glass
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51433,6 +51455,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &6415748169651582553
 Rigidbody:
@@ -51698,7 +51721,7 @@ GameObject:
   - component: {fileID: 6567624792155341897}
   m_Layer: 0
   m_Name: 1-_Body.024
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51787,6 +51810,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1265789496963744501
 MeshCollider:
@@ -51926,7 +51950,7 @@ GameObject:
   - component: {fileID: 6071786971194347821}
   m_Layer: 0
   m_Name: 1-_Body.019
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52015,6 +52039,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &2251819671590932820
 MeshCollider:
@@ -52154,7 +52179,7 @@ GameObject:
   - component: {fileID: 9032369261576931527}
   m_Layer: 0
   m_Name: 1-_Body.030
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52243,6 +52268,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &1300241366450292580
 MeshCollider:
@@ -52380,7 +52406,7 @@ GameObject:
   - component: {fileID: 8093765512181170494}
   m_Layer: 0
   m_Name: 3-_Glass.014
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52469,6 +52495,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &3524403239308891127
 Rigidbody:
@@ -52600,7 +52627,7 @@ GameObject:
   - component: {fileID: 3307804746270136566}
   m_Layer: 0
   m_Name: 1-_Body.012
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52689,6 +52716,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &3644403259717689431
 MeshCollider:
@@ -52859,7 +52887,7 @@ GameObject:
   - component: {fileID: 781215903342417608}
   m_Layer: 0
   m_Name: 1-_Body.022
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52948,6 +52976,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!64 &4142879201214297679
 MeshCollider:
@@ -53085,7 +53114,7 @@ GameObject:
   - component: {fileID: 1704696957258175815}
   m_Layer: 0
   m_Name: 3-_Glass.013
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53174,6 +53203,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &6740836107559142273
 Rigidbody:
@@ -53242,7 +53272,7 @@ GameObject:
   - component: {fileID: 4792656188282954599}
   m_Layer: 0
   m_Name: 1-_Body.009
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53345,6 +53375,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &1356994520857980469
 Rigidbody:
@@ -53468,7 +53499,7 @@ GameObject:
   - component: {fileID: 412019842775852225}
   m_Layer: 0
   m_Name: 3-_Glass.012
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53557,6 +53588,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &8209541964135334940
 Rigidbody:
@@ -53852,7 +53884,7 @@ GameObject:
   - component: {fileID: 1746302951486485205}
   m_Layer: 0
   m_Name: 3-_Glass.006
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53941,6 +53973,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &8106538623484114150
 Rigidbody:
@@ -54007,7 +54040,7 @@ GameObject:
   - component: {fileID: 8139017151079878264}
   m_Layer: 0
   m_Name: 3-_Glass.003
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54096,6 +54129,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &7100045678074659726
 Rigidbody:
@@ -54162,7 +54196,7 @@ GameObject:
   - component: {fileID: 4124681777099053585}
   m_Layer: 0
   m_Name: 3-_Glass.008
-  m_TagString: Untagged
+  m_TagString: WashingMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54251,6 +54285,7 @@ MonoBehaviour:
   isCompleteWash: 0
   IsSoap: 0
   ForWash: 0
+  Forwashsingle: 0
   CompleteSoap: 0
 --- !u!54 &3998364580053020523
 Rigidbody:

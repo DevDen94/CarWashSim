@@ -127,11 +127,22 @@ public class transition : MonoBehaviour
         }
         if (other.gameObject.tag == "Soap" /*&& gameObject.CompareTag("WashingMesh")*/ && ForWash == true&& levemanager.Instance.isToggleOn == true)
         {
-            //this.gameObject.tag = "Untagged";
+            
+
+            
 
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             
-            PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
+            if(Gun.Instance.hitInfo.collider.GetComponent<PaintTarget>() != null)
+            {
+                if (this.gameObject.CompareTag("WashingMesh") && Gun.Instance.hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel() != 0)
+                {
+                    Debug.Log("this point is Soaped");
+                    this.gameObject.tag = "Untagged";
+                    PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
+                }
+            }
+            
 
             Debug.Log("soaping");
 
