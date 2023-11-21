@@ -4959,6 +4959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 2416566480183351516}
   to: {fileID: 0}
+  _splatChannel: 0
 --- !u!95 &2416566480183351517
 Animator:
   serializedVersion: 5
@@ -24823,6 +24824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 2416566481879391172}
   to: {fileID: 0}
+  _splatChannel: 0
 --- !u!1 &2416566482148261111
 GameObject:
   m_ObjectHideFlags: 0
@@ -29805,6 +29807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 2416566482149151254}
   to: {fileID: 0}
+  _splatChannel: 0
 --- !u!1 &2416566482210726453
 GameObject:
   m_ObjectHideFlags: 0

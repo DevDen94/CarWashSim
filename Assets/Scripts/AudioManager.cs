@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audioMixer,ButtonClick,WashClick,SpraySound; // Reference to your Audio Mixer.
+    public AudioSource audioMixer,ButtonClick,WashClick,SpraySound,soapSpraySound; // Reference to your Audio Mixer.
     private string volumeKey = "Volume"; // Key for PlayerPrefs.
     public Slider VolumeSlider;
     public Text Volume;
@@ -29,7 +29,6 @@ public class AudioManager : MonoBehaviour
             audioMixer.volume = value;
             VolumeSlider.value = value;
             Volume.text = (VolumeSlider.value * 100).ToString();
-            Debug.Log("has");
         }
         else
         {
@@ -92,7 +91,7 @@ public class AudioManager : MonoBehaviour
         
         if(SpraySoundBoolOff == false)
         {
-            //Water Sound of
+            //Water Sound off
             SpraySound.Stop();
             SpraySoundBoolOff = true;
             SpraySoundBoolOn = false;
@@ -100,5 +99,14 @@ public class AudioManager : MonoBehaviour
        
     }
 
+    public void SoapSpraySoundOn()
+    {
+        soapSpraySound.Play();
+    }
+
+    public void SoapSpraySoundOff()
+    {
+        soapSpraySound.Stop();
+    }
 
 }

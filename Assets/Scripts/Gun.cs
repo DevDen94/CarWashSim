@@ -300,14 +300,14 @@ public class Gun : MonoBehaviour
             Renderer renderer = hitInfo.collider.GetComponent<Renderer>();
             if(PaintExample.Instance.brush.splatChannel == 4)
             {
-                if(hitInfo.collider.GetComponent<PaintTarget>() != null)
-                {
-                    if (hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel() == 1)
-                    {
-                        Debug.Log("splat channel is : " + hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel());
+                //if(hitInfo.collider.GetComponent<PaintTarget>() != null)
+                //{
+                //    if (hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel() == 1)
+                //    {
+                //        Debug.Log("splat channel is : " + hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel());
                         PaintTarget.PaintRaycast(ray, hitInfo, PaintExample.Instance.brush, true);
-                    }
-                }
+                //    }
+                //}
             }
             else
             {

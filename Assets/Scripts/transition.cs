@@ -34,12 +34,6 @@ public class transition : MonoBehaviour
         PlayerPrefs.SetInt("AdSoap", 0);
     }
 
-
-    private void Update()
-    {
-        
-    }
-
     private Renderer objectRenderer;
     public void CleanCar(RaycastHit hit)
     {
@@ -104,7 +98,7 @@ public class transition : MonoBehaviour
     {
 
          
-        if (other.gameObject.tag == "Soap"&& IsSoap == false && levemanager.Instance.SoapOnBool == true)
+        if (other.gameObject.CompareTag("Soap") && IsSoap == false && levemanager.Instance.SoapOnBool == true)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             
@@ -115,7 +109,7 @@ public class transition : MonoBehaviour
             {
                 Debug.Log("15");
 
-                PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 1);
+                PlayerPrefs.SetInt("AdSoap", PlayerPrefs.GetInt("AdSoap") + 2);
             }
             else
             {
@@ -127,21 +121,17 @@ public class transition : MonoBehaviour
         }
         if (other.gameObject.tag == "Soap" /*&& gameObject.CompareTag("WashingMesh")*/ && ForWash == true&& levemanager.Instance.isToggleOn == true)
         {
-            
-
-            
-
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             
-            if(Gun.Instance.hitInfo.collider.GetComponent<PaintTarget>() != null)
-            {
-                if (this.gameObject.CompareTag("WashingMesh") && Gun.Instance.hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel() != 0)
+            //if(Gun.Instance.hitInfo.collider.GetComponent<PaintTarget>() != null)
+            //{
+                if (this.gameObject.CompareTag("WashingMesh") /*&& Gun.Instance.hitInfo.collider.GetComponent<PaintTarget>().checkingSplatChannel() != 0*/)
                 {
                     Debug.Log("this point is Soaped");
                     this.gameObject.tag = "Untagged";
                     PlayerPrefs.SetInt("Washed", PlayerPrefs.GetInt("Washed") + 1);
                 }
-            }
+            //}
             
 
             Debug.Log("soaping");

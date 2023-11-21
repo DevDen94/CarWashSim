@@ -12,7 +12,7 @@ public class levemanager : MonoBehaviour
     //public GameObject UpliftBtn;
     public static levemanager Instance;
     public GameObject[] Waterbuttons;
-    public GameObject SoapBtn;
+    public GameObject SoapBtn, soapOffBtn;
     public int TimeInLevel;
     public float CountdownTime;
 
@@ -36,13 +36,13 @@ public class levemanager : MonoBehaviour
 
     public int MudPatches;
     public int CompletePatches;
+    public int mudPatchesDiff;
     public  bool LevelComplete_;
     [Header("Hand Animation")]
     public Animator HandAnim;
     public GameObject CubeCollider;
     public bool uplift;
     int val;
-    int mudPatchesDiff;
     private Vector3 CarResetPos;
     private void OnEnable()
     {
@@ -54,14 +54,14 @@ public class levemanager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("CurrentLevel") >= 2)
-        {
-            mudPatchesDiff = 5;
-        }
-        else
-        {
-            mudPatchesDiff = 10;
-        }
+        //if (PlayerPrefs.GetInt("CurrentLevel") >= 2)
+        //{
+        //    mudPatchesDiff = 5;
+        //}
+        //else
+        //{
+        //    mudPatchesDiff = 10;
+        //}
 
             SoapOnBool = false;
 
@@ -203,6 +203,7 @@ public class levemanager : MonoBehaviour
                     SoapBtn.GetComponent<DOTweenAnimation>().enabled = true;
                     SoapBtn.GetComponent<DOTweenVisualManager>().enabled = true;
                     SoapHintPopUp.SetActive(true);
+                    soapOffBtn.SetActive(true);
                 }
             }
         }
@@ -274,38 +275,29 @@ public class levemanager : MonoBehaviour
     }
     public void SoapOnFunc()
     {
-        Debug.Log("Soap On");
-
         SoapOnevent.Invoke();
-            SoapOnBool = true;
-          
-            HandAnim.Play("HandAnimationOn");
-             PaintExample.Instance.brush.splatChannel = 1;
-             AudioManager.Instance.SpraySoundFuncOn();
-        
-        
-
+        SoapOnBool = true;
+        HandAnim.Play("HandAnimationOn");
+        PaintExample.Instance.brush.splatChannel = 1;
+        //AudioManager.Instance.SpraySoundFuncOn();
+        AudioManager.Instance.soapSpraySound.Play();
     }
     public void SoapOfFunc()
     {
-        
-
-        
         SoapOfEvent.Invoke();
         SoapEffect.SetActive(false);
-            HandAnim.Play("HandAnimationOff");
-            SoapOnBool = false;
-            isToggleOn = false;
-            SprinkleOff.Invoke();
-
-        
+        HandAnim.Play("HandAnimationOff");
+        SoapOnBool = false;
+        isToggleOn = false;
+        SprinkleOff.Invoke();
+        AudioManager.Instance.soapSpraySound.Stop();
     }
 
     public void ApplyingSoapOnFullBody()
     {
         Debug.Log("Soap Off");
         objectivePanel.SetActive(true);
-        TriggerScript.Instance.DirtyObjects.SetActive(true);
+        TriggerScript.Instance.soapMakingObjects.SetActive(true);
         Invoke(nameof(SoapApplyOnFullCar), 5f);
     }
 
@@ -313,7 +305,7 @@ public class levemanager : MonoBehaviour
     {
         Debug.Log("Soap applyed all");
         objectivePanel.SetActive(false);
-        TriggerScript.Instance.DirtyObjects.SetActive(false);
+        TriggerScript.Instance.soapMakingObjects.SetActive(false);
     }
 
     public void HighPressure()

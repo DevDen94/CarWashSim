@@ -6,6 +6,7 @@ public class TriggerScript : MonoBehaviour
 {
     public static TriggerScript Instance;
     public GameObject DirtyObjects;
+    public GameObject soapMakingObjects;
     private void Awake()
     {
         Instance = this;

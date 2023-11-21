@@ -15,7 +15,7 @@ public class DirtyCar : MonoBehaviour
 
     PaintExample pe_;
 
-    int _splatChannel = -1;
+    public int _splatChannel = 0;
 
     private void Awake()
     {
@@ -30,10 +30,10 @@ public class DirtyCar : MonoBehaviour
         From = this.transform;
     }
 
-    private void OnEnable()
-    {
-        _splatChannel++;
-    }
+    //private void OnEnable()
+    //{
+    //    _splatChannel++;
+    //}
 
     // Update is called once per frame
     void Update()
