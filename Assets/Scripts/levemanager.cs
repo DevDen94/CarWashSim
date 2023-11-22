@@ -37,6 +37,7 @@ public class levemanager : MonoBehaviour
     public int MudPatches;
     public int CompletePatches;
     public int mudPatchesDiff;
+    public int mudPatchesDiffForCleaning;
     public  bool LevelComplete_;
     [Header("Hand Animation")]
     public Animator HandAnim;
@@ -173,7 +174,7 @@ public class levemanager : MonoBehaviour
            
             
         }
-        if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - 10)
+        if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - mudPatchesDiffForCleaning)
         {
             levemanager.Instance.CompletePatches = levemanager.Instance.MudPatches;
             PlayerPrefs.SetInt("Washed", MudPatches);

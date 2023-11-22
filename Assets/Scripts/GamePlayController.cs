@@ -91,6 +91,7 @@ public class GamePlayController : MonoBehaviour
     public void PanelManager(int i)
 
     {
+
         switch (i)
         {
             default:
