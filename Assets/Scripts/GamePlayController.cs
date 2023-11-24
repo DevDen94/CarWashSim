@@ -163,8 +163,10 @@ public class GamePlayController : MonoBehaviour
 
         Canvas.SetActive(false);
         CinemachineCam.SetActive(false);
-       CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
-        
+        CurrentLevel.transform.GetChild(1).gameObject.SetActive(true);
+
+        levemanager.Instance._levelArrows.SetActive(false);
+        levemanager.Instance._levelArrows2.SetActive(false);
         playerObj.GetComponent<Animator>().enabled = false;
         foreach (Transform child in CurrentLevel.transform)
         {

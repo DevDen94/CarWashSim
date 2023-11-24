@@ -45,6 +45,10 @@ public class levemanager : MonoBehaviour
     public bool uplift;
     int val;
     private Vector3 CarResetPos;
+
+    public GameObject _levelArrows;
+    public GameObject _levelArrows2;
+
     private void OnEnable()
     {
         CubeCollider.SetActive(true);
