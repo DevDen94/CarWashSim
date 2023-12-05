@@ -76,7 +76,7 @@ public class ManinMenuScript : MonoBehaviour
     {
         ExitPanel.SetActive(true);
         //AdsManager.instance.ShowinterAd();
-        GoogleAdMobController.instance.ShowInterstitialAd();
+        //GoogleAdMobController.instance.ShowInterstitialAd();
         
     }
 
