@@ -12,6 +12,9 @@ public class LoadingScript : MonoBehaviour
     public int Value;
     float progress;
 
+
+    public Data data;
+
     private void OnEnable()
     {
 
@@ -29,10 +32,16 @@ public class LoadingScript : MonoBehaviour
     }
     private void Start()
     {
-        
-        StartCoroutine(LoadAsyncScene());
-        Invoke(nameof(showBigBanner),0.5f);
-      //  AdsManager.instance.ShowBigBanner();
+
+        if (data.data == Application.identifier)
+        {
+            StartCoroutine(LoadAsyncScene());
+            Invoke(nameof(showBigBanner), 0.5f);
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 
 

@@ -103,7 +103,7 @@ public class GamePlayController : MonoBehaviour
                 Time.timeScale = 0f;
                 // AdsManager.instance.ShowinterAd();
                 //  AdsManager.instance.ShowBigBanner();
-                GoogleAdMobController.instance.ShowInterstitialAd();
+               // GoogleAdMobController.instance.ShowInterstitialAd();
                 GoogleAdMobController.instance.ShowBigBannerAd();
 
                 //Cars[PlayerPrefs.GetInt("currentBus")].gameObject.SetActive(false);
