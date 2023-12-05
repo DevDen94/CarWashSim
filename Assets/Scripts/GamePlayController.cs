@@ -45,6 +45,8 @@ public class GamePlayController : MonoBehaviour
             instance = this;
         }
 
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         CurrentLevel = Instantiate(Levels[PlayerPrefs.GetInt("CurrentLevel")]);
 
         playerObj = Instantiate(Cars[PlayerPrefs.GetInt("CurrentLevel")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
@@ -61,6 +63,7 @@ public class GamePlayController : MonoBehaviour
     [Obsolete]
     void Start()
     {
+
         Time.timeScale = 1f;
         //Instantiate(Environment);
         

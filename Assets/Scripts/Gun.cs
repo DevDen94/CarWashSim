@@ -186,6 +186,8 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, fireRange))
         {
             //Debug.LogError(hitsRemaining);
+
+            
             if (hitInfo.collider.gameObject.tag == "Dirt")
             {
 
@@ -285,17 +287,18 @@ public class Gun : MonoBehaviour
             ray = new Ray(gunMuzzleLighPressure.position, gunMuzzleLighPressure.forward);
             
         }
-       //RaycastHit hitInfo;
-        
+        //RaycastHit hitInfo;
+
         // Perform the raycast and check if it hits something.
+        Debug.DrawRay(gunMuzzleHighPressure.position, gunMuzzleHighPressure.transform.forward * fireRange, Color.green);
         if (Physics.Raycast(ray, out hitInfo, fireRange))
         {
-
-
+            Debug.DrawLine(gunMuzzleHighPressure.position, hitInfo.point, Color.yellow);
+           
             //PaintTarget.CursorColor();
             //PaintTarget.PaintCursor(PaintExample.Instance.brush);
 
-            
+
 
             Renderer renderer = hitInfo.collider.GetComponent<Renderer>();
             if(PaintExample.Instance.brush.splatChannel == 4)

@@ -7,6 +7,13 @@ public class ManinMenuScript : MonoBehaviour
 
 
     public GameObject MainMenuPAnel, SettingPanel, LoadingPanel, ExitPanel;
+
+    private void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
+
+
     private void Start()
     {
         Time.timeScale = 1f;

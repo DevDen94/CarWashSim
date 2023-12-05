@@ -1304,7 +1304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0.3:0.3
+  m_Text: 0.4:0.3
 --- !u!222 &333122722
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4873,6 +4873,7 @@ MonoBehaviour:
   ButtonClick: {fileID: 1449103775}
   WashClick: {fileID: 0}
   SpraySound: {fileID: 0}
+  soapSpraySound: {fileID: 0}
   VolumeSlider: {fileID: 1014563503}
   Volume: {fileID: 1977952403}
 --- !u!1 &1235337343
