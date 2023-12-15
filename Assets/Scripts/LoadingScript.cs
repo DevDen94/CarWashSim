@@ -47,7 +47,7 @@ public class LoadingScript : MonoBehaviour
 
     public void showBigBanner()
     {
-        GoogleAdMobController.instance.ShowBigBannerAd();
+        GoogleMobileAdsController.Instance.ShowBiGBannerAd();
     }
 
     private IEnumerator LoadAsyncScene()

@@ -86,8 +86,7 @@ public class GamePlayController : MonoBehaviour
             PlayerPrefs.SetInt("LevelRestart", 0);
         }*/
         // AdsManager.instance.ShowSmallBanner();
-        GoogleAdMobController.instance.ShowSmallBannerAd();
-
+        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
     }
 
     
@@ -103,15 +102,15 @@ public class GamePlayController : MonoBehaviour
                 Time.timeScale = 0f;
                 // AdsManager.instance.ShowinterAd();
                 //  AdsManager.instance.ShowBigBanner();
-               // GoogleAdMobController.instance.ShowInterstitialAd();
-                GoogleAdMobController.instance.ShowBigBannerAd();
+                // GoogleAdMobController.instance.ShowInterstitialAd();
+                GoogleMobileAdsController.Instance.ShowBiGBannerAd();
 
                 //Cars[PlayerPrefs.GetInt("currentBus")].gameObject.SetActive(false);
                 break;
             case 1:
                 ///resume////
                 Panels[0].SetActive(false);
-                GoogleAdMobController.instance.ShowSmallBannerAd();
+                GoogleMobileAdsController.Instance.ShowSmallBannerAd();
 
                 //  AdsManager.instance.ShowSmallBanner();
                 Time.timeScale = 1f;
@@ -134,7 +133,7 @@ public class GamePlayController : MonoBehaviour
 
                 Panels[1].SetActive(false);
                 SwitchControlToCarWash();
-                GoogleAdMobController.instance.ShowSmallBannerAd();
+                GoogleMobileAdsController.Instance.ShowSmallBannerAd();
                 break;
 
 

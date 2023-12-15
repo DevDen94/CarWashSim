@@ -332,8 +332,8 @@ public class levemanager : MonoBehaviour
         
         SceneManager.LoadScene(2);
         PlayerPrefs.SetInt("LevelRestart", 0);
-        GoogleAdMobController.instance.ShowInterstitialAd();
-        GoogleAdMobController.instance.ShowSmallBannerAd();
+        
+        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
         //AdsManager.instance.ShowinterAd();
     }
 
@@ -409,7 +409,7 @@ public class levemanager : MonoBehaviour
        
         Pause.SetActive(true);
         Time.timeScale = 0f;
-        GoogleAdMobController.instance.ShowBigBannerAd();
+        GoogleMobileAdsController.Instance.ShowBiGBannerAd();
     }
 
 
@@ -418,7 +418,7 @@ public class levemanager : MonoBehaviour
         Time.timeScale = 1f;
         
         Pause.SetActive(false);
-        GoogleAdMobController.instance.ShowSmallBannerAd();
+        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
 
     }
     public IEnumerator AllWashCouroutine()

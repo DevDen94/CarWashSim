@@ -1304,7 +1304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0.4:0.3
+  m_Text: 0.5:0.3
 --- !u!222 &333122722
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8420,6 +8420,7 @@ MonoBehaviour:
   progressText: {fileID: 2022164708}
   loadingSpeed: 0.002
   Value: 2
+  data: {fileID: 11400000, guid: 402ad4d1be55f314eb34966b30b7c069, type: 2}
 --- !u!114 &2102192657
 MonoBehaviour:
   m_ObjectHideFlags: 0
