@@ -87,6 +87,12 @@ public class GamePlayController : MonoBehaviour
         }*/
         // AdsManager.instance.ShowSmallBanner();
         GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+
+
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("level_start","level_number", PlayerPrefs.GetInt("CurrentLevel"));
+
+
+
     }
 
     

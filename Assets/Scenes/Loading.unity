@@ -841,25 +841,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bc8689acb563c4c98dbf9e9009df24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bannerAdUnitId: 
-  interstitialAdUnitId: 
-  rewardedAdUnitId: 
-  BIGbannerAdUnitId: 
-  MediumBannerAdUnitId: 
-  MediumInterstitialAdUnitId: 
-  MediumRewardedAdUnitId: 
-  BIGbannerMediumAdUnitId: 
-  ALLPriceBannerAdUnitId: 
-  ALLPriceInterstitialAdUnitId: 
-  ALLPriceRewardedAdUnitId: 
-  BIGbannerAllAdUnitId: 
+  bannerAdUnitId: ca-app-pub-5227706387493609/5993263944
+  interstitialAdUnitId: ca-app-pub-5227706387493609/7998757988
+  rewardedAdUnitId: null
+  BIGbannerAdUnitId: ca-app-pub-5227706387493609/5993263944
+  MediumBannerAdUnitId: ca-app-pub-5227706387493609/3826265608
+  MediumInterstitialAdUnitId: ca-app-pub-5227706387493609/2983957228
+  MediumRewardedAdUnitId: null
+  BIGbannerMediumAdUnitId: ca-app-pub-5227706387493609/3826265608
+  ALLPriceBannerAdUnitId: ca-app-pub-5227706387493609/4297775649
+  ALLPriceInterstitialAdUnitId: ca-app-pub-5227706387493609/8045448968
+  ALLPriceRewardedAdUnitId: null
+  BIGbannerAllAdUnitId: ca-app-pub-5227706387493609/4297775649
   SmallBannerPosition: 0
   BigBannerPosition: 2
-  ShowTestAds: 1
+  ShowTestAds: 0
   UnityAdsID: 5421989
   BANNER_PLACEMENT: 
   InterstatialPlacement: 
   REWARDED_VIDEO_PLACEMENT: 
+  number: 0
 --- !u!114 &1113768922
 MonoBehaviour:
   m_ObjectHideFlags: 0

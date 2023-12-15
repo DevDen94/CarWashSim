@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
-  <string name="gcm_defaultSenderId" translatable="false">471580729149</string>
-  <string name="google_storage_bucket" translatable="false">car-wash-d7212.appspot.com</string>
-  <string name="project_id" translatable="false">car-wash-d7212</string>
-  <string name="google_api_key" translatable="false">AIzaSyBiQeYmDr9-700qpK16Q4Yvl9qRPCrohNg</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBiQeYmDr9-700qpK16Q4Yvl9qRPCrohNg</string>
-  <string name="google_app_id" translatable="false">1:471580729149:android:34ad5da9f806129209af54</string>
+  <string name="gcm_defaultSenderId" translatable="false">72750311290</string>
+  <string name="google_storage_bucket" translatable="false">prado-car-wash.appspot.com</string>
+  <string name="project_id" translatable="false">prado-car-wash</string>
+  <string name="google_api_key" translatable="false">AIzaSyDITiXmPOLpVWlr2jNZ1iJx-QcYILhhVmw</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDITiXmPOLpVWlr2jNZ1iJx-QcYILhhVmw</string>
+  <string name="google_app_id" translatable="false">1:72750311290:android:d8962919f285ab81a898c3</string>
 </resources>

@@ -32,6 +32,7 @@ public class ManinMenuScript : MonoBehaviour
         AudioManager.Instance.Buttonclick();
         GoogleMobileAdsController.Instance.ShowInterstitialAd();
         Firebase.Analytics.FirebaseAnalytics.LogEvent("click_on_start_button");
+        
     }
 
     public void Back()

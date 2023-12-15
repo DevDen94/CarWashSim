@@ -155,6 +155,8 @@ public class levemanager : MonoBehaviour
             LevelComplete_ = false;
             CanvasBool = true;
             LevelComplete.SetActive(true);
+            int level_number = PlayerPrefs.GetInt("CurrentLevel");
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("level_complete","level_number", level_number);
             //GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
             if (PlayerPrefs.GetInt("CurrentLevel") < GamePlayController.instance.Levels.Length-1)
             {
@@ -176,7 +178,7 @@ public class levemanager : MonoBehaviour
             
             yield return null;
            
-            
+              
         }
         if (levemanager.Instance.CompletePatches >= levemanager.Instance.MudPatches - mudPatchesDiffForCleaning)
         {

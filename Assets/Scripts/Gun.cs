@@ -123,6 +123,8 @@ public class Gun : MonoBehaviour
             if (levemanager.Instance.CountdownTime <= 0)
             {
                 isTimeOver = true;
+                int level_number = PlayerPrefs.GetInt("CurrentLevel");
+                Firebase.Analytics.FirebaseAnalytics.LogEvent("level_fail", "level_number", level_number);
                 levemanager.Instance.LevelFail.SetActive(true);
                 //AdsManager.instance.ShowinterAd();
                 //AdsManager.instance.ShowBigBanner();
@@ -157,6 +159,9 @@ public class Gun : MonoBehaviour
 
         if (levemanager.Instance.WaterSlider.value <= 0)
         {
+            int level_number = PlayerPrefs.GetInt("CurrentLevel");
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("level_fail", "level_number", level_number);
+
             levemanager.Instance.LevelFail.SetActive(true);
            // AdsManager.instance.ShowinterAd();
           //  AdsManager.instance.ShowBigBanner();

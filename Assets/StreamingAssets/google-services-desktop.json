@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "471580729149",
-    "project_id": "car-wash-d7212",
-    "storage_bucket": "car-wash-d7212.appspot.com"
+    "project_number": "72750311290",
+    "project_id": "prado-car-wash",
+    "storage_bucket": "prado-car-wash.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:471580729149:android:34ad5da9f806129209af54",
+        "mobilesdk_app_id": "1:72750311290:android:d8962919f285ab81a898c3",
         "android_client_info": {
           "package_name": "com.darwin.car.wash.games3d"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBiQeYmDr9-700qpK16Q4Yvl9qRPCrohNg"
+          "current_key": "AIzaSyDITiXmPOLpVWlr2jNZ1iJx-QcYILhhVmw"
         }
       ],
       "services": {
