@@ -17,7 +17,6 @@ public class LoadingScript : MonoBehaviour
 
     private void OnEnable()
     {
-
         if (!PlayerPrefs.HasKey("LN"))
         {
             PlayerPrefs.SetInt("LN", 1);
@@ -26,15 +25,12 @@ public class LoadingScript : MonoBehaviour
         progress = 0f;
         Time.timeScale = 1f;
         
-
-        
-
     }
     private void Start()
     {
-
         if (data.data == Application.identifier)
         {
+            Debug.Log("Match");
             StartCoroutine(LoadAsyncScene());
             Invoke(nameof(showBigBanner), 0.5f);
         }
@@ -52,23 +48,15 @@ public class LoadingScript : MonoBehaviour
 
     private IEnumerator LoadAsyncScene()
     {
-
-
-        
-        
         while (progressBar.fillAmount <1)
-         {
+        {
            
             progressText.text = (progressBar.fillAmount * 100f).ToString("F0") + "%";
             yield return null;
-         }
+        }
         
         AsyncOperation oper = SceneManager.LoadSceneAsync(Value);
         oper.allowSceneActivation = true;
-       
-
-
-
     }
 }
 

@@ -5,37 +5,46 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using Cinemachine;
+using UnityEngine.Playables;
+
 public class GamePlayController : MonoBehaviour
 {
     public static GamePlayController instance;
     [Header("Cars In This Object")]
-    public GameObject playerObj;
+    [HideInInspector] public GameObject playerObj;
     [Header("Cars")]
     public GameObject[] Cars;
     
-    [Header("Environment")]
-    public GameObject Environment;
-   [Header("Cameras And Bus")]
+    [Header("Cameras And Bus")]
     public GameObject CinemachineCam;
-     [Header("Panels")]
+    [Header("Panels")]
     public GameObject[] Panels;
     [Header("Canvas")]
     public GameObject Canvas;
-     [Header("AnimationCamera")]
+    [Header("AnimationCamera")]
     public GameObject AnimationCam;
     [Header("BoolForWinPanel")]
     public bool CameraBool = false;
     public GameObject[] Levels;
   
     [Header("CurrentLevel in this object")]
-    public GameObject CurrentLevel;
+    [HideInInspector] public GameObject CurrentLevel;
     public GameObject freelookref;
     [Header("UpLifter")]
-    public GameObject CurrentLevelUplifter;
+    [HideInInspector] public GameObject CurrentLevelUplifter;
     public GameObject FpsStartPoint;
     public GameObject WashMan;
 
     public GameObject CarDownBlockers;
+
+    [TextArea(3, 10)]
+    [SerializeField] string[] _startChatTexts;
+    [SerializeField] Text _chatText;
+    [SerializeField] AudioClip[] _chatClips;
+    [SerializeField] AudioSource _chatboxAudioSource;
+
+    PlayableDirector _currentCutscene;
+    [SerializeField] TimelineManager _timelineManager;
 
     private void Awake()
     {
@@ -49,57 +58,42 @@ public class GamePlayController : MonoBehaviour
 
         CurrentLevel = Instantiate(Levels[PlayerPrefs.GetInt("CurrentLevel")]);
 
-        playerObj = Instantiate(Cars[PlayerPrefs.GetInt("CurrentLevel")].gameObject, CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
-
-
-
-
+        playerObj = Instantiate(Cars[PlayerPrefs.GetInt("CurrentLevel")], CurrentLevel.transform.GetChild(0).transform.position, CurrentLevel.transform.GetChild(0).transform.rotation);
     }
-    private void OnEnable()
-    {
-        
-    }
-    // Start is called before the first frame update
+
+
     [Obsolete]
     void Start()
     {
-
         Time.timeScale = 1f;
-        //Instantiate(Environment);
+
+        _currentCutscene = _timelineManager.GettingCurrentCutScene();
         
         freelookref.GetComponent<CinemachineFreeLook>().Follow = playerObj.transform;
         freelookref.GetComponent<CinemachineFreeLook>().LookAt = playerObj.transform;
+
         foreach (Transform t in CurrentLevel.transform)
         {
-            if (t.tag == "Uplift")
+            if (t.CompareTag("Uplift"))
             {
                 CurrentLevelUplifter = t.gameObject;
             }
         }
-        /*if(PlayerPrefs.GetInt("LevelRestart") == 1)
-        {
-            SwitchControlToCarWash();
-            
-        }
-        else
-        {
-            PlayerPrefs.SetInt("LevelRestart", 0);
-        }*/
-        // AdsManager.instance.ShowSmallBanner();
+
+        _chatText.text = _startChatTexts[PlayerPrefs.GetInt("CurrentLevel")];
+
+        _chatboxAudioSource.clip = _chatClips[PlayerPrefs.GetInt("CurrentLevel")];
+
+        //_currentCutscene.gameObject.SetActive(true);
+
         GoogleMobileAdsController.Instance.ShowSmallBannerAd();
 
-
         Firebase.Analytics.FirebaseAnalytics.LogEvent("level_start","level_number", PlayerPrefs.GetInt("CurrentLevel"));
-
-
-
     }
 
     
     public void PanelManager(int i)
-
     {
-
         switch (i)
         {
             default:
@@ -156,7 +150,6 @@ public class GamePlayController : MonoBehaviour
         {
             CinemachineCam.SetActive(true);
            
-            //UvcCamera.GetComponent<CameraController>().enabled = true;
         }
         else
         {
@@ -192,5 +185,4 @@ public class GamePlayController : MonoBehaviour
         
     }
 }
-    // Update is called once per frame
    
