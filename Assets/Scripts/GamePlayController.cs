@@ -43,8 +43,8 @@ public class GamePlayController : MonoBehaviour
     [SerializeField] AudioClip[] _chatClips;
     [SerializeField] AudioSource _chatboxAudioSource;
 
-    PlayableDirector _currentCutscene;
-    [SerializeField] TimelineManager _timelineManager;
+    //PlayableDirector _currentCutscene;
+    //[SerializeField] TimelineManager _timelineManager;
 
     private void Awake()
     {
@@ -67,7 +67,7 @@ public class GamePlayController : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        _currentCutscene = _timelineManager.GettingCurrentCutScene();
+        //_currentCutscene = _timelineManager.GettingCurrentCutScene();
         
         freelookref.GetComponent<CinemachineFreeLook>().Follow = playerObj.transform;
         freelookref.GetComponent<CinemachineFreeLook>().LookAt = playerObj.transform;

@@ -54,8 +54,11 @@ public class LoadingScript : MonoBehaviour
             progressText.text = (progressBar.fillAmount * 100f).ToString("F0") + "%";
             yield return null;
         }
-        
+
         AsyncOperation oper = SceneManager.LoadSceneAsync(Value);
+
+        Debug.Log("Loading scene");
+
         oper.allowSceneActivation = true;
     }
 }
