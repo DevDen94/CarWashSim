@@ -28,6 +28,9 @@ public class Gun : MonoBehaviour
     int value;
     bool SpraySoundBool;
 
+    public int _currentGun;
+    public GameObject[] _allGuns;
+
     //public Color objectColor;
     //public Color fadeColor;
     //public float fadeTime = 2;
@@ -44,6 +47,12 @@ public class Gun : MonoBehaviour
     }
     private void Start()
     {
+        foreach (var gun in _allGuns)
+        {
+            gun.SetActive(false);
+        }
+        _allGuns[_currentGun].SetActive(true);
+
        /* value = 179;
         isTimeOver = false;
         levemanager.Instance.Time_.text = "00:00";*/
