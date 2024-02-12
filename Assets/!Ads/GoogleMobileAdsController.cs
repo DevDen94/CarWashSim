@@ -407,6 +407,13 @@ public class GoogleMobileAdsController : MonoBehaviour, IUnityAdsInitializationL
         Debug.Log("User Win Reward");
         Debug.Log("User earned reward of " + amount + " " + type);
         // You can implement your reward logic here
+
+        if(PlayerPrefs.GetInt("Reward") == 1)
+        {
+            Debug.Log("Reward ad f");
+            PlayerPrefs.SetInt("Reward", 0);
+            Gun.Instance.RewardNewGun();
+        }
     }
 
 

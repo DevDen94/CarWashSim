@@ -30,6 +30,13 @@ public class Gun : MonoBehaviour
 
     public int _currentGun;
     public GameObject[] _allGuns;
+    public Animator[] _allHands;
+
+    public GameObject _cameraMain;
+
+    public GameObject _equipGunButton;
+
+    GunObject _raycastedGun;
 
     //public Color objectColor;
     //public Color fadeColor;
@@ -52,7 +59,7 @@ public class Gun : MonoBehaviour
             gun.SetActive(false);
         }
         _allGuns[_currentGun].SetActive(true);
-
+        levemanager.Instance.HandAnim = _allHands[_currentGun];
        /* value = 179;
         isTimeOver = false;
         levemanager.Instance.Time_.text = "00:00";*/
@@ -62,6 +69,8 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+
+        CheckingGun();
 
         if(!ControlFreak2.CF2Input.GetButton("Fire1") && !levemanager.Instance.directOn)
         {
@@ -352,5 +361,57 @@ public class Gun : MonoBehaviour
         }
 
 
+    }
+
+    public void CheckingGun()
+    {
+        RaycastHit hitInfo;
+        if(Physics.Raycast(_cameraMain.transform.position, _cameraMain.transform.forward, out hitInfo, 5f))
+        {
+            if (hitInfo.transform.TryGetComponent<GunObject>(out _raycastedGun))
+            {
+                Debug.Log("Gun name is : " + _raycastedGun.name);
+                _currentGun = _raycastedGun._indexOfGun;
+                Debug.Log("Current Gun is : " + _currentGun);
+                _equipGunButton.SetActive(true);
+            }
+            else
+            {
+                _equipGunButton.SetActive(false);
+            }
+        }
+        else
+        {
+            _equipGunButton.SetActive(false);
+        }
+
+        Debug.DrawRay(_cameraMain.transform.position, _cameraMain.transform.forward * 5f, Color.red);
+    }
+
+    public void ForRewardButtonFunc()
+    {
+        if (Application.internetReachability != NetworkReachability.NotReachable)
+        {
+
+            GoogleMobileAdsController.Instance.ShowRewardedAd();
+            PlayerPrefs.SetInt("Reward", 1);
+        }
+    }
+
+    public void RewardNewGun()
+    {
+        Debug.Log("Reward Func Start");
+
+        _raycastedGun.gameObject.SetActive(false);
+
+        foreach (GameObject guns in _allGuns)
+        {
+            guns.SetActive(false);
+        }
+
+        _allGuns[_currentGun].SetActive(true);
+        levemanager.Instance.HandAnim = _allHands[_currentGun];
+
+        Debug.Log("Reward Func end");
     }
 }

@@ -30,9 +30,9 @@ public class LoadingScript : MonoBehaviour
     {
         if (data.data == Application.identifier)
         {
-            Debug.Log("Match");
+            //Debug.Log("Match");
             StartCoroutine(LoadAsyncScene());
-            Invoke(nameof(showBigBanner), 0.5f);
+            Invoke(nameof(ShowBigBanner), 0.5f);
         }
         else
         {
@@ -41,7 +41,7 @@ public class LoadingScript : MonoBehaviour
     }
 
 
-    public void showBigBanner()
+    public void ShowBigBanner()
     {
         GoogleMobileAdsController.Instance.ShowBiGBannerAd();
     }
@@ -56,8 +56,6 @@ public class LoadingScript : MonoBehaviour
         }
 
         AsyncOperation oper = SceneManager.LoadSceneAsync(Value);
-
-        Debug.Log("Loading scene");
 
         oper.allowSceneActivation = true;
     }

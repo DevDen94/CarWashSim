@@ -5,19 +5,31 @@ using UnityEngine;
 public class GunObject : MonoBehaviour
 {
     public int _indexOfGun;
+    public GameObject _equipGunButton;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            this.gameObject.SetActive(false);
-
-            foreach(GameObject guns in Gun.Instance._allGuns)
-            {
-                guns.SetActive(false);
-            }
-
-            Gun.Instance._allGuns[_indexOfGun].SetActive(true);
+            _equipGunButton.SetActive(true);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _equipGunButton.SetActive(false);
+        }
+    }
+
+    //public void ForRewardButtonFunc()
+    //{
+    //    if(Application.internetReachability != NetworkReachability.NotReachable)
+    //    {
+    //        Gun.Instance._currentGun = _indexOfGun;
+    //        GoogleMobileAdsController.Instance.ShowRewardedAd();
+    //        PlayerPrefs.SetInt("Reward", 1);
+    //    }
+    //}
 }
