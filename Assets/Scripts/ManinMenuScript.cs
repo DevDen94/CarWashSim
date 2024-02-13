@@ -99,4 +99,8 @@ public class ManinMenuScript : MonoBehaviour
         Application.Quit();
     }
 
+    public void checkLevel(int i)
+    {
+        PlayerPrefs.SetInt("CurrentLevel", i);
+    }
 }

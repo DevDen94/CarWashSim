@@ -144,6 +144,7 @@ public class Gun : MonoBehaviour
                 int level_number = PlayerPrefs.GetInt("CurrentLevel");
                 Firebase.Analytics.FirebaseAnalytics.LogEvent("level_fail", "level_number", level_number);
                 levemanager.Instance.LevelFail.SetActive(true);
+                AudioManager.Instance.FailSound();
                 //AdsManager.instance.ShowinterAd();
                 //AdsManager.instance.ShowBigBanner();
             }
@@ -181,8 +182,9 @@ public class Gun : MonoBehaviour
             Firebase.Analytics.FirebaseAnalytics.LogEvent("level_fail", "level_number", level_number);
 
             levemanager.Instance.LevelFail.SetActive(true);
-           // AdsManager.instance.ShowinterAd();
-          //  AdsManager.instance.ShowBigBanner();
+            AudioManager.Instance.FailSound();
+            // AdsManager.instance.ShowinterAd();
+            //  AdsManager.instance.ShowBigBanner();
         }
 
     }

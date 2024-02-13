@@ -155,6 +155,7 @@ public class levemanager : MonoBehaviour
             LevelComplete_ = false;
             CanvasBool = true;
             LevelComplete.SetActive(true);
+            AudioManager.Instance.CompleteSound();
             int level_number = PlayerPrefs.GetInt("CurrentLevel");
             Firebase.Analytics.FirebaseAnalytics.LogEvent("level_complete","level_number", level_number);
             //GamePlayController.instance.CurrentLevel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
@@ -164,7 +165,7 @@ public class levemanager : MonoBehaviour
                 PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
                 PlayerPrefs.SetInt("UnlockLevel", 1);
                 PlayerPrefs.SetInt("LevelRestart", 0);
-                Debug.Log("aya1"+ PlayerPrefs.GetInt("CurrentLevel")+LevelComplete_+CanvasBool);
+                //Debug.Log("aya1"+ PlayerPrefs.GetInt("CurrentLevel")+LevelComplete_+CanvasBool);
                 
             }
             else
@@ -302,7 +303,7 @@ public class levemanager : MonoBehaviour
 
     public void ApplyingSoapOnFullBody()
     {
-        Debug.Log("Soap Off");
+        objectivePanel.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("sfx");
         objectivePanel.SetActive(true);
         TriggerScript.Instance.soapMakingObjects.SetActive(true);
         Invoke(nameof(SoapApplyOnFullCar), 5f);
@@ -310,7 +311,6 @@ public class levemanager : MonoBehaviour
 
     void SoapApplyOnFullCar()
     {
-        Debug.Log("Soap applyed all");
         objectivePanel.SetActive(false);
         TriggerScript.Instance.soapMakingObjects.SetActive(false);
     }
