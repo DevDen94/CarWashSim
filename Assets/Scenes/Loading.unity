@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -848,8 +848,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1113768920}
-  - component: {fileID: 1113768921}
   - component: {fileID: 1113768922}
+  - component: {fileID: 1113768923}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -872,38 +872,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1113768921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85bc8689acb563c4c98dbf9e9009df24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bannerAdUnitId: ca-app-pub-5227706387493609/5993263944
-  interstitialAdUnitId: ca-app-pub-5227706387493609/7998757988
-  rewardedAdUnitId: null
-  BIGbannerAdUnitId: ca-app-pub-5227706387493609/5993263944
-  MediumBannerAdUnitId: ca-app-pub-5227706387493609/3826265608
-  MediumInterstitialAdUnitId: ca-app-pub-5227706387493609/2983957228
-  MediumRewardedAdUnitId: null
-  BIGbannerMediumAdUnitId: ca-app-pub-5227706387493609/3826265608
-  ALLPriceBannerAdUnitId: ca-app-pub-5227706387493609/4297775649
-  ALLPriceInterstitialAdUnitId: ca-app-pub-5227706387493609/8045448968
-  ALLPriceRewardedAdUnitId: null
-  BIGbannerAllAdUnitId: ca-app-pub-5227706387493609/4297775649
-  SmallBannerPosition: 0
-  BigBannerPosition: 2
-  ShowTestAds: 0
-  UnityAdsID: 5421989
-  BANNER_PLACEMENT: 
-  InterstatialPlacement: 
-  REWARDED_VIDEO_PLACEMENT: 
-  number: 0
 --- !u!114 &1113768922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,6 +884,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87445c150e7434a42b0d10d41d0d46b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1113768923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c66cbde894a934b836028197da8f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0
 --- !u!1 &1565463576
 GameObject:
   m_ObjectHideFlags: 0

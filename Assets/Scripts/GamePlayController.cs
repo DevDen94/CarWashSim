@@ -86,7 +86,7 @@ public class GamePlayController : MonoBehaviour
 
         //_currentCutscene.gameObject.SetActive(true);
 
-        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+       //1st GoogleMobileAdsController.Instance.ShowSmallBannerAd();
 
         Firebase.Analytics.FirebaseAnalytics.LogEvent("level_start","level_number", PlayerPrefs.GetInt("CurrentLevel"));
     }
@@ -103,14 +103,14 @@ public class GamePlayController : MonoBehaviour
                 // AdsManager.instance.ShowinterAd();
                 //  AdsManager.instance.ShowBigBanner();
                 // GoogleAdMobController.instance.ShowInterstitialAd();
-                GoogleMobileAdsController.Instance.ShowBiGBannerAd();
+                //1st    GoogleMobileAdsController.Instance.ShowBiGBannerAd();
 
                 //Cars[PlayerPrefs.GetInt("currentBus")].gameObject.SetActive(false);
                 break;
             case 1:
                 ///resume////
                 Panels[0].SetActive(false);
-                GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+                //1st  GoogleMobileAdsController.Instance.ShowSmallBannerAd();
 
                 //  AdsManager.instance.ShowSmallBanner();
                 Time.timeScale = 1f;
@@ -133,7 +133,7 @@ public class GamePlayController : MonoBehaviour
 
                 Panels[1].SetActive(false);
                 SwitchControlToCarWash();
-                GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+                //1st    GoogleMobileAdsController.Instance.ShowSmallBannerAd();
                 break;
 
 

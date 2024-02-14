@@ -18,7 +18,7 @@ public class ManinMenuScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         //AdsManager.instance.ShowSmallBanner();
-        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+        Implementation.Instance.ShawBanner();
         //if (AdsManager.instance.isAppOpen)
         //{
         //    AdsManager.instance.ShowAppOpenAd();
@@ -30,7 +30,7 @@ public class ManinMenuScript : MonoBehaviour
     {
         LoadingPanel.SetActive(true);
         AudioManager.Instance.Buttonclick();
-        GoogleMobileAdsController.Instance.ShowInterstitialAd();
+        Implementation.Instance.ShowInterstitial();
         Firebase.Analytics.FirebaseAnalytics.LogEvent("click_on_start_button");
         
     }

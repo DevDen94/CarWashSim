@@ -395,7 +395,7 @@ public class Gun : MonoBehaviour
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
 
-            GoogleMobileAdsController.Instance.ShowRewardedAd();
+            Implementation.Instance.ShowRewardedVideo();
             PlayerPrefs.SetInt("Reward", 1);
         }
     }

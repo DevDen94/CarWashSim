@@ -43,7 +43,7 @@ public class LoadingScript : MonoBehaviour
 
     public void ShowBigBanner()
     {
-        GoogleMobileAdsController.Instance.ShowBiGBannerAd();
+        //1st  GoogleMobileAdsController.Instance.ShowBiGBannerAd();
     }
 
     private IEnumerator LoadAsyncScene()

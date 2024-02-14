@@ -8,18 +8,20 @@ public class onenableScript : MonoBehaviour
     
     private void OnEnable()
     {
-        
-        if (GoogleMobileAdsController.Instance.number == 0) { 
-        GoogleMobileAdsController.Instance.ShowInterstitialAd();
-            GoogleMobileAdsController.Instance.number = GoogleMobileAdsController.Instance.number + 1;
-            
-        }else if (GoogleMobileAdsController.Instance.number == 2)
+
+        if (Implementation.Instance.number == 0)
         {
-            GoogleMobileAdsController.Instance.number = 0;
+            Implementation.Instance.ShowInterstitial();
+            Implementation.Instance.number = Implementation.Instance.number + 1;
+
+        }
+        else if (Implementation.Instance.number == 1)
+        {
+            Implementation.Instance.number = 0;
         }
         else
         {
-            GoogleMobileAdsController.Instance.number = GoogleMobileAdsController.Instance.number + 1;
+            Implementation.Instance.number = Implementation.Instance.number + 1;
         }
     }
 }
