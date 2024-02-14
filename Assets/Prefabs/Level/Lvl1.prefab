@@ -68803,6 +68803,7 @@ MonoBehaviour:
   jumpForce: 5
   gravity: 9.81
   playerCamera: {fileID: 0}
+  _footstepsSound: {fileID: 0}
 --- !u!143 &3718023035059077310
 CharacterController:
   m_ObjectHideFlags: 0

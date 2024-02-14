@@ -12827,7 +12827,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -58861,6 +58861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirtyObjects: {fileID: 1761465230}
   soapMakingObjects: {fileID: 9099288494356515711}
+  _allSources:
+  - {fileID: 3334749612688357735}
+  - {fileID: 436698361614779742}
 --- !u!65 &4754617014857828138
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -104996,7 +104999,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

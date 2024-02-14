@@ -39056,7 +39056,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -40995,6 +40995,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirtyObjects: {fileID: 2245739724242879117}
   soapMakingObjects: {fileID: 1633531648191464889}
+  _allSources:
+  - {fileID: 7069515600336686012}
+  - {fileID: 80066815804182378}
 --- !u!95 &2923744820085118586
 Animator:
   serializedVersion: 5
@@ -53905,7 +53908,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

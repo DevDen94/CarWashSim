@@ -17,13 +17,17 @@ public class PlayerController : MonoBehaviour
 
     private float verticalRotation = 0.0f;
 
+    public AudioSource _footstepsSound;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         //Cursor.lockState = CursorLockMode.Locked;
 
         // Assuming you have a child object for the camera.
-       // playerCamera = transform.Find("Camera");
+        // playerCamera = transform.Find("Camera");
+
+        _footstepsSound.volume = PlayerPrefs.GetFloat("sfx");
     }
 
     void Update()
@@ -31,6 +35,15 @@ public class PlayerController : MonoBehaviour
         // Get player input for movement
         float horizontalInput = ControlFreak2.CF2Input.GetAxis("Horizontal");
         float verticalInput = ControlFreak2.CF2Input.GetAxis("Vertical");
+
+        if(horizontalInput != 0 || verticalInput != 0)
+        {
+            _footstepsSound.gameObject.SetActive(true);
+        }
+        else
+        {
+            _footstepsSound.gameObject.SetActive(false);
+        }
 
         // Calculate movement direction
         Vector3 forwardMovement = transform.forward * verticalInput;

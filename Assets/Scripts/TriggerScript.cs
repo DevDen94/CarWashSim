@@ -7,6 +7,7 @@ public class TriggerScript : MonoBehaviour
     public static TriggerScript Instance;
     public GameObject DirtyObjects;
     public GameObject soapMakingObjects;
+    public AudioSource[] _allSources;
     private void Awake()
     {
         Instance = this;
@@ -16,7 +17,8 @@ public class TriggerScript : MonoBehaviour
     {
         BusArrow.Instance.Target = GamePlayController.instance.CurrentLevelUplifter.gameObject.transform;
         BusArrow.Instance.MaxDistanceMeasure();
-        
+
+        SoundSystem();
     }
 
     [System.Obsolete]
@@ -59,5 +61,11 @@ public class TriggerScript : MonoBehaviour
         yield return null;
     }
   
-    
+    void SoundSystem()
+    {
+        foreach(AudioSource sources in _allSources)
+        {
+            sources.volume = PlayerPrefs.GetFloat("sfx");
+        }
+    }
 }
