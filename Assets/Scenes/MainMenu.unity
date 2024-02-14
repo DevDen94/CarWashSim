@@ -5000,6 +5000,8 @@ MonoBehaviour:
   WashClick: {fileID: 0}
   SpraySound: {fileID: 0}
   soapSpraySound: {fileID: 0}
+  completeSound: {fileID: 0}
+  failSound: {fileID: 0}
   VolumeSlider: {fileID: 1014563503}
   _allSfx:
   - {fileID: 1449103775}
@@ -6282,8 +6284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -273.5, y: 121.88}
-  m_SizeDelta: {x: 546, y: 199}
+  m_AnchoredPosition: {x: -289, y: 121.88}
+  m_SizeDelta: {x: 547, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575377942
 MonoBehaviour:
@@ -6361,7 +6363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7b26f34dc4ae1e844a5c46d9ce60ca23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84abe6924e1e97e4f981221f55850f1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

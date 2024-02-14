@@ -18,7 +18,12 @@ public class TriggerScript : MonoBehaviour
         BusArrow.Instance.Target = GamePlayController.instance.CurrentLevelUplifter.gameObject.transform;
         BusArrow.Instance.MaxDistanceMeasure();
 
-        SoundSystem();
+        foreach (AudioSource sources in _allSources)
+        {
+            sources.volume = 0f;
+        }
+
+        Invoke(nameof(SoundSystem), 6f);
     }
 
     [System.Obsolete]
@@ -42,7 +47,13 @@ public class TriggerScript : MonoBehaviour
             this.transform.SetParent(GamePlayController.instance.CurrentLevelUplifter.transform);
             GamePlayController.instance.CinemachineCam.SetActive(false);
             GamePlayController.instance.CarDownBlockers.SetActive(true);
-           GamePlayController.instance.SwitchControlToCarWash();
+
+            foreach (AudioSource sources in _allSources)
+            {
+                sources.volume = 0f;
+            }
+
+            GamePlayController.instance.SwitchControlToCarWash();
 
             //GamePlayController.instance.Panels[1].gameObject.SetActive(true);
             // GoogleAdMobController.instance.ShowInterstitialAd();
