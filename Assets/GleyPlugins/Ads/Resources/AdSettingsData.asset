@@ -109,7 +109,7 @@ MonoBehaviour:
         displayName: Interstitial ID
         notRequired: 0
       idRewarded:
-        id: 
+        id: ca-app-pub-5227706387493609/6638010591
         displayName: Rewarded Video ID
         notRequired: 0
       hasBanner: 1
